@@ -1,0 +1,65 @@
+{
+  "video_id": "7592761901990350092",
+  "duration": 55.13333333333333,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "Building) My app to 1Oklusers",
+    "spoken_text": "I just integrated monetization to my app.  And it took way longer than I expected.",
+    "visual_text": "Building) My app to 1Oklusers #4 IJUSTINTEGRATED IJUSTINTEGRATED MONETIZATION TOMYAPP TOMYAPP WAYLONGER THANI EXPECTED",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 180.0,
+    "word_count": 15
+  },
+  "pacing": {
+    "cuts_per_minute": 5.441354292623942,
+    "avg_scene_duration": 11.026666666666667,
+    "scene_duration_variance": 3.224103665275737,
+    "total_scenes": 5
+  },
+  "text_overlays": {
+    "total_overlays": 34,
+    "overlay_density": 0.6166868198307134,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 14
+      },
+      {
+        "zone": "middle_center",
+        "count": 11
+      },
+      {
+        "zone": "top_center",
+        "count": 6
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 1.6363636363636365,
+      "median_interval": 0.0,
+      "std_interval": 2.9317300902903813
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 46.86333333333333,
+      "duration": 46.86333333333333,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 46.86333333333333,
+      "end": 55.13333333333333,
+      "duration": 8.270000000000003,
+      "percentage": 15.000000000000005
+    }
+  }
+}

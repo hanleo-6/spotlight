@@ -1,0 +1,57 @@
+{
+  "video_id": "7594651816889945366",
+  "duration": 7.1,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "How it feels to just sit and drown in ur own thoughts because it'$ easier than",
+    "spoken_text": "And You lawyer",
+    "visual_text": "How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoying: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoving: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoving: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoying: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoving: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoving: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoving: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoving: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoying: How it feels to just sit and drown in ur own thoughts because it'$ easier than being annoying:",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 36.0,
+    "word_count": 3
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 1,
+    "overlay_density": 0.14084507042253522,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "insufficient",
+      "avg_interval": 0.0,
+      "median_interval": 0.0,
+      "std_interval": 0.0
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 140.84507042253523
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 6.034999999999999,
+      "duration": -3.9650000000000007,
+      "percentage": -55.84507042253522
+    },
+    "cta": {
+      "start": 6.034999999999999,
+      "end": 7.1,
+      "duration": 1.0650000000000004,
+      "percentage": 15.000000000000005
+    }
+  }
+}

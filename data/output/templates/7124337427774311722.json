@@ -1,0 +1,65 @@
+{
+  "video_id": "7124337427774311722",
+  "duration": 44.2362836113935,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.983665712059781,
+    "hook_type": "question",
+    "opening_text": "Building my startup in public 13",
+    "spoken_text": "This is day 13 of building my startup in public  and this is how many people signed up to use my app  after 24 hours.",
+    "visual_text": "Building my startup in public 13 How many users signed up and how much money did | make? startup in public, and this ishow day Building my startup in public day 13 How many users signed up and how much money did | make? This is day 13 of building my startup in public, and this ishow Building my startup in public day 13 How many users signed up and how much money did | make? Thisfs day 13 of building my startup in public, and this ishow Building my startup in public day 13 How many users signed up and how much money did | make? Thisfs day 13 of building my startup in public, and this ishow Building my startup in public day 13 How many users signed up and how much money did | make? This is day 13 of buildingmy startup in public, and this ishow Building my startup in public day 13 How many users signed up and how much money did | make? This is day 13 of buildingmy startup in public, and this is how Building my startup in public day 13 How many users signed up and how much money did | make? many peoplesigned up to use my app after 24 hours of launching: Building my startup in public day 13 How many users signed up and how much money did | make? many peoplesigned up to use my app after 24 hours of launching: Building my startup in public day 13 How many users signed up and how much money did | make? many people signed up to use my app after 24 hours of launching: Building my startup in public day 13 How many users signed up and how much money did | make? many people signed up to use my appafter 24 hours of Iaunching: Building my startup in public day 13 How many users signed up and how much money did | make? many people signed up to use my app after 24 hours of launching:",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 300.0,
+    "word_count": 25
+  },
+  "pacing": {
+    "cuts_per_minute": 12.262618897269839,
+    "avg_scene_duration": 4.892918919086563,
+    "scene_duration_variance": 2.7194781118080886,
+    "total_scenes": 9
+  },
+  "text_overlays": {
+    "total_overlays": 44,
+    "overlay_density": 0.994658601670312,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 15
+      },
+      {
+        "zone": "middle_center",
+        "count": 15
+      },
+      {
+        "zone": "top_left",
+        "count": 5
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.87641504044234,
+      "median_interval": 0.0,
+      "std_interval": 1.560160338412853
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 37.68584673902062,
+      "duration": 37.68584673902062,
+      "percentage": 85.19216277317257
+    },
+    "cta": {
+      "start": 37.68584673902062,
+      "end": 44.2362836113935,
+      "duration": 6.5504368723728845,
+      "percentage": 14.80783722682742
+    }
+  }
+}

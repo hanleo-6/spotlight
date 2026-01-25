@@ -1,0 +1,65 @@
+{
+  "video_id": "7596393295731772702",
+  "duration": 66.93332907782688,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.999999682108581,
+    "hook_type": "statement",
+    "opening_text": "THE BIGGEST STARTUP LIE SHURE",
+    "spoken_text": "One of the worst pieces of advice is you need to build this amazing",
+    "visual_text": "THE BIGGEST STARTUP LIE SHURE THE BIGGEST STARTUP LIE THE BIGGEST STARTUP LIE ShuRE THE BIGGEST STARTUP LIE ShuRE THE BIGGEST STARTUP LIE ShuRE THE BIGGEST STARTUP LIE ShuRE TO BUILD THIS AMAZING TO BUILD THIS AMAZING ShuRE TO BUILD THIS AMAZING ShuRE",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 168.0,
+    "word_count": 14
+  },
+  "pacing": {
+    "cuts_per_minute": 3.585657598487884,
+    "avg_scene_duration": 16.73333226945672,
+    "scene_duration_variance": 8.11462961873897,
+    "total_scenes": 4
+  },
+  "text_overlays": {
+    "total_overlays": 42,
+    "overlay_density": 0.6274900797353797,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 21
+      },
+      {
+        "zone": "middle_left",
+        "count": 20
+      },
+      {
+        "zone": "middle_center",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 1.3658535716979538,
+      "median_interval": 1.999999872843432,
+      "std_interval": 1.5579237470641498
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 56.89332971615285,
+      "duration": 56.89332971615285,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 56.89332971615285,
+      "end": 66.93332907782688,
+      "duration": 10.039999361674035,
+      "percentage": 15.000000000000002
+    }
+  }
+}

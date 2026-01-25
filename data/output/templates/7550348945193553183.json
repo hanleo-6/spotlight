@@ -1,0 +1,65 @@
+{
+  "video_id": "7550348945193553183",
+  "duration": 122.8,
+  "niche": "business",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "stat_shock",
+    "opening_text": "PRODUCE @VER MONTH S6-0 A",
+    "spoken_text": "I produce over $600,000 a month with a single software.  And I've been doing it for four years.  Let me explain.",
+    "visual_text": "PRODUCE @VER MONTH S6-0 A MONTH MONTH WITH A SINGLE SOFTWARB 2 DOING IT FOR 2 FOUR YEARS",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 252.0,
+    "word_count": 21
+  },
+  "pacing": {
+    "cuts_per_minute": 18.571816453977736,
+    "avg_scene_duration": 3.230701754385965,
+    "scene_duration_variance": 2.0754958764766975,
+    "total_scenes": 38
+  },
+  "text_overlays": {
+    "total_overlays": 892,
+    "overlay_density": 7.26384364820847,
+    "common_zones": [
+      {
+        "zone": "middle_left",
+        "count": 176
+      },
+      {
+        "zone": "middle_center",
+        "count": 149
+      },
+      {
+        "zone": "middle_right",
+        "count": 129
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.13468013468013468,
+      "median_interval": 0.0,
+      "std_interval": 0.5358509431401417
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 120.0,
+      "duration": 120.0,
+      "percentage": 97.71986970684038
+    },
+    "cta": {
+      "start": 120.0,
+      "end": 122.8,
+      "duration": 2.799999999999997,
+      "percentage": 2.280130293159607
+    }
+  }
+}

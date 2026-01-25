@@ -1,0 +1,65 @@
+{
+  "video_id": "7459939144312081706",
+  "duration": 356.96667277287185,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.967130579301261,
+    "hook_type": "statement",
+    "opening_text": "sk Rocketbook CreatorKeyboard",
+    "spoken_text": "So I was watching Yahoo Finance the other day and I saw a social media x",
+    "visual_text": "sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Club Fanbase BlaamFam Wekinfolk Favorited Likee Q Search sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun anbase BlaamFam Wekinfolk Favorited Likee Q Search SO was watching Yahoo Finance the other day sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Club Fanbase BlaamFam Wekinfolk Favorited Likee SO was watching Yahoo Finance the other day sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Club Fanbase BlaamFam Wekinfolk 3 Favorited Likee SO was watching Yahoo Finance the other day sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Club Fanbase BlaamFam Wekinfolk Favorited Likee Search SO was watching Yahoo Finance the other day sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Club Fanbase BlaamFam Wekinfolk Favorited Likee Search SO was watching Yahoo Finance the other day sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Club Fanbase BlaamFam Wekinfolk Favorited Likee Search SO was watching Yahoo Finance the other day sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Club Fanbase BlaamFam Wekinfolk Favorited Likee Search and saw a social media expert up there suggesting apps for you to out try sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Club Fanbase BlaamFam Wekinfolk Favorited Likee Search and saw a social media expert up there suggesting apps for you to out try sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Nike Run Club Fanbase BlaamFam Wekinfolk Favorited Likee Search and saw a social media expert up there suggesting apps for you to out try sk Rocketbook CreatorKeyboard Gemini Skool TOP 10 NEW TIKTOK REPLACEMENT APPS Kun Nike Run Clh Fanbase BlaamFam Wekinfolk Favorited Likee Search and saw a social media expert up there suggesting apps for you to out try",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 192.0,
+    "word_count": 16
+  },
+  "pacing": {
+    "cuts_per_minute": 0.33619723289278114,
+    "avg_scene_duration": 178.46666816301547,
+    "scene_duration_variance": 46.38766577917923,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 2008,
+    "overlay_density": 5.625174990152752,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 326
+      },
+      {
+        "zone": "bottom_center",
+        "count": 314
+      },
+      {
+        "zone": "middle_left",
+        "count": 293
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.17149915975724403,
+      "median_interval": 0.0,
+      "std_interval": 0.5548884779222959
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 338.29826254194097,
+      "duration": 338.29826254194097,
+      "percentage": 94.77026522226375
+    },
+    "cta": {
+      "start": 338.29826254194097,
+      "end": 356.96667277287185,
+      "duration": 18.668410230930874,
+      "percentage": 5.229734777736261
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "video_id": "7509579331182562591",
+  "duration": 44.43333050833826,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.999999682108581,
+    "hook_type": "statement",
+    "opening_text": "Building in public is a smart go-to- market move Building in public is a smart go-to-",
+    "spoken_text": "I've been watching so many founders build in public and I think this is such...",
+    "visual_text": "Building in public is a smart go-to- market move Building in public is a smart go-to- market move F've been watching so manv founders build in public Building in public is a smart go-to- market move Fve been watching so many founders build in public Building in public is a smart go-to- market move F've been watching so many founders build in public Building in public is a smart go-to- market move F've been watching so many founders build in public Building in public is a smart go-to- market move F've been watching so many founders build in public Building in public is a smart go-to- market move many founders build in public Building in public is a smart go-to- market move and | think this is such a smart go to market move Building in public is a smart go-to- market move and | think this is such a smart go to market move Building in public is a smart go-to- market move and | think this is such a smart go to market move",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 180.0,
+    "word_count": 15
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 68,
+    "overlay_density": 1.5303826929480173,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 23
+      },
+      {
+        "zone": "top_left",
+        "count": 23
+      },
+      {
+        "zone": "bottom_center",
+        "count": 22
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.656716376157545,
+      "median_interval": 0.0,
+      "std_interval": 0.939231744616733
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 22.505627837470843
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 37.768330932087515,
+      "duration": 27.768330932087515,
+      "percentage": 62.494372162529146
+    },
+    "cta": {
+      "start": 37.768330932087515,
+      "end": 44.43333050833826,
+      "duration": 6.664999576250743,
+      "percentage": 15.00000000000001
+    }
+  }
+}

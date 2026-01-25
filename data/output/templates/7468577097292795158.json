@@ -1,0 +1,65 @@
+{
+  "video_id": "7468577097292795158",
+  "duration": 11.5,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "question",
+    "opening_text": "if youcould one day with oneUndertale character;who",
+    "spoken_text": "",
+    "visual_text": "if youcould one day with oneUndertale character;who Ilelshebe? and what you do? with asgore Ispend= wouldC would if youcould oneUndertalecharacter;who Ilelshebe? and what Iyou do? Iwoudprobably go gardening with asgore Ispend= wouldC would ifyoucould one daywith oneUndertalecharacter;who Ilelshebe? andwat ido? Iwoudprobablygo gardening with asgore Ispend= would if youcoulde lone daywith oneUndertalecharacter;who Ilelshebe? andwat voudo? with asgore Ispendc wouldC would if youcoulde @ne day oneUndertalecharacter;who Ilelshebe? andwat ido? (wouidprobablvgo gardening with asgore with Ispendc wouldC would if youcould @neUndertalecharacter;who Ilelshebe? andwat ido? with asgore with Ispend= wouldC would if youcoulde @ne day oneUndentalecharacter; who Ilelshebe? andwat ido? Iwoudprobablygo gardening with asgore with Ispendc wouldC would if could oneUndertalecharacter; who Ilelshe be? andwat would youdo? Iprobablygogardening withasgore with Ispend= wouldE would oneUndertalecharacter; who Ilelshe be? andwhat would ido? Jwould probablvgogardening withasgore with yUc wouldE if could lone daywith oneUndertalecharacter; who helshe be? andwhat would do? I Iprobabligogardening with asgore",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 0,
+    "word_count": 0
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 34,
+    "overlay_density": 2.9565217391304346,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 13
+      },
+      {
+        "zone": "top_left",
+        "count": 10
+      },
+      {
+        "zone": "middle_center",
+        "count": 6
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.30303030303030304,
+      "median_interval": 0.0,
+      "std_interval": 0.7171005797696505
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 86.95652173913044
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 9.775,
+      "duration": -0.22499999999999964,
+      "percentage": -1.956521739130432
+    },
+    "cta": {
+      "start": 9.775,
+      "end": 11.5,
+      "duration": 1.7249999999999996,
+      "percentage": 14.999999999999996
+    }
+  }
+}

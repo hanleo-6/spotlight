@@ -1,0 +1,30 @@
+{
+  "video_id": "DNJQiOZKRrG_propertyfindersofficial_score0.9086",
+  "extracted_at": "2026-01-18T18:04:40.678092",
+  "features": {
+    "face": {
+      "median_faces": 2,
+      "max_faces": 3,
+      "avg_face_area": 15652.526315789473
+    },
+    "ocr": {
+      "text_frames": 35,
+      "unique_texts": 35,
+      "sample_texts": [
+        "|\nae\n0330-888-4838 |(Piopdiyga eee\nTOIL iT Ri | Lf\n\nfd\nTe .\n\n\u00e9 Z : _ _\nae",
+        "ome \u2014\n0330-888-4838 (AL d\nWow fo\n. \u00a9\u2019y\n\\.",
+        "aateam eee yr\n11\n4 4 \u00a2"
+      ]
+    },
+    "scenes": {
+      "scene_count": 0,
+      "avg_scene_length": 0,
+      "min_scene_length": 0
+    },
+    "hook": {
+      "face_ratio": 1.0,
+      "text_ratio": 1.0,
+      "motion_intensity": 16.479273003472226
+    }
+  }
+}

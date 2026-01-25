@@ -1,0 +1,65 @@
+{
+  "video_id": "7301339221325892870",
+  "duration": 45.433336221907055,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.966666982438849,
+    "hook_type": "question",
+    "opening_text": "are you an indie hacker or are you an indie hacker or are you an indie hacker or",
+    "spoken_text": "Are you an Indihaka or an independent hacker?  You can't even be an Indihaka where you don't even know.",
+    "visual_text": "are you an indie hacker or are you an indie hacker or are you an indie hacker or 7 are you an indie hacker or an independent hacker an independent hacker you can even you can even be an indie hacker be an indie hacker But you don't",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 228.0,
+    "word_count": 19
+  },
+  "pacing": {
+    "cuts_per_minute": 5.282464814553432,
+    "avg_scene_duration": 11.358334055476764,
+    "scene_duration_variance": 7.778545595585036,
+    "total_scenes": 4
+  },
+  "text_overlays": {
+    "total_overlays": 9,
+    "overlay_density": 0.1980924305457537,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 5
+      },
+      {
+        "zone": "bottom_right",
+        "count": 2
+      },
+      {
+        "zone": "bottom_left",
+        "count": 2
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 3.687500234444951,
+      "median_interval": 1.966666791703974,
+      "std_interval": 3.7363434253031063
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 41.30000262578345,
+      "duration": 41.30000262578345,
+      "percentage": 90.9024211298606
+    },
+    "cta": {
+      "start": 41.30000262578345,
+      "end": 45.433336221907055,
+      "duration": 4.133333596123606,
+      "percentage": 9.0975788701394
+    }
+  }
+}

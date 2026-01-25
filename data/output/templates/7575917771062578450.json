@@ -1,0 +1,65 @@
+{
+  "video_id": "7575917771062578450",
+  "duration": 49.1,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "WhatsApp Chrome WhatsApp",
+    "spoken_text": "Shot of the",
+    "visual_text": "WhatsApp Chrome WhatsApp Chrome Google Search Google or ty_ Welcone DexAPK Connect Home R Chai Discover Delhi High Court Orders WazirX Operator to Disclose Binance Agreement, Restructuring Plan Onlinet Welcome DexAPK Connect Discover High Court to Google Search Google = Delhi WazirX Orders Disclose Operator Agreement; Binance Plan Restructuring Deerypt Online Search or type URL Link you copied dexapk.com DEX APK Sex dex apkcom DEX APKs Dex apk apps Cloudflare Ai Crowllers Ban website t0 apk converler DexAPK com q W a 5 d f 9 h i k X b   n m 2 7123 Google Search Google or type URL Link you dexapkcom DEX APK Sex ` dex apk.com DEX APKs Dex apk apps Cloudflare Ai Crowllers Ban website to apk converter: Dexa 2123 English copied com DexAPKcom Admin Dashboard dexapkcomvadmin dexapk com/sitemap: Admin Dashboard dexapk com/admin/ Undo q p a $ d f g h j k n m 7123 com DexAPK Fast Secure APK Downloads com DexAPK dexapkcom dexapkcom DexAPK.com Admin Dashboard dexapk com/sitemap xml dexapk com/sitemap Admin Dashboard dexapk comvadmin/ W e h d DexAPK.com Fast Downloads 7123 We come De APA Connect Delhi High Court Orders Wazix Operator t0 Disclose Dinance Agreement Restructuring Plan dexapk.com",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 36.0,
+    "word_count": 3
+  },
+  "pacing": {
+    "cuts_per_minute": 26.883910386965375,
+    "avg_scene_duration": 2.231818181818182,
+    "scene_duration_variance": 2.4056641341920755,
+    "total_scenes": 22
+  },
+  "text_overlays": {
+    "total_overlays": 185,
+    "overlay_density": 3.7678207739307537,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 41
+      },
+      {
+        "zone": "bottom_center",
+        "count": 31
+      },
+      {
+        "zone": "top_center",
+        "count": 30
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.25,
+      "median_interval": 0.0,
+      "std_interval": 0.6614378277661477
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 4.0,
+      "duration": 4.0,
+      "percentage": 8.146639511201629
+    },
+    "main_content": {
+      "start": 4.0,
+      "end": 41.735,
+      "duration": 37.735,
+      "percentage": 76.85336048879837
+    },
+    "cta": {
+      "start": 41.735,
+      "end": 49.1,
+      "duration": 7.365000000000002,
+      "percentage": 15.000000000000005
+    }
+  }
+}

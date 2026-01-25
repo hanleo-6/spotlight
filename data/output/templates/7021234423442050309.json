@@ -1,0 +1,65 @@
+{
+  "video_id": "7021234423442050309",
+  "duration": 22.04833558755488,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.991452284438961,
+    "hook_type": "statement",
+    "opening_text": "537& 56 42,616",
+    "spoken_text": "If you want to blow up on TikTok, you need this app on your phone.  It's called Trend Talk.  If you want to blow up doing any Trend video-",
+    "visual_text": "537& 56 42,616 3 TUE 5 If you Calendar Photos Camera Clock Weathe Notes Stocks 45 iTunes Store Reminders Home 56 42,616 3 TUE 5 If you want to Photos Camera blow up on Clock Notes Stocks 45 iTunes Store Reminders Home Settings 5G 42,616 3 TUE 5 If you want to Photos Camera blow up on TikTok Weathe you need this app pcks 45 iTunes Store Reminders Home Settings 5G 42,616 3 TUE 5 If you want to Photos Camera blow up on TikTok Weathe aps you need this app pcks iTunes Store Reminders Home Settings 5G 42,616 3 TUE 5 If you want to Photos Camera blow up on TikTok Weathe you need this app pcks iTunes Store Reminders Home Settings Search TrendTok Analytics & Tracker ForUsApps, LLC OPEN 1.4K RATINGS AGE DEVELOPER 4.6 4+ Years Old UsApps, Ll What's New Version 0.3.6 ago address user feedbackl In tll e small tweaks to our app to SU more Preview story Search TrendTok Analytics & Tracker ForUsApps; LLC OPEN it's called TrendTok 1.4K RATINGS AGE DEVELOPER 4.6 4+ Years Ol rUsApps; LL What's Jew istory Version ago new ackl In me app to Si more onaut In Th Search TrendTok Analytics & Tracker ForUsApps; LLC OPEN it's called TrendTok 1.4K RATINGS AGE DEVELOPER 4.6 4+ ****t Years 0 'rUsApps, LL at's New on 0.3.6 ago e share new eedbackl me 0 our app to more istory Search TrendTok Analytics & Tracker ForUsApps, LLC OPEN if you want to blow up doing 1.4K RATINGS any trend video DEVELOPER 4.6 #90 Reference ForUsApps, LL Wha Version History Vers 5d ago Each es for our users and addres update we made some small pport iOS 15! more Find So that Jing to TrendTok People Search TrendTok Analytics & Tracker ForUsApps, LLC OPEN if you want to blow up doing 1.4K RATINGS any trend video DEVELOPER 4.6 #90 eference ForUsApps; LL Wha Version History Versior 5d ago Each We for our users and address pdate we made some small twi port iOS 15! more Find So that joing to TrendTok People Search TrendTok Analytics & Tracker ForUsApps, LLC OPEN if you want to blow up doing 1.4K RATINGS ACF any trend video DEVELOPER 4.6 #90 Reference ForUsApps, LL Wha Version History 5d ago Each W for our users and address pdate we made some small tw port iOS 15! more Find So that joing to TrendTok People",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 348.0,
+    "word_count": 29
+  },
+  "pacing": {
+    "cuts_per_minute": 35.64401655398827,
+    "avg_scene_duration": 1.6833119777374388,
+    "scene_duration_variance": 0.4626858464311805,
+    "total_scenes": 13
+  },
+  "text_overlays": {
+    "total_overlays": 179,
+    "overlay_density": 8.118526647473383,
+    "common_zones": [
+      {
+        "zone": "middle_left",
+        "count": 38
+      },
+      {
+        "zone": "top_center",
+        "count": 31
+      },
+      {
+        "zone": "top_left",
+        "count": 30
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.11142463615832193,
+      "median_interval": 0.0,
+      "std_interval": 0.45670510433171446
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 15.883509665326912,
+      "duration": 15.883509665326912,
+      "percentage": 72.03949523651261
+    },
+    "main_content": {
+      "start": 15.883509665326912,
+      "end": 17.850226712563174,
+      "duration": 1.966717047236262,
+      "percentage": 8.920025003367464
+    },
+    "cta": {
+      "start": 17.850226712563174,
+      "end": 22.04833558755488,
+      "duration": 4.198108874991707,
+      "percentage": 19.04047976011993
+    }
+  }
+}

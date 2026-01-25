@@ -1,0 +1,65 @@
+{
+  "video_id": "7210935846323916078",
+  "duration": 8.433333333333334,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "direct_benefit",
+    "opening_text": "St 0 BACKSPACE",
+    "spoken_text": "Buh, buh, buh, buh, buh, and I guess I'll just miss it.",
+    "visual_text": "St 0 BACKSPACE Gnowwith me Applications Boston; Philadelphia, Denver Seattler Dallas; New DC Portland; STRE 0 BACKSPACE Gnowwith me Ithat Lose Miami, Francisco; Seattle; Dallas; New  DC Portland; Los DC St BACKSPACE ENtER CTRL Gnowwith me Detroit Boston; Miami, Francisco ' Dallas; lin San DC St BACKSPACE ENTER SHIFT CTRL Gnowwith me Austin, Lose Boston; Dallas; Seattle  Portland; San DC S BACKSPACE SHIFT CTRL 0 Gnowwith me Detrol Los Boston; Francisco; Dallas; New DC St BACKSPACE ENTER CTRL Gnowwith me Los Boston; Dallas; Portland; ode Edit Selection View Go Terminal Window js njs > var inpl var inp2 inpl inp2; document getElementbyId (\"ans\" function sub ({ var usinpl var usinpz var sum \"d_ Ired; tyle co n2 Fille Run parseInt  (document. usinp2; usinpl ans\" 'getElenentById (' document. document. 'getElerentbyId ( div(){ ~parseInt( (document. function parseInt ( usinp var usinp usinp 'getElenentbyId (\" var document. docunenta parseInt ( everyone userinput function ar color: center; red; Lor: ~Tamily: center; te; Tont color: color: Justity ode File Edit Selection View Go Run Terminal Window js njs > var inpl value); var inp2 var inpl inp2;  getElementById(\" \"ans\" document . function ({ var var usinp2 usinpl 2; var tyle co co 10 43 45 46 50 sum sub document usinpl ~parseInt ( usinp2; sum 'getElementById (' var document: div(){ function parseInt ( usinp usinp var usinp ~quo document. ~userinput function var #inp1 (red; style: color: lcomeTitle{ center; \"Monsertat text-align: Ired; -Tamily: Lor = Tont- ans center; text-align: lor: or sproftableprojecs Projectto Ithe to t0 atall hackers Bootstrpping S2o,coo/Month efreedom = ande cabilityt schedule easy never= start: SCeptre Day Job are profitable projects; Bootstrapping L My Side In Project to 'can andthe_ Jeam 'to homyour  On 'You get any its 'to atall Academia HACKERS Bullding Side Project [ Without Quitting ! Your hackers estarting[ Imoret ebelow - eproject that c erevenue ability t Itheir - schedule But without = also' never = start :",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 144.0,
+    "word_count": 12
+  },
+  "pacing": {
+    "cuts_per_minute": 28.458498023715414,
+    "avg_scene_duration": 2.1083333333333334,
+    "scene_duration_variance": 0.5760859310901455,
+    "total_scenes": 4
+  },
+  "text_overlays": {
+    "total_overlays": 84,
+    "overlay_density": 9.960474308300395,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 15
+      },
+      {
+        "zone": "middle_right",
+        "count": 13
+      },
+      {
+        "zone": "top_center",
+        "count": 12
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.0963855421686747,
+      "median_interval": 0.0,
+      "std_interval": 0.4283467189067753
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 118.57707509881423
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 8.0,
+      "duration": -2.0,
+      "percentage": -23.715415019762844
+    },
+    "cta": {
+      "start": 8.0,
+      "end": 8.433333333333334,
+      "duration": 0.43333333333333357,
+      "percentage": 5.13833992094862
+    }
+  }
+}

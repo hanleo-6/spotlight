@@ -1,0 +1,65 @@
+{
+  "video_id": "7358750240024907040",
+  "duration": 36.00000228881851,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.966666982438849,
+    "hook_type": "question",
+    "opening_text": "codecrafters-io / = build-your-own-X",
+    "spoken_text": "Here's a GitHub repo that you should start today. This one's called Build Your Own X.",
+    "visual_text": "codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k stars 8 24.3k forks 5k watching 1 Branch 0 Tags Activity Custom properties Public repository master Code rohitpaulk 3 w ISSUE_TEMPLATEmd 2 years ago READMEmd last month codecrafters-banner png 2 years ago codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k stars 8 24.3k forks 5k watching 1 Branch 0 Tags Activity Custom properties Public repository master Code rohitpaulk ISSUE_TEMPLATEmd 2 years ago README.md last month codecrafters-banner png 2 years ago codecrafters-io / = build-your-own-X Code Issues 180 Maste Best GitHub repos codecrafters.io pt 2 256k stars 8 24.3k forks 5k watching 1 Branch 0 Tags Activity Custom properties Public repository master Code rohitpaulk 3 w ISSUE_TEMPLATEmd 2 years ago Repo THAT YOU README.md last month codecrafters-banner png 2 years ago codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k stars 24.3k forks 5k watching 1 Branch 0 Tags Activity Custom properties Public repository master Code rohitpaulk ISSUE_TEMPLATEmd 2 years ago REpo THAT YOU README.md last month codecrafters-banner png 2 years ago codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k stars 24.3k forks 5k watching 1 Branch 0 Tags Activity Custom properties Public repository master Code rohitpaulk 3 w ISSUE_TEMPLATEmd 2 years ago SHOULD STAR READMEmd last month codecrafters-banner png 2 years ago codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k stars 24.3k forks 5k watching 1 Branch 0 Tags Activity Custom properties Public repository master Code rohitpaulk 3 w ISSUE_TEMPLATEmd 2 years ago READMEmd last month codecrafters-banner png 2 years ago codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k stars 8 24.3k forks 5k watching 1 Branch 0 Tags Activity Custon Jerties Publ: Code rohitpaulk 3 weeks ago ISSUE_TEMPLATEmd 2 years ago READMEmd last month codecrafters-banner png 2 years ago itory codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k stars 8 24.3k forks 5k watching 1 Branch 0 Tags Activity erties Public Code rohitpaulk 3 weeks ago ISSUE_TEMPLATEmd 2 years ago READMEmd last month codecrafters-banner png 2 years ago tory codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k st? 8 24.3k forks 5k watching 1 Bran C 0 Tags Activity erties Pu pry master Code rohitpaulk 3 weeks ago ISSUE_TEMPLATEmd 2 years ago READMEmd last month codecrafters-banner png 2 years ago codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k st 8 24.3k forks 5k watching 0 Tags Activity erties Pu pry master Code rohitpaulk 3 weeks ago ISSUE_TEMPLATEmd 2 years ago README.md last month codecrafters-banner png 2 years ago codecrafters-io / = build-your-own-X Code Issues 180 Maste techr Best GitHub repos codecrafters.io pt 2 256k st 8 24.3k forks 5k watching 1 BranC 0 Tags Activity erties pry master Code rohitpaulk 3 weeks ago ISSUE_TEMPLATEmd 2 years ago READMEmd last month codecrafters-banner png 2 years ago",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 192.0,
+    "word_count": 16
+  },
+  "pacing": {
+    "cuts_per_minute": 6.666666242811415,
+    "avg_scene_duration": 9.000000572204627,
+    "scene_duration_variance": 6.28079122001749,
+    "total_scenes": 4
+  },
+  "text_overlays": {
+    "total_overlays": 113,
+    "overlay_density": 3.1388886893237076,
+    "common_zones": [
+      {
+        "zone": "middle_left",
+        "count": 20
+      },
+      {
+        "zone": "top_center",
+        "count": 18
+      },
+      {
+        "zone": "top_left",
+        "count": 16
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.2809523988148534,
+      "median_interval": 0.0,
+      "std_interval": 1.1105618679286602
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 30.60000194549573,
+      "duration": 30.60000194549573,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 30.60000194549573,
+      "end": 36.00000228881851,
+      "duration": 5.400000343322777,
+      "percentage": 15.000000000000002
+    }
+  }
+}

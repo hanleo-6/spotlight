@@ -1,0 +1,65 @@
+{
+  "video_id": "7483011643320880426",
+  "duration": 56.43386877161969,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.993257985137372,
+    "hook_type": "statement",
+    "opening_text": "DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) DAY 78 BUILD IN PUBLIC",
+    "spoken_text": "Day 78 of building companies in public and we have an announcement to-",
+    "visual_text": "DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) DAY 78 BUILD IN PUBLIC (Follow your dreams Jon) DAY 78 BUILD IN PUBLIC (Follow your dreams Jon) 3 DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) 4a0h DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon) DAY 78 BUILD IN PUBLIC (Follow vour dreams Jon)",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 156.0,
+    "word_count": 13
+  },
+  "pacing": {
+    "cuts_per_minute": 13.821487290842233,
+    "avg_scene_duration": 4.34106682858613,
+    "scene_duration_variance": 3.5989433473713985,
+    "total_scenes": 13
+  },
+  "text_overlays": {
+    "total_overlays": 5,
+    "overlay_density": 0.08859927750539894,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 2
+      },
+      {
+        "zone": "top_center",
+        "count": 1
+      },
+      {
+        "zone": "middle_center",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "regular",
+      "avg_interval": 12.357475718251047,
+      "median_interval": 4.942990287300418,
+      "std_interval": 15.840722240736257
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 47.96878845587674,
+      "duration": 47.96878845587674,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 47.96878845587674,
+      "end": 56.43386877161969,
+      "duration": 8.465080315742952,
+      "percentage": 14.999999999999996
+    }
+  }
+}

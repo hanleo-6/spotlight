@@ -1,0 +1,65 @@
+{
+  "video_id": "7591680659454823687",
+  "duration": 12.445658293382586,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.978263317353035,
+    "hook_type": "question",
+    "opening_text": "looking up sad",
+    "spoken_text": "You are not crazy.  And what's wrong with you?  Huh?  What the fuck is-",
+    "visual_text": "looking up sad tiktoks to yourself cry isnt normal btw. looking up sad tiktoks to make yourself cry isnt normal  btw. looking up sad tiktoks to yourself cry isnt normal Tmake up sad tiktoks to HTIA make yourself cry isnt normal looking up sad tiktoks to yourself cry isnt normal btw. looking up sad tiktoks to yourself cry isnt normal btw. looking up sad tiktoks to yourself cry isnt normal btw. looking up sad tiktoks to yourself cry isnt normal btw. looking up sad tiktoks to yourself cry isnt normal btw. looking up sad tiktoks to make yourself cry ) isnt normal  btw_",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 168.0,
+    "word_count": 14
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 22,
+    "overlay_density": 1.7676847203572592,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 8
+      },
+      {
+        "zone": "top_center",
+        "count": 7
+      },
+      {
+        "zone": "bottom_center",
+        "count": 7
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.5689443791260611,
+      "median_interval": 0.0,
+      "std_interval": 0.899580049994356
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 80.34930547078451
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 10.578809549375197,
+      "duration": 0.5788095493751975,
+      "percentage": 4.650694529215487
+    },
+    "cta": {
+      "start": 10.578809549375197,
+      "end": 12.445658293382586,
+      "duration": 1.8668487440073882,
+      "percentage": 15.000000000000002
+    }
+  }
+}

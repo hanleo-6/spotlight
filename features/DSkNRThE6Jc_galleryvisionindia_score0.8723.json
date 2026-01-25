@@ -1,0 +1,30 @@
+{
+  "video_id": "DSkNRThE6Jc_galleryvisionindia_score0.8723",
+  "extracted_at": "2026-01-18T18:04:20.648157",
+  "features": {
+    "face": {
+      "median_faces": 0,
+      "max_faces": 1,
+      "avg_face_area": 3342.285714285714
+    },
+    "ocr": {
+      "text_frames": 35,
+      "unique_texts": 35,
+      "sample_texts": [
+        "ok Ga,ery\u2019\nae oO\na a So\nom\n<\u00ab (i) \u00bb",
+        "\u2014\n@\ngaya\n=z\neo\n<\u00ab (i) \u00bb>",
+        "\u2014_\u2014\n@\ngene\n\u2014e\u2014________\n\u00ab< (i) \u00bb"
+      ]
+    },
+    "scenes": {
+      "scene_count": 2,
+      "avg_scene_length": 17.19999890645352,
+      "min_scene_length": 2.833333153194861
+    },
+    "hook": {
+      "face_ratio": 0.13333333333333333,
+      "text_ratio": 1.0,
+      "motion_intensity": 3.127128673735119
+    }
+  }
+}

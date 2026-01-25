@@ -1,0 +1,65 @@
+{
+  "video_id": "6791129743015152901",
+  "duration": 14.999849320971634,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.999949773657211,
+    "hook_type": "statement",
+    "opening_text": "Apps for Tik Tok Apps for Tik Tok Apps for Tik Tok",
+    "spoken_text": "",
+    "visual_text": "Apps for Tik Tok Apps for Tik Tok Apps for Tik Tok Apps for Tik Tok 1 Evernote 1 Evernote of ideas) (Keep track 1 Evernote of ideas) (Keep track 1 Evernote of ideas) (Keep track",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 0,
+    "word_count": 0
+  },
+  "pacing": {
+    "cuts_per_minute": 12.026846870813179,
+    "avg_scene_duration": 4.988838774160196,
+    "scene_duration_variance": 0.7602717136588973,
+    "total_scenes": 3
+  },
+  "text_overlays": {
+    "total_overlays": 9,
+    "overlay_density": 0.6000060272216797,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 4
+      },
+      {
+        "zone": "top_right",
+        "count": 3
+      },
+      {
+        "zone": "top_left",
+        "count": 2
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 1.749982420780024,
+      "median_interval": 0.9999899547314426,
+      "std_interval": 1.8540309973475457
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 12.74987192282589,
+      "duration": 12.74987192282589,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 12.74987192282589,
+      "end": 14.999849320971634,
+      "duration": 2.249977398145745,
+      "percentage": 15.0
+    }
+  }
+}

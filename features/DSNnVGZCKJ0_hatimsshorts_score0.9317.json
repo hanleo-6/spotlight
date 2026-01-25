@@ -1,0 +1,30 @@
+{
+  "video_id": "DSNnVGZCKJ0_hatimsshorts_score0.9317",
+  "extracted_at": "2026-01-18T18:05:11.869529",
+  "features": {
+    "face": {
+      "median_faces": 1,
+      "max_faces": 2,
+      "avg_face_area": 19761.545454545456
+    },
+    "ocr": {
+      "text_frames": 15,
+      "unique_texts": 15,
+      "sample_texts": [
+        "ee .\n\\ .\nSA Ss\n\u2018ir\nae d \u00ab4",
+        "~\n, >\n_ wa | |\nA \u2122A eas Y\"\n~. @ <\u00ab",
+        "es TE , @\n, j\n\n1, | . |\n~~"
+      ]
+    },
+    "scenes": {
+      "scene_count": 5,
+      "avg_scene_length": 4.0,
+      "min_scene_length": 1.033333333333335
+    },
+    "hook": {
+      "face_ratio": 0.4,
+      "text_ratio": 0.7333333333333333,
+      "motion_intensity": 8.340414109002976
+    }
+  }
+}

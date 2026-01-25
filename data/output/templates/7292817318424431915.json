@@ -1,0 +1,65 @@
+{
+  "video_id": "7292817318424431915",
+  "duration": 26.733333333333334,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "you you always feel",
+    "spoken_text": "You always feel like everything has to be perfect before it launches.",
+    "visual_text": "you you always feel 7 you always feel like everything you always feel like everything has you always feel like everything has to be perfect you always feel like everything has to be perfect you always feel like everything has to be perfect before you always feel like everything has to be perfect before you always Eeel like everything has to be perfect before it laun",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 144.0,
+    "word_count": 12
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 97,
+    "overlay_density": 3.628428927680798,
+    "common_zones": [
+      {
+        "zone": "middle_left",
+        "count": 38
+      },
+      {
+        "zone": "middle_center",
+        "count": 37
+      },
+      {
+        "zone": "middle_right",
+        "count": 20
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.25,
+      "median_interval": 0.0,
+      "std_interval": 0.6614378277661477
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 37.40648379052369
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 22.723333333333333,
+      "duration": 12.723333333333333,
+      "percentage": 47.593516209476306
+    },
+    "cta": {
+      "start": 22.723333333333333,
+      "end": 26.733333333333334,
+      "duration": 4.010000000000002,
+      "percentage": 15.000000000000005
+    }
+  }
+}

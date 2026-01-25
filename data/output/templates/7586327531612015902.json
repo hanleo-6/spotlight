@@ -1,0 +1,65 @@
+{
+  "video_id": "7586327531612015902",
+  "duration": 15.65014323345249,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.987960089378441,
+    "hook_type": "statement",
+    "opening_text": "8.56 SOS Done",
+    "spoken_text": "Love me, love me",
+    "visual_text": "8.56 SOS Done Teach Record Organize Classes With Ease HB 4 RATINGS AGE CHART DEVELOPER 5.0 4+ #95 Years Old Utilities Markiz Noman My Classes Grade Homewonk Search class name Grade 9 2024-20 Computar Science Students Grade 10 English Practice Exercise Solve I0 practice pre from chapter 18/12/2025 Reading Assignn Read pages 15-25 summarize in 5-7 lir Add Class 8.56 SOS Done Teach Record Organize Classes With Ease 4 RATINGS AGE CHART DEVELOPER 5.0 4+ #95 Years Old Utilities Markiz Noman My Classes Grade Homewonk Search class name Grade 2024-20 Computer Science 2024-2025 Grade 10 English Practice Exercise Solve I0 practice pre from chapter 18/12/2025 Reading Assignn Read pages 15-25 summarize in 5-7 lir 18/12/2025 Add Class 8.56 SOS Done Teach Record Organize Classes With Ease B 4 RATINGS AGE CHART DEVELOPER 5.0 4+ #95 Years Old Utilities Markiz Noman 15:03 My Classes Grade Homewonk Search class name Grade 2024-20 Computer Science 2024-2025 Students Grade 10 Practice Exercise Solve I0 practice pre from chapter 18/12/2025 Reading Assignn Read pages 15-25 summarize in 5-7 lir 18/12/2025 Add Class S0S Done Teach Record Organize Classes With Ease 4 RATINGS AGE CHART DEVELOPER 5.0 4+ #95 Years Old Utilities Markiz Noman 15*03 My Classes Grade Homework Search class name Grade 024-20 Comouter Science Student Grade I0 English Practice Exercise Solve 10 practice pre Reading Assignn Read pages 15-25 summarize in 5-7 lil 18/12/2025 Add Class Done Teach Record Organize Classes With Ease 5.0 A+ #95 Double Click to Install Years Old Utilities MarKIZ Nom 15*03 My Classes Grade Homework Grade Grade 10 App Store Teach Record Markiz Noman App Account: tarynj112@icloud.com Confirm with Side Button Organize Classes With Ease DEVELOPE A #95 Years Old ulilittes MMarkiz Nomal My Classes Gomputer 8 Store Record Noman @icloud.com Processing App Organize Classes With Ease DEVELOPE Markiz Nomaln My Classes Store h Record 2 Noman #2@icloud.com Processing App Teach Record Organize Classes With Ease DEVELOPE 5.0 Years Old Markiz Nomaln My Classes h Record 2 Noman 12@icloud.com 8.56 SOS Done Teach Record Organize Classes With Ease 0 H 4 RATINGS AGE CHART DEVELOPER 5.0 4+ #95 Years Old Utilities Markiz Noman 15*03 15*03 My Classes Grade Homewonk Search class name Computer S Grade 2024-202 Computer Science English Practice Exercise Solve I0 practice pre 2024-2026 from chapter Read pages 15-25 summarize in 5-7 Iir cld Add Class 8.56 SOS Done Teach Record Organize Classes With Ease 4 RATINGS AGE CHART DEVELOPER 5.0 4+ #95 Years Old Utilities Markiz Noman 15*03 My Classes Grade Homewonk Search class name Grade 2024-202 Computer Science Students English Practice Exercise Solve I0 practice pre 2024-2026 from chapter 10/12/2036 Read pages 15-25 summarize in 5-7 Iir necud 18/12/2025 cld Add Class",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 48.0,
+    "word_count": 4
+  },
+  "pacing": {
+    "cuts_per_minute": 30.67064581070354,
+    "avg_scene_duration": 1.9562679041815614,
+    "scene_duration_variance": 1.3754936748394886,
+    "total_scenes": 8
+  },
+  "text_overlays": {
+    "total_overlays": 108,
+    "overlay_density": 6.900895307408297,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 18
+      },
+      {
+        "zone": "middle_left",
+        "count": 16
+      },
+      {
+        "zone": "middle_right",
+        "count": 16
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.13030705495992728,
+      "median_interval": 0.0,
+      "std_interval": 0.49251437357313316
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 11.951018469181902,
+      "duration": 11.951018469181902,
+      "percentage": 76.36363636363637
+    },
+    "cta": {
+      "start": 11.951018469181902,
+      "end": 15.65014323345249,
+      "duration": 3.6991247642705876,
+      "percentage": 23.63636363636363
+    }
+  }
+}

@@ -1,0 +1,30 @@
+{
+  "video_id": "DSS_Is_Acbt_spotify_score0.9530",
+  "extracted_at": "2026-01-18T17:56:52.518216",
+  "features": {
+    "face": {
+      "median_faces": 0,
+      "max_faces": 1,
+      "avg_face_area": 14098.5
+    },
+    "ocr": {
+      "text_frames": 10,
+      "unique_texts": 10,
+      "sample_texts": [
+        ".\n4\n13\n}\nPy\n.\n=\na\nAy\nwf\n~\n-\n\u2019 1 \\\n-*\nom 4\n\u2019\na\n4\n\u2018\u2014_\n<<\n7",
+        "ik\ncov\n\\\nYAS\n\\\n| \\\n|",
+        "ff a. =). |\nRIAs he"
+      ]
+    },
+    "scenes": {
+      "scene_count": 6,
+      "avg_scene_length": 2.5025025598375756,
+      "min_scene_length": 1.5348682367003796
+    },
+    "hook": {
+      "face_ratio": 0.05555555555555555,
+      "text_ratio": 0.05555555555555555,
+      "motion_intensity": 37.9424221728622
+    }
+  }
+}

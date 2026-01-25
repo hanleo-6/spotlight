@@ -1,0 +1,65 @@
+{
+  "video_id": "7493983908753673518",
+  "duration": 55.68902363158551,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.971638418877317,
+    "hook_type": "question",
+    "opening_text": "Mobile App Ideas OEEA Mobile App Ideas",
+    "spoken_text": "What do you think are some of the mobile app ideas that can be turned into millions of dollars right now?  Number...",
+    "visual_text": "Mobile App Ideas OEEA Mobile App Ideas think Mobile App Ideas of the Mobile App Ideas app Mobile App Ideas ideas 94 that could turned $ millions dollars $ now? Number",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 264.0,
+    "word_count": 22
+  },
+  "pacing": {
+    "cuts_per_minute": 16.161173985631542,
+    "avg_scene_duration": 3.712601575439034,
+    "scene_duration_variance": 2.5955337712036655,
+    "total_scenes": 15
+  },
+  "text_overlays": {
+    "total_overlays": 101,
+    "overlay_density": 1.8136428583875397,
+    "common_zones": [
+      {
+        "zone": "middle_left",
+        "count": 30
+      },
+      {
+        "zone": "middle_center",
+        "count": 21
+      },
+      {
+        "zone": "bottom_center",
+        "count": 18
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.5315315437095011,
+      "median_interval": 0.0,
+      "std_interval": 1.3015344921323864
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 39.37270694144452,
+      "duration": 39.37270694144452,
+      "percentage": 70.7010185739964
+    },
+    "cta": {
+      "start": 39.37270694144452,
+      "end": 55.68902363158551,
+      "duration": 16.316316690140994,
+      "percentage": 29.298981426003596
+    }
+  }
+}

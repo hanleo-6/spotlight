@@ -1,0 +1,61 @@
+{
+  "video_id": "7461305437460122922",
+  "duration": 55.166666666666664,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "Nyd Jaed",
+    "spoken_text": "So I have been avoiding this topic because I just...",
+    "visual_text": "Nyd Jaed",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 120.0,
+    "word_count": 10
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 2,
+    "overlay_density": 0.03625377643504532,
+    "common_zones": [
+      {
+        "zone": "top_left",
+        "count": 1
+      },
+      {
+        "zone": "top_center",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "sporadic",
+      "avg_interval": 40.0,
+      "median_interval": 40.0,
+      "std_interval": 0.0
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 18.12688821752266
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 46.891666666666666,
+      "duration": 36.891666666666666,
+      "percentage": 66.87311178247735
+    },
+    "cta": {
+      "start": 46.891666666666666,
+      "end": 55.166666666666664,
+      "duration": 8.274999999999999,
+      "percentage": 15.0
+    }
+  }
+}

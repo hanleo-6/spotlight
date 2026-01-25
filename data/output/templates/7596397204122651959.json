@@ -1,0 +1,57 @@
+{
+  "video_id": "7596397204122651959",
+  "duration": 43.7,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "question",
+    "opening_text": "WHATS UP? THIS WHATSUP? THIS  INTRO POSTa",
+    "spoken_text": "What's up? This is a quick intro post. My name is Connor and I started vibe coding music.",
+    "visual_text": "WHATS UP? THIS WHATSUP? THIS  INTRO POSTa MY NAMEIS AND [ STARTED VIBE CODINC RECENTLY",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 216.0,
+    "word_count": 18
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 1,
+    "overlay_density": 0.02288329519450801,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "insufficient",
+      "avg_interval": 0.0,
+      "median_interval": 0.0,
+      "std_interval": 0.0
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 4.0,
+      "duration": 4.0,
+      "percentage": 9.153318077803203
+    },
+    "main_content": {
+      "start": 4.0,
+      "end": 37.145,
+      "duration": 33.145,
+      "percentage": 75.84668192219681
+    },
+    "cta": {
+      "start": 37.145,
+      "end": 43.7,
+      "duration": 6.555,
+      "percentage": 15.0
+    }
+  }
+}

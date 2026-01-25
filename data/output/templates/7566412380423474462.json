@@ -1,0 +1,57 @@
+{
+  "video_id": "7566412380423474462",
+  "duration": 50.96666666666667,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "Buildingin Public Day1 Buildingin Public Day 1 Building in Public",
+    "spoken_text": "guys you will not believe this but I am building an app and I started doing it for fun because",
+    "visual_text": "Buildingin Public Day1 Buildingin Public Day 1 Building in Public 1 Day\" Building in Public  1 Day\" Building in Public  1",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 240.0,
+    "word_count": 20
+  },
+  "pacing": {
+    "cuts_per_minute": 2.3544800523217786,
+    "avg_scene_duration": 25.483333333333334,
+    "scene_duration_variance": 12.55,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 1,
+    "overlay_density": 0.01962066710268149,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "insufficient",
+      "avg_interval": 0.0,
+      "median_interval": 0.0,
+      "std_interval": 0.0
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 43.321666666666665,
+      "duration": 43.321666666666665,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 43.321666666666665,
+      "end": 50.96666666666667,
+      "duration": 7.645000000000003,
+      "percentage": 15.000000000000005
+    }
+  }
+}

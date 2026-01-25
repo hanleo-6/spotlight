@@ -1,0 +1,65 @@
+{
+  "video_id": "7592209931516841246",
+  "duration": 25.133333333333333,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "direct_benefit",
+    "opening_text": "One investment; lifetime ownership S1,500",
+    "spoken_text": "I built 15 cloud skills to run my agency.  Here is my landing beach.",
+    "visual_text": "One investment; lifetime ownership S1,500 S4,500 Frequently asked questions 0 One investment; lifetime ownership S1,500 S4,500 Frequently asked questions Ibuilt 15 claude skills to run my agency Lnunch One investment; lifetime ownership S1,500 S4,500 built 15 claude skills to run my agency Direct Calendar Custom Al Booking Tralning Conversation Analytlcs From kickoff to Iaunch One investment; built 15 claude skills to run my agency What you get 24n AI Chat Agent Smart Lead capture plrect Calendar Custom AI Booking] Tralning Conversation Analytlcs Everything From kickoff to launch built 15 claude skills to run my agency J The way websites should've been done in the first place What you get Chat Agcnt Smart Lead Capturc Direct Calendar Custom AI Booking] Tralning Conversation You Owu built 15 claude skills to run my agency The way websites should\"ve been done in the first place What you 24/7 Chat Smart Lead Captur Direct Calendar Booking]  Tralning built 15 claude skills to run my agency get The way websites should ve been done in the first place What you 24/7 Chat agcnt Smart Lead Capturc Direct Calendar Booking]  Tralning here is my landing page get Al websites that sell while sleep Sccpricing The way websites should've been done in the first place What you here is my landing page you get Al websites that sell while you sleep The way websites should've been done in the first place here is my landing page",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 168.0,
+    "word_count": 14
+  },
+  "pacing": {
+    "cuts_per_minute": 4.774535809018568,
+    "avg_scene_duration": 12.566666666666666,
+    "scene_duration_variance": 6.5,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 87,
+    "overlay_density": 3.4615384615384617,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 22
+      },
+      {
+        "zone": "middle_left",
+        "count": 19
+      },
+      {
+        "zone": "top_center",
+        "count": 18
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.27906976744186046,
+      "median_interval": 0.0,
+      "std_interval": 0.6930076477093647
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 21.363333333333333,
+      "duration": 21.363333333333333,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 21.363333333333333,
+      "end": 25.133333333333333,
+      "duration": 3.7699999999999996,
+      "percentage": 15.0
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "video_id": "7572346645220773151",
+  "duration": 19.5,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "Day 10 of building a companyin public; Day 10 of building a",
+    "spoken_text": "Alright, this is home for the next 12 months, baby.  Lease is signed, so there's no-",
+    "visual_text": "Day 10 of building a companyin public; Day 10 of building a companyin public; Alright Day 10 of building a companyin public. home Day 10 of building a companyin public. hfone 10 of building a companyin public next Day Day 10 of building a companyin public, months 10 of building a companyin public, Day Lease Signed theres",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 192.0,
+    "word_count": 16
+  },
+  "pacing": {
+    "cuts_per_minute": 12.307692307692307,
+    "avg_scene_duration": 4.875,
+    "scene_duration_variance": 3.7610854668418385,
+    "total_scenes": 4
+  },
+  "text_overlays": {
+    "total_overlays": 9,
+    "overlay_density": 0.46153846153846156,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 4
+      },
+      {
+        "zone": "top_center",
+        "count": 2
+      },
+      {
+        "zone": "middle_center",
+        "count": 2
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 2.0,
+      "median_interval": 1.0,
+      "std_interval": 2.449489742783178
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 16.575,
+      "duration": 16.575,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 16.575,
+      "end": 19.5,
+      "duration": 2.9250000000000007,
+      "percentage": 15.000000000000005
+    }
+  }
+}

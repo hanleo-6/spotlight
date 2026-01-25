@@ -1,0 +1,65 @@
+{
+  "video_id": "7506168957942992150",
+  "duration": 55.7,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "TAKE KIDS AWAY Hanson 0 . Follow",
+    "spoken_text": "Take kids away from this video and if you are not a child, then let me tell you about 4 amazing",
+    "visual_text": "TAKE KIDS AWAY Hanson 0 . Follow L TAKE KIDS AWAY Hanson Oso Follow @henxtech L FROM THIS VIDEO Hanson Oso Fallowing @henxtech L FROM THIS Hanson Oso Following @henxtech L ARENOT A Hanson Oso Following @henxtech L CHILD Hanson Oso Following @hanxlech LI Hanson @hanxtech LI LI AMAZING APPLICA TION AMAZING APPLICATION",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 252.0,
+    "word_count": 21
+  },
+  "pacing": {
+    "cuts_per_minute": 20.46678635547576,
+    "avg_scene_duration": 2.931578947368421,
+    "scene_duration_variance": 2.346864866136877,
+    "total_scenes": 19
+  },
+  "text_overlays": {
+    "total_overlays": 166,
+    "overlay_density": 2.9802513464991023,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 42
+      },
+      {
+        "zone": "bottom_center",
+        "count": 32
+      },
+      {
+        "zone": "top_center",
+        "count": 27
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.32727272727272727,
+      "median_interval": 0.0,
+      "std_interval": 1.0396015341765608
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 47.345,
+      "duration": 47.345,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 47.345,
+      "end": 55.7,
+      "duration": 8.355000000000004,
+      "percentage": 15.000000000000005
+    }
+  }
+}

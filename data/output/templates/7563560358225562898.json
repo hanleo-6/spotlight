@@ -1,0 +1,65 @@
+{
+  "video_id": "7563560358225562898",
+  "duration": 19.966666666666665,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "aesthetic apps you need to try aesthetic apps",
+    "spoken_text": "you do not want to be treated",
+    "visual_text": "aesthetic apps you need to try aesthetic apps you need to try aesthetic apps you need to try aesthetic apps you need to try aesthetic apps you need to try aesthetic apps you need to try aesthetic apps you need to try aesthetic apps you need to try aesthetic apps you need to try aesthetic apps you need to try",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 84.0,
+    "word_count": 7
+  },
+  "pacing": {
+    "cuts_per_minute": 6.010016694490818,
+    "avg_scene_duration": 9.983333333333333,
+    "scene_duration_variance": 2.8833333333333346,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 46,
+    "overlay_density": 2.303839732888147,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 12
+      },
+      {
+        "zone": "middle_center",
+        "count": 8
+      },
+      {
+        "zone": "top_right",
+        "count": 8
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.4,
+      "median_interval": 0.0,
+      "std_interval": 1.083205120618128
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 16.971666666666664,
+      "duration": 16.971666666666664,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 16.971666666666664,
+      "end": 19.966666666666665,
+      "duration": 2.995000000000001,
+      "percentage": 15.000000000000005
+    }
+  }
+}

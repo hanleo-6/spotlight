@@ -1,0 +1,65 @@
+{
+  "video_id": "7594503568434924808",
+  "duration": 58.875,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "22 days ago Itold the",
+    "spoken_text": "22 days ago told the internet I was building a supplement brand with my girlfriend, but I didn't share the one thing keeping",
+    "visual_text": "22 days ago Itold the internet was supplement  brand supplement brand but didn't shara the ona thing",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 276.0,
+    "word_count": 23
+  },
+  "pacing": {
+    "cuts_per_minute": 37.70700636942675,
+    "avg_scene_duration": 1.5912162162162162,
+    "scene_duration_variance": 0.9880022498673982,
+    "total_scenes": 37
+  },
+  "text_overlays": {
+    "total_overlays": 44,
+    "overlay_density": 0.7473460721868365,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 13
+      },
+      {
+        "zone": "middle_center",
+        "count": 11
+      },
+      {
+        "zone": "middle_right",
+        "count": 7
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 1.302325581395349,
+      "median_interval": 0.0,
+      "std_interval": 1.7190435918675653
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 50.043749999999996,
+      "duration": 50.043749999999996,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 50.043749999999996,
+      "end": 58.875,
+      "duration": 8.831250000000004,
+      "percentage": 15.000000000000007
+    }
+  }
+}

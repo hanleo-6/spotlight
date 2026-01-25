@@ -1,0 +1,26 @@
+{
+  "video_id": "DKh_zdQMWzI_babot_project_score0.9519",
+  "extracted_at": "2026-01-18T18:08:07.709843",
+  "features": {
+    "face": {
+      "median_faces": 0,
+      "max_faces": 0,
+      "avg_face_area": 0
+    },
+    "ocr": {
+      "text_frames": 0,
+      "unique_texts": 0,
+      "sample_texts": []
+    },
+    "scenes": {
+      "scene_count": 2,
+      "avg_scene_length": 4.749999698003152,
+      "min_scene_length": 4.466666382683666
+    },
+    "hook": {
+      "face_ratio": 0.0,
+      "text_ratio": 0.06666666666666667,
+      "motion_intensity": 2.314232985077712
+    }
+  }
+}

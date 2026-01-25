@@ -1,0 +1,61 @@
+{
+  "video_id": "7500681444629548294",
+  "duration": 59.03333333333333,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "0 detalhe que separou meu SaaSdedar certo",
+    "spoken_text": "A unique detail changed the fact that there was no customer in my software to try it twice and see",
+    "visual_text": "0 detalhe que separou meu SaaSdedar certo 0 detalhe que separou meu SaaSdedar certo 0 detalhequeseparou meu SaaS dedarcerto 0 detalhe que separou meu SaaSdedar certo 0 detalhe que separou meu SaaS dedarcerto detalhequeseparou meu SaaSdedar certo 0 detalhe que separou meu SaaSdedar certo 0 detalhe que separou meu SaaS dedarcerto 0 detalhequeseparou meu SaaS dedarcerto detalhe que separou meu SaaSdedarcerto",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 240.0,
+    "word_count": 20
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 54,
+    "overlay_density": 0.9147374364765669,
+    "common_zones": [
+      {
+        "zone": "top_left",
+        "count": 27
+      },
+      {
+        "zone": "top_center",
+        "count": 27
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 1.0943396226415094,
+      "median_interval": 0.0,
+      "std_interval": 1.2628830589193591
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 16.93958215697346
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 50.17833333333333,
+      "duration": 40.17833333333333,
+      "percentage": 68.06041784302653
+    },
+    "cta": {
+      "start": 50.17833333333333,
+      "end": 59.03333333333333,
+      "duration": 8.855000000000004,
+      "percentage": 15.000000000000007
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "video_id": "7555667120256830751",
+  "duration": 19.6,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "guys finally found",
+    "spoken_text": "Guys, I finally fell in app where I can video chat with real people and I'm so excited. It's called",
+    "visual_text": "guys finally found where video chat with real V people and I'm It's",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 240.0,
+    "word_count": 20
+  },
+  "pacing": {
+    "cuts_per_minute": 6.122448979591836,
+    "avg_scene_duration": 9.8,
+    "scene_duration_variance": 8.266666666666666,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 4,
+    "overlay_density": 0.2040816326530612,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 3
+      },
+      {
+        "zone": "top_left",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "regular",
+      "avg_interval": 4.0,
+      "median_interval": 6.0,
+      "std_interval": 2.8284271247461903
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 16.66,
+      "duration": 16.66,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 16.66,
+      "end": 19.6,
+      "duration": 2.9400000000000013,
+      "percentage": 15.000000000000005
+    }
+  }
+}

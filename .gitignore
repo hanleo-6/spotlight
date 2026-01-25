@@ -1,0 +1,10 @@
+/data/input/
+
+# Secrets and credentials
+**/credentials.json
+**/token.pickle
+**/.env
+*.pickle
+
+# API keys and tokens - use environment variables instead
+apify_api_token.txt

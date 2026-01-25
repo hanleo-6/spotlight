@@ -1,0 +1,65 @@
+{
+  "video_id": "7596748575623646485",
+  "duration": 9.9,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "From Zero Again From Zero Again From Zero Again",
+    "spoken_text": "Success is no accident.  It is hard work, perseverance.",
+    "visual_text": "From Zero Again From Zero Again From Zero Again From Zero Again From Zero Again TdDo This First TdDo This First TdDo This First",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 108.0,
+    "word_count": 9
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 4,
+    "overlay_density": 0.40404040404040403,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 2
+      },
+      {
+        "zone": "top_center",
+        "count": 1
+      },
+      {
+        "zone": "bottom_center",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "regular",
+      "avg_interval": 2.6666666666666665,
+      "median_interval": 4.0,
+      "std_interval": 1.8856180831641267
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 101.01010101010101
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 8.415000000000001,
+      "duration": -1.584999999999999,
+      "percentage": -16.010101010101
+    },
+    "cta": {
+      "start": 8.415000000000001,
+      "end": 9.9,
+      "duration": 1.4849999999999994,
+      "percentage": 14.999999999999995
+    }
+  }
+}

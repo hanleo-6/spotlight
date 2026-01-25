@@ -1,0 +1,65 @@
+{
+  "video_id": "7515090117435084078",
+  "duration": 103.43333333333334,
+  "niche": "education",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "stat_shock",
+    "opening_text": "How I've generated S3Ok+ with my SAAS business in just 2 Weeks Jun 2025",
+    "spoken_text": "So in two weeks I have generated over $30,000 with",
+    "visual_text": "How I've generated S3Ok+ with my SAAS business in just 2 Weeks Jun 2025 S34,691.89 Olp SAAS business in just 2 Weeks Jun 2025 S34,691.89 How I've generated $3Ok+ with my SAAS business in just 2 Weeks Jun 2025 How I've generated $3Ok+ with my SAAS business in just 2 Weeks Jun 2025 S34,691.89 How I've generated S3Ok+ with my SAAS business in just 2 Weeks Jun 2025 S34,691.89 How I've generated $30k+ with my SAAS business in just 2 Weeks Jun 2025 S34,691.89 How I've generated S3Ok+ with my SAAS business in just 2 Weeks Jun 2025 S34,691.89 How I've generated $3Ok+ with my SAAS business in just 2 Weeks Jun 2025 S34,691.89 How I've generated $3Ok+ with my SAAS business in just 2 Weeks olb Jun 2025 How I've generated S3Ok+ with my SAAS business in just 2 Weeks Jun 2025 S34,691.89 Olp",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 120.0,
+    "word_count": 10
+  },
+  "pacing": {
+    "cuts_per_minute": 1.1601675797615212,
+    "avg_scene_duration": 51.71666666666667,
+    "scene_duration_variance": 45.41666666666667,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 131,
+    "overlay_density": 1.2665162745729939,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 47
+      },
+      {
+        "zone": "bottom_center",
+        "count": 44
+      },
+      {
+        "zone": "bottom_left",
+        "count": 37
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.7692307692307693,
+      "median_interval": 0.0,
+      "std_interval": 1.0041334690511212
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 87.91833333333334,
+      "duration": 87.91833333333334,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 87.91833333333334,
+      "end": 103.43333333333334,
+      "duration": 15.515,
+      "percentage": 15.0
+    }
+  }
+}

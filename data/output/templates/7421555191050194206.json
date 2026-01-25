@@ -1,0 +1,65 @@
+{
+  "video_id": "7421555191050194206",
+  "duration": 34.199997825622695,
+  "niche": "business",
+  "hook": {
+    "hook_duration": 4.999999682108581,
+    "hook_type": "question",
+    "opening_text": "What is an Indie Hacker?",
+    "spoken_text": "Indie hackers are the little business or the little tech of the tech startup world.",
+    "visual_text": "What is an Indie Hacker? What is an Indie Hacker? What is an Indie Hacker? What is an Indie Hacker? What is an Indie Hacker? What is an Indie Hacker? What is an Indie Hacker? the tech startup world",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 180.0,
+    "word_count": 15
+  },
+  "pacing": {
+    "cuts_per_minute": 8.771930382265683,
+    "avg_scene_duration": 6.839999565124539,
+    "scene_duration_variance": 3.57531017102319,
+    "total_scenes": 5
+  },
+  "text_overlays": {
+    "total_overlays": 7,
+    "overlay_density": 0.20467837558619925,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 5
+      },
+      {
+        "zone": "middle_left",
+        "count": 1
+      },
+      {
+        "zone": "middle_right",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 5.333332994249154,
+      "median_interval": 0.999999936421716,
+      "std_interval": 7.453559451114751
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 15.999999109904028,
+      "duration": 15.999999109904028,
+      "percentage": 46.783626102797
+    },
+    "main_content": {
+      "start": 15.999999109904028,
+      "end": 29.06999815177929,
+      "duration": 13.069999041875263,
+      "percentage": 38.21637389720299
+    },
+    "cta": {
+      "start": 29.06999815177929,
+      "end": 34.199997825622695,
+      "duration": 5.129999673843404,
+      "percentage": 15.0
+    }
+  }
+}

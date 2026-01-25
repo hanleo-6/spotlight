@@ -1,0 +1,30 @@
+{
+  "video_id": "DD4ALIWoLOD_efoodtour_score0.8715",
+  "extracted_at": "2026-01-18T18:02:55.024350",
+  "features": {
+    "face": {
+      "median_faces": 0,
+      "max_faces": 2,
+      "avg_face_area": 7392.5
+    },
+    "ocr": {
+      "text_frames": 25,
+      "unique_texts": 25,
+      "sample_texts": [
+        "ot i? af f\neo!\n, eo | 0\u00b0,\nan er ]\ny\n& \u201c J\n\u2018lial pay\u00e9 $\n, 5d i\ncae Fi\nme io ts i y\nse \u2018 i\"\n. 62",
+        "\\ ory ae 2) Poasl oe\nWawa\nMatyi hf\n\nJ \u2019 -@.\nPET",
+        "eT & Bae\n\nil\n\nave bet\nfe crolssaht a\n\n\u201cai tee.-\n\nGu: \u2018ea"
+      ]
+    },
+    "scenes": {
+      "scene_count": 26,
+      "avg_scene_length": 0.9807692307692307,
+      "min_scene_length": 0.7
+    },
+    "hook": {
+      "face_ratio": 0.13333333333333333,
+      "text_ratio": 1.0,
+      "motion_intensity": 23.415167307374336
+    }
+  }
+}

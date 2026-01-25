@@ -1,0 +1,65 @@
+{
+  "video_id": "7556675907881110806",
+  "duration": 35.766666666666666,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "TODAY IS INDIE TODAY IS INDIE TODAY IS INDIE",
+    "spoken_text": "Today is Indy Hacking Thursday.",
+    "visual_text": "TODAY IS INDIE TODAY IS INDIE TODAY IS INDIE TODAY IS INDIE HACKINC = THURSDANH HACKINO= TODAY IMICRATED",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 60.0,
+    "word_count": 5
+  },
+  "pacing": {
+    "cuts_per_minute": 3.3582089552238807,
+    "avg_scene_duration": 17.866666666666667,
+    "scene_duration_variance": 15.233333333333334,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 9,
+    "overlay_density": 0.2516309412861137,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 6
+      },
+      {
+        "zone": "bottom_left",
+        "count": 2
+      },
+      {
+        "zone": "bottom_right",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "regular",
+      "avg_interval": 4.0,
+      "median_interval": 4.0,
+      "std_interval": 3.0
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 2.0,
+      "duration": 2.0,
+      "percentage": 5.591798695246971
+    },
+    "main_content": {
+      "start": 2.0,
+      "end": 30.401666666666664,
+      "duration": 28.401666666666664,
+      "percentage": 79.40820130475302
+    },
+    "cta": {
+      "start": 30.401666666666664,
+      "end": 35.766666666666666,
+      "duration": 5.365000000000002,
+      "percentage": 15.000000000000005
+    }
+  }
+}

@@ -1,0 +1,61 @@
+{
+  "video_id": "7503791706052037934",
+  "duration": 58.200344144981614,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.975244565463144,
+    "hook_type": "statement",
+    "opening_text": "APPLYING TO YCOMBINATOR DAY 102 BUILDING IN",
+    "spoken_text": "102 days of building in public check out our sleeping situation.  I've been...",
+    "visual_text": "APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC APPLYING TO YCOMBINATOR DAY 102 BUILDING IN PUBLIC",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 156.0,
+    "word_count": 13
+  },
+  "pacing": {
+    "cuts_per_minute": 10.315135425869824,
+    "avg_scene_duration": 5.81669532418577,
+    "scene_duration_variance": 3.8982731791422993,
+    "total_scenes": 10
+  },
+  "text_overlays": {
+    "total_overlays": 6,
+    "overlay_density": 0.10309217390628361,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 3
+      },
+      {
+        "zone": "middle_center",
+        "count": 3
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.7880253137243638,
+      "median_interval": 0.0,
+      "std_interval": 0.9651299615106625
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 49.47029252323437,
+      "duration": 49.47029252323437,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 49.47029252323437,
+      "end": 58.200344144981614,
+      "duration": 8.730051621747243,
+      "percentage": 15.000000000000002
+    }
+  }
+}

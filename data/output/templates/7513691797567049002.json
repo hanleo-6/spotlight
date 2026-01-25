@@ -1,0 +1,65 @@
+{
+  "video_id": "7513691797567049002",
+  "duration": 107.94090905357918,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.973893333280471,
+    "hook_type": "statement",
+    "opening_text": "index Welcome; test@gmail coml SIGN OUT",
+    "spoken_text": "What's up guys, it's day number four and today we're going to be taking a deeper look into my front and the coat.",
+    "visual_text": "index Welcome; test@gmail coml SIGN OUT Search Radius (km): Your Preferences: Eg: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 index Welcome; test@gmail coml SIGN OUT Search Radius (km): 50 Your Preferences: PLAY SCRIPT 2 3 4 5 6 8 index Welcome; test@gmail coml SIGN OUT Search Radius (km): 50 Your Preferences: PLAY SCRIPT 2 3 4 5 6 8 index Welcome; test@gmail coml SIGN OUT Search Radius (km): Your Preferences: E.g: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 index Welcome, test@gmail coml SIGN OUT Search Radius (km): Your Preferences: E.g: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 8 index SIGN OUT Search Radius (km): 50 Your Preferences: E.g: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 8 index SIGN OUT Search Radius (km): Your Preferences: E.g: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 8 9 index Welcome, test@gmail coml SIGN OUT Search Radius (km): Your Preferences: E.g: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 8 9 index Welcome, test@gmail coml SIGN OUT Search Radius (km): 50 Your Preferences: E.g: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 8 9 index Welcome, test@gmail.coml SIGN OUT Search Radius (km): Your Preferences: E.g: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 9 index Welcome, test@gmail.coml SIGN OUT Search Radius (km): Your Preferences: E:g: 'Ilove historic sites, scenic views, quirky stops' LOADING= PLAY SCRIPT 2 3 4 5 6 8 9",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 276.0,
+    "word_count": 23
+  },
+  "pacing": {
+    "cuts_per_minute": 1.1117193754634307,
+    "avg_scene_duration": 53.97045452678959,
+    "scene_duration_variance": 33.22115323347777,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 1895,
+    "overlay_density": 17.55590180419334,
+    "common_zones": [
+      {
+        "zone": "middle_left",
+        "count": 436
+      },
+      {
+        "zone": "middle_center",
+        "count": 414
+      },
+      {
+        "zone": "top_left",
+        "count": 247
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.054012080673142907,
+      "median_interval": 0.0,
+      "std_interval": 0.3214652616002934
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 2.0,
+      "duration": 2.0,
+      "percentage": 1.8528656257723843
+    },
+    "main_content": {
+      "start": 2.0,
+      "end": 80.65873293446614,
+      "duration": 78.65873293446614,
+      "percentage": 72.87203121054124
+    },
+    "cta": {
+      "start": 80.65873293446614,
+      "end": 107.94090905357918,
+      "duration": 27.282176119113032,
+      "percentage": 25.275103163686385
+    }
+  }
+}

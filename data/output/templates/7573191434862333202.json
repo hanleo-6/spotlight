@@ -1,0 +1,65 @@
+{
+  "video_id": "7573191434862333202",
+  "duration": 46.1,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "INNOVATOR STORIES COMFYUIIS",
+    "spoken_text": "Compute UI is very powerful. It's all very technical. It requires you to understand deeply on how.",
+    "visual_text": "INNOVATOR STORIES COMFYUIIS VERY POWERFUL: INNOVATOR STORIES COMFYUIIS VERY POWERFUL: INNOVATOR STORIES TECHNICAL: INNOVATOR STORIES IT'SALL VERY TECHNICAL INNOVATOR STORIES IT'SALL VERY TECHNICAL: INNOVATOR STORIES IT REQUIRES YOU TO UNDERSTAND INNOVATOR STORIES IT REQUIRES YOU TO UNDERSTAND INNOVATOR STORIES IT REQUIRES YOU TO UNDERSTAND INNOVATOR STORIES DEEPLY ONHOW GENERATIVE INNOVATOR STORIES",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 204.0,
+    "word_count": 17
+  },
+  "pacing": {
+    "cuts_per_minute": 7.814761215629522,
+    "avg_scene_duration": 7.677777777777778,
+    "scene_duration_variance": 3.868039347662033,
+    "total_scenes": 6
+  },
+  "text_overlays": {
+    "total_overlays": 56,
+    "overlay_density": 1.2147505422993492,
+    "common_zones": [
+      {
+        "zone": "bottom_right",
+        "count": 23
+      },
+      {
+        "zone": "bottom_center",
+        "count": 22
+      },
+      {
+        "zone": "middle_center",
+        "count": 11
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.8,
+      "median_interval": 0.0,
+      "std_interval": 0.9797958971132713
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 39.185,
+      "duration": 39.185,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 39.185,
+      "end": 46.1,
+      "duration": 6.914999999999999,
+      "percentage": 14.999999999999996
+    }
+  }
+}

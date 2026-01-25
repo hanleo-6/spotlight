@@ -1,0 +1,30 @@
+{
+  "video_id": "Cutsg0uhk0l_calvincheungtc_score0.9124",
+  "extracted_at": "2026-01-18T18:05:43.073284",
+  "features": {
+    "face": {
+      "median_faces": 0,
+      "max_faces": 2,
+      "avg_face_area": 27295.083333333332
+    },
+    "ocr": {
+      "text_frames": 50,
+      "unique_texts": 50,
+      "sample_texts": [
+        "Ld\n_ ra\na\nwin: m\u00e9dical Latter .\ncreatefanki flaShcates it 5 mins\n\u00bb .\na i j",
+        "on _* & rE\n: helpingimedical\u00a5students\ncreatesanki iflasheardstings? mins\npean 2, ee\nLo \u2014\nd\nual",
+        "s. > & o \u00a2\n7 a y ri ~ 7\n| gall students\n\nEreate anki fsheatighinltmits"
+      ]
+    },
+    "scenes": {
+      "scene_count": 19,
+      "avg_scene_length": 3.0228070175438595,
+      "min_scene_length": 0.5
+    },
+    "hook": {
+      "face_ratio": 0.6,
+      "text_ratio": 1.0,
+      "motion_intensity": 23.911576166708006
+    }
+  }
+}

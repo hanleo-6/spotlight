@@ -1,0 +1,57 @@
+{
+  "video_id": "7511853784994286878",
+  "duration": 56.43333333333333,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "THIS IS THIS IS GONNA BE",
+    "spoken_text": "This is how I'm going to be a millionaire at 18.",
+    "visual_text": "THIS IS THIS IS GONNA BE A MILLIONAIRE GONNA BE A MILLIONAIRE AT 18",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 132.0,
+    "word_count": 11
+  },
+  "pacing": {
+    "cuts_per_minute": 6.379208505611341,
+    "avg_scene_duration": 9.405555555555555,
+    "scene_duration_variance": 4.409603016761497,
+    "total_scenes": 6
+  },
+  "text_overlays": {
+    "total_overlays": 3,
+    "overlay_density": 0.05316007088009451,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 3
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "sporadic",
+      "avg_interval": 16.0,
+      "median_interval": 16.0,
+      "std_interval": 6.0
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 8.0,
+      "duration": 8.0,
+      "percentage": 14.176018901358537
+    },
+    "main_content": {
+      "start": 8.0,
+      "end": 47.96833333333333,
+      "duration": 39.96833333333333,
+      "percentage": 70.82398109864145
+    },
+    "cta": {
+      "start": 47.96833333333333,
+      "end": 56.43333333333333,
+      "duration": 8.465000000000003,
+      "percentage": 15.000000000000007
+    }
+  }
+}

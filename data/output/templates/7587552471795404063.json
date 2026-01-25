@@ -1,0 +1,65 @@
+{
+  "video_id": "7587552471795404063",
+  "duration": 126.96666666666667,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "hey friends it's nice to meet you; my name is JR",
+    "spoken_text": "Hey friends, it's nice to meet you. My name is JR. A couple of things. So I hit a",
+    "visual_text": "hey friends it's nice to meet you; my name is JR it's nice to meet you; my name is JR it's nice to meet you; my name is JR it's nice to meet you, my name is JR couple of things so ahead of 2026 couple of things so ahead of 2026 couple of things so ahead of 2026",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 228.0,
+    "word_count": 19
+  },
+  "pacing": {
+    "cuts_per_minute": 0.9451299553688631,
+    "avg_scene_duration": 63.483333333333334,
+    "scene_duration_variance": 31.850000000000005,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 47,
+    "overlay_density": 0.3701758991861381,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 21
+      },
+      {
+        "zone": "top_center",
+        "count": 16
+      },
+      {
+        "zone": "bottom_left",
+        "count": 9
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 2.6956521739130435,
+      "median_interval": 0.0,
+      "std_interval": 7.658100471757912
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 107.92166666666667,
+      "duration": 107.92166666666667,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 107.92166666666667,
+      "end": 126.96666666666667,
+      "duration": 19.045,
+      "percentage": 15.000000000000002
+    }
+  }
+}

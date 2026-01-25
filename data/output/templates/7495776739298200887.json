@@ -1,0 +1,57 @@
+{
+  "video_id": "7495776739298200887",
+  "duration": 174.13334440443322,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.966666982438849,
+    "hook_type": "direct_benefit",
+    "opening_text": "Free tier pra vclancar @MVP Free tierpra vclancar @ MVP dseU SaaS",
+    "spoken_text": "Today I'm going to show you how to play the grace of your sass until you get a scale.",
+    "visual_text": "Free tier pra vclancar @MVP Free tierpra vclancar @ MVP dseU SaaS Free tier pra vclancar @MVP @seU SaaS Free tier pra vclancar @MVP doseu SaaS Free tier pra vvclancar 0 MVP @seU SaaS doseu SaaS Free tierpra vclancar @ NP @seU SaaS @seU SaaS @seU SaaS",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 228.0,
+    "word_count": 19
+  },
+  "pacing": {
+    "cuts_per_minute": 2.756508247410539,
+    "avg_scene_duration": 21.766668050554152,
+    "scene_duration_variance": 8.249865843278329,
+    "total_scenes": 8
+  },
+  "text_overlays": {
+    "total_overlays": 3,
+    "overlay_density": 0.01722817654631587,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 3
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "sporadic",
+      "avg_interval": 73.75000468889903,
+      "median_interval": 73.75000468889903,
+      "std_interval": 28.51666847970762
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 148.01334274376822,
+      "duration": 148.01334274376822,
+      "percentage": 84.99999999999999
+    },
+    "cta": {
+      "start": 148.01334274376822,
+      "end": 174.13334440443322,
+      "duration": 26.120001660664997,
+      "percentage": 15.000000000000007
+    }
+  }
+}

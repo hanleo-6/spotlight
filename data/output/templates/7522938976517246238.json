@@ -1,0 +1,65 @@
+{
+  "video_id": "7522938976517246238",
+  "duration": 47.24724832973343,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.971638418877317,
+    "hook_type": "stat_shock",
+    "opening_text": "startup in public startup in public Day 1 of buildinga $100m",
+    "spoken_text": "They want to building a million dollar startup as a solo entrepreneur using only AI.  The goal is to...",
+    "visual_text": "startup in public startup in public Day 1 of buildinga $100m startup in public Day1 of buildinga $100m startup in public Day 1 of buildinga S100m startup inpublic Dav] of buildinga $100m startup inpublic startup in public Day] of buildinga $100m startup in public Day1 of buildinga S100m startup in public Day 1 of buildinga $100m startup inpublic",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 228.0,
+    "word_count": 19
+  },
+  "pacing": {
+    "cuts_per_minute": 25.398304502842787,
+    "avg_scene_duration": 2.362362416486671,
+    "scene_duration_variance": 1.3149443827305518,
+    "total_scenes": 20
+  },
+  "text_overlays": {
+    "total_overlays": 23,
+    "overlay_density": 0.4868008363044868,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 11
+      },
+      {
+        "zone": "middle_right",
+        "count": 8
+      },
+      {
+        "zone": "top_left",
+        "count": 3
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 1.6107016476045488,
+      "median_interval": 1.968635347072226,
+      "std_interval": 1.2780789484559922
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 40.16016108027342,
+      "duration": 40.16016108027342,
+      "percentage": 85.00000000000001
+    },
+    "cta": {
+      "start": 40.16016108027342,
+      "end": 47.24724832973343,
+      "duration": 7.087087249460012,
+      "percentage": 14.999999999999995
+    }
+  }
+}

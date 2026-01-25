@@ -1,0 +1,30 @@
+{
+  "video_id": "DQo3AGxjH0y_victoria_amazonka_score0.8532",
+  "extracted_at": "2026-01-18T18:03:24.791159",
+  "features": {
+    "face": {
+      "median_faces": 1,
+      "max_faces": 2,
+      "avg_face_area": 80277.91428571429
+    },
+    "ocr": {
+      "text_frames": 21,
+      "unique_texts": 21,
+      "sample_texts": [
+        "y NX 'f ws\nii\n= |",
+        "ee j\n.",
+        "\" .\nZ )\n="
+      ]
+    },
+    "scenes": {
+      "scene_count": 5,
+      "avg_scene_length": 7.099999548594186,
+      "min_scene_length": 0.8999999427795444
+    },
+    "hook": {
+      "face_ratio": 1.0,
+      "text_ratio": 0.3333333333333333,
+      "motion_intensity": 11.24598335710152
+    }
+  }
+}

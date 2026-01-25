@@ -1,0 +1,65 @@
+{
+  "video_id": "7386533324958829830",
+  "duration": 12.833333333333334,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "direct_benefit",
+    "opening_text": "Top 5 Best Top 5 Best Tiktok Other",
+    "spoken_text": "",
+    "visual_text": "Top 5 Best Top 5 Best Tiktok Other Top 5 Best Tiktok Other App Top 5 Best Tiktok Other App Top 5 Best Tiktok Other App Top 5 Best Tiktok Other App Sth 5.43 61 % TikTok Lite Save Data TikTok Pte. Ltd: Contains ads In-app purchases 02+] ; 0 11 MB Rated for 12+ Downloads Install Furry Fun this Festive Season Less data usage #celebratecricket on TikTok the bigge About this app Sth 5.43 0 61 % TikTok Lite Save Data Contains ads In-app purchases 02+] 1B+ ; 0 11 MB Rated for 12+ Downloads Install Furry Fun this Festive Season Less data usage #celebratecricket on TikTok the bigge About this app Sth 5.43 0 61 % TikTok Lite Save Data TikTok Pte. Ltd: Contains ads In-app purchases 1B+ ; 0 11 MB Rated for 12+ Downloads Install Furry Fun this Festive Season Less data usage #celebratecricket on TikTok the bigge About this app",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 0,
+    "word_count": 0
+  },
+  "pacing": {
+    "cuts_per_minute": 37.5,
+    "avg_scene_duration": 1.6,
+    "scene_duration_variance": 0.6302556800396346,
+    "total_scenes": 8
+  },
+  "text_overlays": {
+    "total_overlays": 85,
+    "overlay_density": 6.623376623376623,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 17
+      },
+      {
+        "zone": "middle_right",
+        "count": 13
+      },
+      {
+        "zone": "bottom_left",
+        "count": 12
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.11904761904761904,
+      "median_interval": 0.0,
+      "std_interval": 0.4732049265321855
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 12.0,
+      "duration": 12.0,
+      "percentage": 93.5064935064935
+    },
+    "cta": {
+      "start": 12.0,
+      "end": 12.833333333333334,
+      "duration": 0.8333333333333339,
+      "percentage": 6.493506493506499
+    }
+  }
+}

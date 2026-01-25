@@ -1,0 +1,65 @@
+{
+  "video_id": "7293960891861683498",
+  "duration": 27.618364844939382,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.986199514795621,
+    "hook_type": "direct_benefit",
+    "opening_text": "morning person morning",
+    "spoken_text": "I used to sleep until 10 a.m. but now I actually love my morning routine because this app completely changed.",
+    "visual_text": "morning person morning person become a morning person become 4 morning person become 9 Morning person become 4 morning person become 4 morning person 2 0 / 1 0 /1 In Morning wakey Make bed 0 /1 Skincare Comfy Fit 0 /1 Coffee Gratitude _ 0 / 5 Journal MIN Get = 0/1 0/1 In Morning wakey ' Make bed Skincare 0 /1 Comfy Fit Coffee 0 /1CUPS Gratitude _ 0 / 5 Journal MIN Get : Steps ",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 240.0,
+    "word_count": 20
+  },
+  "pacing": {
+    "cuts_per_minute": 45.72903679064382,
+    "avg_scene_duration": 1.3120766193849949,
+    "scene_duration_variance": 0.712918001250614,
+    "total_scenes": 21
+  },
+  "text_overlays": {
+    "total_overlays": 51,
+    "overlay_density": 1.8465973741144535,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 18
+      },
+      {
+        "zone": "middle_left",
+        "count": 18
+      },
+      {
+        "zone": "top_center",
+        "count": 6
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.5135137941860946,
+      "median_interval": 0.0,
+      "std_interval": 1.2987381827557667
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 19.775477491057117,
+      "duration": 19.775477491057117,
+      "percentage": 71.60263687616776
+    },
+    "main_content": {
+      "start": 19.775477491057117,
+      "end": 23.475610118198475,
+      "duration": 3.7001326271413575,
+      "percentage": 13.397363123832246
+    },
+    "cta": {
+      "start": 23.475610118198475,
+      "end": 27.618364844939382,
+      "duration": 4.1427547267409075,
+      "percentage": 15.0
+    }
+  }
+}

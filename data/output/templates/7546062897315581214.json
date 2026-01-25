@@ -1,0 +1,65 @@
+{
+  "video_id": "7546062897315581214",
+  "duration": 7.333333333333333,
+  "niche": "gaming",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "VoU scroll a feed of adorable little games the community makes",
+    "spoken_text": "BUT THE O bank won't give me money",
+    "visual_text": "VoU scroll a feed of adorable little games the community makes VoU scroll a feed of adorable little games the community makes VoU scroll a feed of adorable little games the community makes Teet voU scroll a feed of adorable little games the community makes 0 Piant Teeth of adorable little games the community makes Pia Teeth VoU scroll a feed of adorable little games the community makes Teeth VoU scroll a feed of adorable little games the community makes ofaderable little games thercommunitysmakes even make your own in less than 2 minutes 0 U can Te can even make your own in less than 2 minutes 0 Teer",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 96.0,
+    "word_count": 8
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 9,
+    "overlay_density": 1.2272727272727273,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 4
+      },
+      {
+        "zone": "middle_left",
+        "count": 2
+      },
+      {
+        "zone": "top_center",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.75,
+      "median_interval": 0.0,
+      "std_interval": 0.9682458365518543
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 136.36363636363637
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 6.2333333333333325,
+      "duration": -3.7666666666666675,
+      "percentage": -51.36363636363638
+    },
+    "cta": {
+      "start": 6.2333333333333325,
+      "end": 7.333333333333333,
+      "duration": 1.1000000000000005,
+      "percentage": 15.000000000000007
+    }
+  }
+}

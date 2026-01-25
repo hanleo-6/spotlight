@@ -1,0 +1,30 @@
+{
+  "video_id": "DSL9updkySq_pixelskyline_ai_score0.9543",
+  "extracted_at": "2026-01-18T18:04:01.584747",
+  "features": {
+    "face": {
+      "median_faces": 0,
+      "max_faces": 3,
+      "avg_face_area": 4160.777777777777
+    },
+    "ocr": {
+      "text_frames": 14,
+      "unique_texts": 14,
+      "sample_texts": [
+        "fy - *",
+        "a je)\nPy, he",
+        ": qh: md Z\n: an. gen"
+      ]
+    },
+    "scenes": {
+      "scene_count": 0,
+      "avg_scene_length": 0,
+      "min_scene_length": 0
+    },
+    "hook": {
+      "face_ratio": 0.0,
+      "text_ratio": 0.7333333333333333,
+      "motion_intensity": 10.767619435143848
+    }
+  }
+}

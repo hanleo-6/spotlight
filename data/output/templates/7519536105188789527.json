@@ -1,0 +1,65 @@
+{
+  "video_id": "7519536105188789527",
+  "duration": 9.3,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "2 HELP Way",
+    "spoken_text": "",
+    "visual_text": "2 HELP Way TRIED Lady LIRB END SEcONDS NE @N MY 2 Way TRIED Lady LIRE END SECONDS NB Way TRIED WH@ Lady LIRB END SEcONDS 2 NB HELP Way Fish SEcONDS @N MY HELP Way TRIED MB Lady Fish LIRB BND ME @N NY HELP TRIED Lady LIRB END SEcONDS NB HELP TRID Lady LIRE END SBCONDS 7@ HELP Way TRIED ON Lady Fish LIRE END 7@ (AB @N 2 Way TRIBD WH@ Lady pish LICB BND SEcONDS 7@ 7@ Way WH@ Lady pish LICB BN",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 0,
+    "word_count": 0
+  },
+  "pacing": {
+    "cuts_per_minute": 19.35483870967742,
+    "avg_scene_duration": 3.1,
+    "scene_duration_variance": 0.715438223644678,
+    "total_scenes": 3
+  },
+  "text_overlays": {
+    "total_overlays": 21,
+    "overlay_density": 2.258064516129032,
+    "common_zones": [
+      {
+        "zone": "top_right",
+        "count": 10
+      },
+      {
+        "zone": "top_center",
+        "count": 10
+      },
+      {
+        "zone": "top_left",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.4,
+      "median_interval": 0.0,
+      "std_interval": 0.8000000000000002
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 7.905,
+      "duration": 7.905,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 7.905,
+      "end": 9.3,
+      "duration": 1.3950000000000005,
+      "percentage": 15.000000000000005
+    }
+  }
+}

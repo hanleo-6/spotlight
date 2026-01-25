@@ -1,0 +1,47 @@
+{
+  "video_id": "7386347917050744096",
+  "duration": 11.309374940080776,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.988310158756167,
+    "hook_type": "statement",
+    "opening_text": " bright",
+    "spoken_text": "bright",
+    "visual_text": "",
+    "visual_pattern": "no_text_overlay",
+    "speech_pace_wpm": 12.0,
+    "word_count": 1
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 0,
+    "overlay_density": 0,
+    "common_zones": [],
+    "overlay_timing_pattern": {}
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 88.4222165502683
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 9.61296869906866,
+      "duration": -0.38703130093134064,
+      "percentage": -3.422216550268306
+    },
+    "cta": {
+      "start": 9.61296869906866,
+      "end": 11.309374940080776,
+      "duration": 1.6964062410121166,
+      "percentage": 15.000000000000002
+    }
+  }
+}

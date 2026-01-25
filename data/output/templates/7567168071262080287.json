@@ -1,0 +1,61 @@
+{
+  "video_id": "7567168071262080287",
+  "duration": 61.31996664138618,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.9913931656440536,
+    "hook_type": "statement",
+    "opening_text": "Building in PublicDay2 Building in PublicDav2 Building in PublicDav2",
+    "spoken_text": "Alright, day two of building in public.  So I made the UI updates and I told you.",
+    "visual_text": "Building in PublicDay2 Building in PublicDav2 Building in PublicDav2 Buildingin Public Day2 Buildingin PublicDav2 Buildingin PublicDav2 Buildingin PublicDav2 solmade theUlupdates thatltoldyouguysabout Building in Public 2 Day solmade the Ulupdates thatltoldyouguysabout Buildingin Public 2 Day solmade theUlupdates that I toldyou guysabout Buildingin Public Dav2",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 204.0,
+    "word_count": 17
+  },
+  "pacing": {
+    "cuts_per_minute": 1.9776361501370479,
+    "avg_scene_duration": 30.339251229728013,
+    "scene_duration_variance": 29.998473383077616,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 4,
+    "overlay_density": 0.06523160756744954,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 3
+      },
+      {
+        "zone": "bottom_right",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "regular",
+      "avg_interval": 5.292079500923816,
+      "median_interval": 3.969059625692862,
+      "std_interval": 3.3730520803368633
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 52.12197164517825,
+      "duration": 52.12197164517825,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 52.12197164517825,
+      "end": 61.31996664138618,
+      "duration": 9.197994996207932,
+      "percentage": 15.000000000000007
+    }
+  }
+}

@@ -1,0 +1,65 @@
+{
+  "video_id": "7538853725532736790",
+  "duration": 46.63333333333333,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "M S0 Saas STAcK 71",
+    "spoken_text": "This is the exact full stack tech I'm using to build a startup by myself.  And the best part, it cost almost nothing to start-",
+    "visual_text": "M S0 Saas STAcK 71 Day PRAGON BALL this is the exact full stack tech PRAGON this is the exact full stack tech PRAGON BALL this is the exact full stack tech PRAGON Tm using to build a startup by myself PRAGON BALL myself PRAGON BALL Im using to build a startup by myself PRAGON BALL and the best part it cost almost nothing to start PRAGON BALL and the best part it cost almost nothing to start PRAGON BALL and the best part it cost almost nothing to start",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 300.0,
+    "word_count": 25
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 55,
+    "overlay_density": 1.1794138670478913,
+    "common_zones": [
+      {
+        "zone": "bottom_center",
+        "count": 23
+      },
+      {
+        "zone": "top_left",
+        "count": 20
+      },
+      {
+        "zone": "top_center",
+        "count": 9
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.8518518518518519,
+      "median_interval": 0.0,
+      "std_interval": 0.988965179468051
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 21.44388849177984
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 39.638333333333335,
+      "duration": 29.638333333333335,
+      "percentage": 63.556111508220155
+    },
+    "cta": {
+      "start": 39.638333333333335,
+      "end": 46.63333333333333,
+      "duration": 6.994999999999997,
+      "percentage": 14.999999999999995
+    }
+  }
+}

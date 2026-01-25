@@ -1,0 +1,30 @@
+{
+  "video_id": "CzrKWlStZA1_openiris_score0.8919",
+  "extracted_at": "2026-01-18T18:06:29.339344",
+  "features": {
+    "face": {
+      "median_faces": 0,
+      "max_faces": 1,
+      "avg_face_area": 11466.0
+    },
+    "ocr": {
+      "text_frames": 12,
+      "unique_texts": 12,
+      "sample_texts": [
+        "bs i 4 i: \u201d . .\n\u201d FS # \u201c \u2014_\u2014",
+        "; |\na aM Ln ce = | i la\n- pg wee |\na ; : : i es\n\u2014<\u2014\u2014S",
+        "v a\u201d\n\u201c Xo ~ a"
+      ]
+    },
+    "scenes": {
+      "scene_count": 10,
+      "avg_scene_length": 1.5833333333333335,
+      "min_scene_length": 0.033333333333333215
+    },
+    "hook": {
+      "face_ratio": 0.2,
+      "text_ratio": 0.8666666666666667,
+      "motion_intensity": 29.695668092757938
+    }
+  }
+}

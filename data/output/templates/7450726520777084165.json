@@ -1,0 +1,65 @@
+{
+  "video_id": "7450726520777084165",
+  "duration": 7.433333333333334,
+  "niche": "gaming",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "CONTROL CONTROL For You",
+    "spoken_text": "Oh",
+    "visual_text": "CONTROL CONTROL For You CONTROL and over and just staring at the information untillit sticks bc you didn't realize YOUR ppl actually used study methods mcl For You CONTROL YOUR IDON'T KNOW WHO As pOV: youT nights training your mind CONTROL YOURSELF InthcDark spend you For You CONTROL YOURSELF Follovng For You Study without me CONTROL YOURSELF Oussama J 20h 4300 an 20.00 Focus Us< J 18.33 z0h 4300 and Duration Btart sA",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 12.0,
+    "word_count": 1
+  },
+  "pacing": {
+    "cuts_per_minute": 32.28699551569507,
+    "avg_scene_duration": 1.8583333333333334,
+    "scene_duration_variance": 1.0820184327861004,
+    "total_scenes": 4
+  },
+  "text_overlays": {
+    "total_overlays": 18,
+    "overlay_density": 2.42152466367713,
+    "common_zones": [
+      {
+        "zone": "top_right",
+        "count": 6
+      },
+      {
+        "zone": "middle_center",
+        "count": 3
+      },
+      {
+        "zone": "bottom_center",
+        "count": 3
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.23529411764705882,
+      "median_interval": 0.0,
+      "std_interval": 0.6443794794178425
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 6.318333333333333,
+      "duration": 6.318333333333333,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 6.318333333333333,
+      "end": 7.433333333333334,
+      "duration": 1.1150000000000002,
+      "percentage": 15.000000000000002
+    }
+  }
+}

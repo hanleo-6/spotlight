@@ -1,0 +1,47 @@
+{
+  "video_id": "7262971345439329569",
+  "duration": 6.473666569741684,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.997804761095911,
+    "hook_type": "statement",
+    "opening_text": " You can't touch, you can play, if you don't",
+    "spoken_text": "You can't touch, you can play, if you don't",
+    "visual_text": "",
+    "visual_pattern": "no_text_overlay",
+    "speech_pace_wpm": 108.0,
+    "word_count": 9
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 0,
+    "overlay_density": 0,
+    "common_zones": [],
+    "overlay_timing_pattern": {}
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 154.471965651438
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 5.502616584280431,
+      "duration": -4.497383415719569,
+      "percentage": -69.47196565143803
+    },
+    "cta": {
+      "start": 5.502616584280431,
+      "end": 6.473666569741684,
+      "duration": 0.9710499854612529,
+      "percentage": 15.000000000000005
+    }
+  }
+}

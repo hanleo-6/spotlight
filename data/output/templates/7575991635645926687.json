@@ -1,0 +1,65 @@
+{
+  "video_id": "7575991635645926687",
+  "duration": 6.376903460687984,
+  "niche": "education",
+  "hook": {
+    "hook_duration": 4.980964394666734,
+    "hook_type": "question",
+    "opening_text": "3 Spill the tea BookNerd",
+    "spoken_text": "Coming closer and all that I'm a man tangled up in wire",
+    "visual_text": "3 Spill the tea BookNerd Edit @bookishbbyz 421 14.9K 1.2M Following Followers Likes https:IIWWW.amazon com/registrieslgl/o + Add school Showcase Your orders TikTok Studio St 8 1 Drafts: 4 gencrally Gxating 763.4MB 131 277 11 Home Friends Inbox Profile Dving 43 Spill the tea BookNerd Edit @bookishbbyz 421 14.9K 1.2M Following Followers Likes 2 ht WWWamazon. + Add schoui Show se Your orders <Tok Studio St Drafts: 4 Mvirrational feur? \"TBR 131 277 Tho story Home Friends Inbox Profile Dving 43 Assets Balance Personal tools Activity center Offline videos 0 tion & business tools Si TikTok Studio privacy Profile 43 Assets Balance Personal tools Activity center Offline videos 0 GR cod C ion & business tools St TikTok Studio and privacy Profile 1.31 43 Assets Balance Personal tools Activity center Offline videos 0 GR cod TikTok Studio privacy Profile 1.31 43 Assets Balance Personal tools Activity center Offline videos 0 GR cod tion & business tools TikTok Studio privacy Profile 1.31 43 TikTok Studio Posts LIVE Analytics Post views Net followers Likes 3,761 14 208 3% 7d 0% 7d 58% 7d Get TikTok Studio Scheduled posts are finally here. Only on TikTok Studio Studio Download TikTok Shop for LIVE Incentive creator Program Get paid to discover Join for & chance to and share products: View details Join Service+ Creator Subscription LIVE rewards Marketplace Video growth task Suggested Join get 1.31 43 TikTok Studio Posts LIVE Analytics Post views Net followers Likes 3,761 14 208 3% 7d 0% 7d 58% 7d Get TikTok Studio Scheduled posts are finally here. Only on TikTok Studio Studio Download TikTok Shop for LIVE Incentive Creator Program Get pa; ' Gocover Join for & chance to and share products: View details Join Service+ Creator Subscription LIVE rewards Marketplace Video growth task Suggested Join get 1.31 43 TikTok Studio Posts LIVE Analytics Post views Net followers Likes 3,761 14 208 3% 7d 0% 7d 58% 7d Get TikTok Studio Scheduled posts are finally here. Only on TikTok Studio Studio Download Monetization TikTok Shop for LIVE Incentive Creator Program Get paid to discover Join for a chance to and share products: rewards by posti: View details Join Subscription LIVE rewards Work with Video Gifts ze Artists Video growth task Suggested Join get 1.31 TikTok Studio Posts LIVE Analytics Post views Net followers Likes 3,761 14 208 3% 7d 0% 7d 58% 7d Get TikTok Studio Scheduled posts are finally here. Only on TikTok Studio Studio Download Monetization TikTok Shop for LIVE Incentive Creator Program Get paid to discover Join for a chance to and share products: rewards by posti: View details Join cription LIVE rewards Work with Video Gifts Creator Artists Rewards Program Video growth task Suggested Join get 1.31 TikTok Studio Posts LIVE Analytics Post views Net followers Likes 14 208 3% 7d 0% 7d 58% 7d Get TikTok Studio Scheduled posts are finally here. Only on TikTok Studio Studio Download Monetization TikTok Shop for LIVE Incentive Creator Program Get paid to discover Join for a chance to and share products: rewards by posti; View €e  Join Video Gifts Creator TikTok op Gaming eller Incentive Program Program Video growth task Suggested Join get",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 144.0,
+    "word_count": 12
+  },
+  "pacing": {
+    "cuts_per_minute": 19.103030580462832,
+    "avg_scene_duration": 3.140862898547813,
+    "scene_duration_variance": 0.47588831796178965,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 97,
+    "overlay_density": 15.211144499517792,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 22
+      },
+      {
+        "zone": "middle_left",
+        "count": 14
+      },
+      {
+        "zone": "bottom_center",
+        "count": 14
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.062460341732484916,
+      "median_interval": 0.0,
+      "std_interval": 0.34776446478831424
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 5.996192806318552,
+      "duration": 5.996192806318552,
+      "percentage": 94.02985074626865
+    },
+    "cta": {
+      "start": 5.996192806318552,
+      "end": 6.376903460687984,
+      "duration": 0.3807106543694321,
+      "percentage": 5.970149253731346
+    }
+  }
+}

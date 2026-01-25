@@ -1,0 +1,65 @@
+{
+  "video_id": "7500242947636579589",
+  "duration": 60.66699765160329,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.97489413873907,
+    "hook_type": "statement",
+    "opening_text": " I always say that I'm not a good designer and people ask me how you can make  sites cool.",
+    "spoken_text": "I always say that I'm not a good designer and people ask me how you can make  sites cool.",
+    "visual_text": "",
+    "visual_pattern": "no_text_overlay",
+    "speech_pace_wpm": 228.0,
+    "word_count": 19
+  },
+  "pacing": {
+    "cuts_per_minute": 21.770104395660535,
+    "avg_scene_duration": 2.7560731409243897,
+    "scene_duration_variance": 2.6291468161641998,
+    "total_scenes": 22
+  },
+  "text_overlays": {
+    "total_overlays": 221,
+    "overlay_density": 3.6428372682813897,
+    "common_zones": [
+      {
+        "zone": "top_left",
+        "count": 34
+      },
+      {
+        "zone": "top_center",
+        "count": 34
+      },
+      {
+        "zone": "middle_left",
+        "count": 34
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.14326723816258943,
+      "median_interval": 0.0,
+      "std_interval": 0.5115663637465676
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 43.338339544183306,
+      "duration": 43.338339544183306,
+      "percentage": 71.43643368189323
+    },
+    "cta": {
+      "start": 43.338339544183306,
+      "end": 60.66699765160329,
+      "duration": 17.328658107419983,
+      "percentage": 28.56356631810677
+    }
+  }
+}

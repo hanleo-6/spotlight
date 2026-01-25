@@ -1,0 +1,65 @@
+{
+  "video_id": "7231614801342975275",
+  "duration": 57.72439238025341,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.971638418877317,
+    "hook_type": "question",
+    "opening_text": "WHATDO IMANGADZHI IMANGADZHI",
+    "spoken_text": "What do Iman Gazi, Alex Becker and Sam Evans all have in common? They are-",
+    "visual_text": "WHATDO IMANGADZHI IMANGADZHI 05 4 ALEX BECKER 41 ALEX BECKER SAMOVENS SAMOVENS AL INCO THEY",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 180.0,
+    "word_count": 15
+  },
+  "pacing": {
+    "cuts_per_minute": 13.512485239547113,
+    "avg_scene_duration": 4.440337875404109,
+    "scene_duration_variance": 5.032690695272728,
+    "total_scenes": 13
+  },
+  "text_overlays": {
+    "total_overlays": 115,
+    "overlay_density": 1.992225387881946,
+    "common_zones": [
+      {
+        "zone": "middle_left",
+        "count": 20
+      },
+      {
+        "zone": "bottom_left",
+        "count": 20
+      },
+      {
+        "zone": "middle_right",
+        "count": 18
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.41444954675204765,
+      "median_interval": 0.0,
+      "std_interval": 1.7775891964670698
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 51.18451902387788,
+      "duration": 51.18451902387788,
+      "percentage": 88.67052023121389
+    },
+    "cta": {
+      "start": 51.18451902387788,
+      "end": 57.72439238025341,
+      "duration": 6.53987335637553,
+      "percentage": 11.329479768786126
+    }
+  }
+}

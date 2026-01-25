@@ -1,0 +1,61 @@
+{
+  "video_id": "DBYusNcypud",
+  "duration": 19.21840616257851,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.973777651230706,
+    "hook_type": "statement",
+    "opening_text": " Boy, this son should not disillusion  I swear that this man is not that handsome",
+    "spoken_text": "Boy, this son should not disillusion  I swear that this man is not that handsome",
+    "visual_text": "",
+    "visual_pattern": "no_text_overlay",
+    "speech_pace_wpm": 180.0,
+    "word_count": 15
+  },
+  "pacing": {
+    "cuts_per_minute": 21.970088722431555,
+    "avg_scene_duration": 2.7309857851752666,
+    "scene_duration_variance": 2.1847565464677676,
+    "total_scenes": 7
+  },
+  "text_overlays": {
+    "total_overlays": 2,
+    "overlay_density": 0.10406690248301331,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 1
+      },
+      {
+        "zone": "middle_left",
+        "count": 1
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.0,
+      "median_interval": 0.0,
+      "std_interval": 0.0
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 16.335645238191734,
+      "duration": 16.335645238191734,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 16.335645238191734,
+      "end": 19.21840616257851,
+      "duration": 2.8827609243867762,
+      "percentage": 15.0
+    }
+  }
+}

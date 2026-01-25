@@ -1,0 +1,47 @@
+{
+  "video_id": "7252869082620366126",
+  "duration": 13.15,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": " Time!",
+    "spoken_text": "Time!",
+    "visual_text": "",
+    "visual_pattern": "no_text_overlay",
+    "speech_pace_wpm": 12.0,
+    "word_count": 1
+  },
+  "pacing": {
+    "cuts_per_minute": 9.195402298850574,
+    "avg_scene_duration": 6.525,
+    "scene_duration_variance": 4.525,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 0,
+    "overlay_density": 0,
+    "common_zones": [],
+    "overlay_timing_pattern": {}
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 11.1775,
+      "duration": 11.1775,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 11.1775,
+      "end": 13.15,
+      "duration": 1.9725000000000001,
+      "percentage": 15.0
+    }
+  }
+}

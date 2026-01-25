@@ -1,0 +1,65 @@
+{
+  "video_id": "7358157002989686048",
+  "duration": 31.666666666666668,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "statement",
+    "opening_text": "Organize world's knowledge, explore connections and curate learning paths learn-anything.xyz",
+    "spoken_text": "Here's a GitHub repo you should star.  It's called Learn Anything XYZ.  Now learn anything.",
+    "visual_text": "Organize world's knowledge, explore connections and curate learning paths learn-anything.xyz MIT license 15.4k stars 952 forks 7 Branches 0 Tags Custom properties Public repository 89 dev thetal vscode is a app 2 weeks ago cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago game repo changer! This Organize world's knowledge, explore connections and curate learning paths learn-anything xyz MIT license 15.4k stars 952 forks ng 7 Branches 0 Tags Custom properties Public repository 8 dev thetar vscode is a apr cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago game repo changer! This Organize world's knowledge; explore connections and curate learning paths learn-anything xyz MIT license 15.4k stars 952 forks 7 Branches 0 Tags Custom properties Public repository dev thetar vscode is a ar REPo YOU SHOULDveeks ago cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago game repo changer! This Organize world's knowledge; explore connections and curate learning paths learn-anything xyz MIT license 15.4k stars 952 forks 7 Branches 0 Tags Custom properties Public repository 89 dev thetal  vscode is a app STAR 2 weeks ago cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago game repo changerl This Organize world's knowledge; explore connections and curate learning paths learn-anything xyz MIT license 15.4k stars 952 forks 7 Branches 0 Tags Custom properties Public repository 89 dev thetar vscode is a app 2 weeks ago cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago ing game repo changerl This Organize world's knowledge; explore connections and curate learning paths learn-anything xyz MIT license 15.4k stars 952 fori ching 7 Branches 0 Tags Custom properties Public repository 89 dev vscode api app LEARN 2 weeks ago cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago Organize world's knowledge; explore connections and curate learning paths learn-anything xyz MIT license 15.4k stars 952 fork ching 7 Branches 0 Tags Custom properties Public repository 89 dev api app ANNTHING, XYZ. 2 weeks ago cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago Organize world's knowledge; explore connections and curate learning paths learn-anything xyz MIT license 15.4k stars 952 forks 7 Branches 0 Tags Custom properties Public repository 89 dev api app ANTHING, XYZ. 2 weeks ago cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago ing Organize world's knowledge; explore connections and curate learning paths learn-anything xyz MIT license 15.4k stars 952 forks 7 Branches 0 Tags Custom properties Public repository 89 dev thetal vscode api app 2 weeks ago cli 2 weeks ago mobile 2 weeks ago shared 2 weeks ago ing LEARN",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 180.0,
+    "word_count": 15
+  },
+  "pacing": {
+    "cuts_per_minute": 11.368421052631579,
+    "avg_scene_duration": 5.277777777777778,
+    "scene_duration_variance": 1.962015844186663,
+    "total_scenes": 6
+  },
+  "text_overlays": {
+    "total_overlays": 181,
+    "overlay_density": 5.71578947368421,
+    "common_zones": [
+      {
+        "zone": "bottom_left",
+        "count": 33
+      },
+      {
+        "zone": "top_left",
+        "count": 26
+      },
+      {
+        "zone": "bottom_right",
+        "count": 24
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.13333333333333333,
+      "median_interval": 0.0,
+      "std_interval": 0.618241233033047
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 26.916666666666668,
+      "duration": 26.916666666666668,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 26.916666666666668,
+      "end": 31.666666666666668,
+      "duration": 4.75,
+      "percentage": 15.0
+    }
+  }
+}

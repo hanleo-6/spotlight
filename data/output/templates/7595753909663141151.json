@@ -1,0 +1,65 @@
+{
+  "video_id": "7595753909663141151",
+  "duration": 120.70005024190287,
+  "niche": "tech",
+  "hook": {
+    "hook_duration": 4.96941350816345,
+    "hook_type": "statement",
+    "opening_text": "ASPIRE LEFT JUST",
+    "spoken_text": "Just left the spider, the spider tour, it was at the brow.",
+    "visual_text": "ASPIRE LEFT JUST ASPIRE LEFT JUST ASPIRE LEFT JUST TOUR ASPIRE THE TOUR ASPIRE THE AT WAS BROWARD THE CONVENTION",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 144.0,
+    "word_count": 12
+  },
+  "pacing": {
+    "cuts_per_minute": 0.9942000832601158,
+    "avg_scene_duration": 60.350025120951436,
+    "scene_duration_variance": 58.282215473259264,
+    "total_scenes": 2
+  },
+  "text_overlays": {
+    "total_overlays": 120,
+    "overlay_density": 0.9942000832601159,
+    "common_zones": [
+      {
+        "zone": "top_center",
+        "count": 51
+      },
+      {
+        "zone": "top_right",
+        "count": 36
+      },
+      {
+        "zone": "top_left",
+        "count": 32
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.9590735449176768,
+      "median_interval": 0.0,
+      "std_interval": 1.1652719049850466
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 0.0,
+      "duration": 0.0,
+      "percentage": 0.0
+    },
+    "main_content": {
+      "start": 0.0,
+      "end": 102.59504270561744,
+      "duration": 102.59504270561744,
+      "percentage": 85.0
+    },
+    "cta": {
+      "start": 102.59504270561744,
+      "end": 120.70005024190287,
+      "duration": 18.105007536285427,
+      "percentage": 14.999999999999996
+    }
+  }
+}

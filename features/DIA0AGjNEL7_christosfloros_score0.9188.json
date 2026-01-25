@@ -1,0 +1,30 @@
+{
+  "video_id": "DIA0AGjNEL7_christosfloros_score0.9188",
+  "extracted_at": "2026-01-18T18:06:54.759287",
+  "features": {
+    "face": {
+      "median_faces": 1,
+      "max_faces": 2,
+      "avg_face_area": 121364.3488372093
+    },
+    "ocr": {
+      "text_frames": 45,
+      "unique_texts": 45,
+      "sample_texts": [
+        "~~ Wa.\noe ak\npager arom = ; ~\n.",
+        ":\n.\" ,\nae vt \u2018 oe\na\nos\n- i.",
+        "nal or -\nCA TS"
+      ]
+    },
+    "scenes": {
+      "scene_count": 4,
+      "avg_scene_length": 11.333333333333334,
+      "min_scene_length": 2.066666666666663
+    },
+    "hook": {
+      "face_ratio": 1.0,
+      "text_ratio": 0.8,
+      "motion_intensity": 15.6551880787037
+    }
+  }
+}

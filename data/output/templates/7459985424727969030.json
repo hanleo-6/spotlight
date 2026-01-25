@@ -1,0 +1,65 @@
+{
+  "video_id": "7459985424727969030",
+  "duration": 9.999999364217162,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 4.999999682108581,
+    "hook_type": "direct_benefit",
+    "opening_text": "OUR LOVE IS THE ONLY WAY",
+    "spoken_text": "Don't get lost, girls, I'm waiting  Summer feelings are waiting, boy",
+    "visual_text": "OUR LOVE IS THE ONLY WAY Instagram Pinterest Spotify Roblox Netflix OUR LOVE IS THE ONLY WAY Instagram TikTok VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix DON'T Instagram TikTok VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix DON'T Instagram VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix DON'T GET Instagram TikTok VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix DON'T GET LOST CAUSE Instagram VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix DON'T GET LOST WAITING Instagram TikTok VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix SUMMER FEELINGS Instagram TikTok VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix SUMMER FEELINGS ARE Instagram VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix SUMMER FEELINGS ARE WAITING, Instagram TikTok VSCO Pinterest Spotify Snapchat Roblox Dazz Gam Netflix",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 132.0,
+    "word_count": 11
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 44,
+    "overlay_density": 4.400000279744466,
+    "common_zones": [
+      {
+        "zone": "middle_left",
+        "count": 9
+      },
+      {
+        "zone": "middle_center",
+        "count": 8
+      },
+      {
+        "zone": "middle_right",
+        "count": 8
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.18604649979938906,
+      "median_interval": 0.0,
+      "std_interval": 0.5809300094281064
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 100.00000635782878
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 8.499999459584588,
+      "duration": -1.500000540415412,
+      "percentage": -15.000006357828779
+    },
+    "cta": {
+      "start": 8.499999459584588,
+      "end": 9.999999364217162,
+      "duration": 1.499999904632574,
+      "percentage": 14.999999999999996
+    }
+  }
+}

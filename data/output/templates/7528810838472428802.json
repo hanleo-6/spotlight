@@ -1,0 +1,65 @@
+{
+  "video_id": "7528810838472428802",
+  "duration": 15.0,
+  "niche": "unknown",
+  "hook": {
+    "hook_duration": 5.0,
+    "hook_type": "question",
+    "opening_text": "iwas literally about to make a OF so glad i found",
+    "spoken_text": "I tried to bully bitches follow up  But the running test my ass  Oh, say what's the type?",
+    "visual_text": "iwas literally about to make a OF so glad i found this app iwas literally about to make a OF so i found this app glad iwas literally about to make a OF so i found this app glad iwas literally about to make a OF so i found this app glad iwas literally about to make a OF so i found this app glad iwas literally about to make a OF so i found this app glad iwas literally about to make a OF so i found this app glad iwas literally about to make a OF so i found this app glad iwas literally about to make a OF so i found this app glad iwas literally about to make a OF so i found this app glad",
+    "visual_pattern": "text_overlay_with_content",
+    "speech_pace_wpm": 216.0,
+    "word_count": 18
+  },
+  "pacing": {
+    "cuts_per_minute": 0.0,
+    "avg_scene_duration": 0.0,
+    "scene_duration_variance": 0.0,
+    "total_scenes": 0
+  },
+  "text_overlays": {
+    "total_overlays": 24,
+    "overlay_density": 1.6,
+    "common_zones": [
+      {
+        "zone": "middle_center",
+        "count": 12
+      },
+      {
+        "zone": "middle_left",
+        "count": 7
+      },
+      {
+        "zone": "middle_right",
+        "count": 5
+      }
+    ],
+    "overlay_timing_pattern": {
+      "category": "rapid",
+      "avg_interval": 0.6086956521739131,
+      "median_interval": 0.0,
+      "std_interval": 1.0930265295631771
+    }
+  },
+  "structure": {
+    "intro": {
+      "start": 0,
+      "end": 10.0,
+      "duration": 10.0,
+      "percentage": 66.66666666666666
+    },
+    "main_content": {
+      "start": 10.0,
+      "end": 12.75,
+      "duration": 2.75,
+      "percentage": 18.333333333333332
+    },
+    "cta": {
+      "start": 12.75,
+      "end": 15.0,
+      "duration": 2.25,
+      "percentage": 15.0
+    }
+  }
+}
