@@ -2,7 +2,7 @@
 # Quick launcher for the video analysis pipeline
 
 
-# python analysis_pipeline/pipeline_driver.py --video-dir my_videos  --output-dir results
+# python analysis_pipeline/pipeline_driver.py --video-dir data/input/videos  --output-dir data/output
 
 
 set -e  # Exit on error

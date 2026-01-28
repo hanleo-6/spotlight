@@ -1,0 +1,220 @@
+You are analyzing video frames and transcripts to extract a REUSABLE TEMPLATE SPECIFICATION. Your goal is to identify the visual DNA that makes this template recognizable and effective for its target niche.
+
+CRITICAL FOCUS: Extract PARAMETRIC patterns - what elements are consistent (the template), and what elements vary (the parameters). Think like a template designer who needs to create a reusable system.
+
+ANALYZE THESE KEYFRAMES AND TRANSCRIPTS TO EXTRACT:
+
+1. TEMPLATE STRUCTURE (Observable Patterns):
+   - Content flow: Intro → Hook → Body → CTA → Outro (describe each section's characteristics)
+   - Hook strategy: What technique grabs attention in first 3 seconds? (visual surprise, question, bold statement, etc.)
+   - Section transitions: How does content move between parts? (cuts, fades, visual motifs)
+   - Text display patterns: How long does text stay on screen? Word count per frame? Reading pace?
+   - Pacing rhythm: Fast cuts, slow burns, or variable? Pattern of speed changes?
+
+2. VISUAL SYSTEM (Design Rules):
+   - Layout grid: Where do elements sit? (rule of thirds, centered, asymmetric, golden ratio)
+   - Safe zones: Margins where content never appears (top/bottom/sides percentages)
+   - Layer hierarchy: Background → Subject → Text → Overlays (describe each layer's treatment)
+   - Color system:
+     * Primary colors and their usage (backgrounds, emphasis, CTAs)
+     * Color meaning/purpose in this template
+     * Contrast patterns
+   - Typography rules:
+     * Font characteristics (sans/serif, weight, style - be specific about appearance)
+     * Size hierarchy (when big vs small text is used)
+     * Alignment patterns (centered vs left-aligned for different content types)
+     * Text animation style (how it enters: fade/slide/typewriter/immediate)
+
+3. MOTION LANGUAGE (Animation Patterns):
+   - Camera behavior: Static locked vs moving (pans, zooms, follows)
+   - Subject movement: How subjects enter/exit frame, movement speed
+   - Text motion: Entry animation style, exit style, timing
+   - Transition vocabulary: What transitions are used and when? (cut, dissolve, wipe, zoom)
+   - Animation easing: Snappy/instant vs smooth/flowing
+   - Which elements animate and which stay static?
+
+4. CONTENT FORMULA (What Makes This Work):
+   - Primary format: Talking head, screencast, text overlays, b-roll montage, mixed
+   - Content mix ratio: If mixed, approximate percentage of each type
+   - B-roll usage pattern: When does it appear? How long? What purpose? (illustration, transition, emphasis)
+   - Text-to-visual ratio: Heavy text overlays vs minimal text
+   - Storytelling structure: Narrative, problem-solution, list/steps, comparison, transformation
+   - Information density: How much information per frame/second?
+
+5. NICHE-SPECIFIC DESIGN CHOICES (Why This Template Works Here):
+   - What NICHE does this target? (Be specific: not just "tech" but "SaaS productivity tools" or "AI consumer apps")
+   - Secondary/adjacent niches this could work for
+   - Niche conventions followed: What design patterns are standard in this industry?
+   - Audience psychology: What viewer expectations does this fulfill?
+   - Trust signals: What builds credibility for this specific audience? (certifications, data, testimonials, professionalism, authenticity)
+   - Niche-specific visual language: Colors, fonts, pace that signal "this is for [audience]"
+   - Why THIS template for THIS niche?: What makes this design effective here vs other verticals?
+
+6. PARAMETRIC VARIABLES (What Can Be Customized):
+   - Fixed elements: What MUST stay the same to maintain template identity?
+   - Variable elements: What CAN change while keeping the template recognizable?
+   - Content slots: Where does unique content go? (text zones, image areas, b-roll sections)
+   - Customization boundaries: How much can you vary before it's not the same template?
+   - Brand adaptation: What elements can be swapped for different brands?
+
+7. DISTINCTIVE SIGNATURE (What Makes This Unique):
+   - Visual fingerprint: If you saw this template again, what would you recognize?
+   - Recurring motifs: Shapes, animations, transitions that repeat
+   - Style differentiators: How is this different from generic templates?
+   - Innovation elements: Anything unusual or creative?
+   - Template "personality": Professional, playful, urgent, calm, bold, minimal?
+
+8. TECHNICAL EXECUTION (How It's Made):
+   - Lighting approach: High-key (bright, low shadows), low-key (dramatic shadows), natural, flat
+   - Color grading style: Warm/cool tones, saturated/desaturated, high/low contrast
+   - Depth of field: Shallow (blurry background) vs deep focus
+   - Camera quality indicators: Professional vs smartphone aesthetics
+   - Graphics style: Flat design, gradients, 3D, hand-drawn, photo-realistic
+   - Stock vs custom: Which elements appear to be stock resources vs custom-created?
+
+9. REPLICATION BLUEPRINT (How to Recreate):
+   - Software category needed: Basic video editor, motion graphics tool, animation software, screen recorder
+   - Key capabilities required: What features must the software have?
+   - Asset list: Specific assets needed (background types, font styles, graphic elements, music mood)
+   - Production workflow: Major steps to create this template
+   - Complexity assessment: Simple (mostly cuts and text), Moderate (some motion graphics), Complex (heavy animation), Very Complex (3D/advanced effects)
+   - Template automation potential: Could this be built as a reusable template in video software?
+
+10. PATTERN ANALYSIS (Cross-Video Intelligence):
+   - Similar templates you can identify: Does this match known template styles?
+   - Template category: Tutorial, Product Demo, Testimonial, Explainer, Announcement, Story, Listicle, Review, etc.
+   - Versatility: Can this template work for different content types or is it specialized?
+   - Scalability: Can this work for 15 seconds or 5 minutes, or is it duration-specific?
+
+RESPONSE FORMAT - Return ONLY valid JSON (no markdown, no code fences, no preamble):
+
+{
+  "template_identity": {
+    "template_name": "descriptive name based on visual style",
+    "template_category": "explainer|tutorial|product-demo|testimonial|review|announcement|story|listicle|comparison|showcase|entertainment|other",
+    "visual_fingerprint": "what makes this instantly recognizable",
+    "personality": "professional|playful|urgent|calm|bold|minimal|energetic|elegant",
+    "innovation_elements": ["unique aspects of this template"]
+  },
+  
+  "structure": {
+    "intro_characteristics": "what happens in intro (describe pattern, not duration)",
+    "hook_strategy": "specific technique used to grab attention",
+    "content_flow": ["section 1 description", "section 2 description", "..."],
+    "transition_style": "how sections connect",
+    "cta_pattern": "when and how call-to-action appears",
+    "outro_characteristics": "what happens in outro",
+    "pacing_rhythm": "fast-cuts|moderate|slow-burn|variable-speed",
+    "text_display_pattern": "how text appears and how long it stays"
+  },
+  
+  "visual_system": {
+    "layout": {
+      "grid_system": "rule-of-thirds|centered|asymmetric|golden-ratio|custom",
+      "safe_margins": "description of content boundaries",
+      "layer_hierarchy": ["bottom layer", "middle layers", "top layer"],
+      "subject_positioning": "where main subject sits in frame"
+    },
+    "color_system": {
+      "primary_purpose": "what primary color is used for",
+      "primary_appearance": "describe the primary color",
+      "secondary_purpose": "what secondary color is used for",
+      "secondary_appearance": "describe secondary color",
+      "accent_purpose": "what accent color is used for",
+      "accent_appearance": "describe accent color",
+      "background_treatment": "solid|gradient|video|blur|texture - be specific",
+      "contrast_strategy": "high-contrast|subtle|color-coded"
+    },
+    "typography": {
+      "headline_style": "detailed description of main text appearance",
+      "body_style": "detailed description of body text appearance",
+      "size_hierarchy_rules": "when to use large vs small text",
+      "alignment_pattern": "left|center|right|mixed - when each is used",
+      "text_animation": "fade|slide-left|slide-right|slide-up|slide-down|typewriter|none",
+      "uppercase_pattern": "when uppercase vs mixed case is used"
+    },
+    "graphic_style": "flat|gradient|3D|illustrated|photographic|minimal|hand-drawn",
+    "shape_language": "rounded|sharp|organic|geometric - describe recurring shapes"
+  },
+  
+  "motion_language": {
+    "camera_behavior": "static|panning|zooming|following|handheld|combination",
+    "subject_movement_pattern": "how subjects move through frame",
+    "text_entry_style": "how text enters frame",
+    "text_exit_style": "how text leaves frame",
+    "transition_vocabulary": ["transition types used"],
+    "animation_speed": "instant-snappy|smooth-slow|varied",
+    "static_vs_animated": "which elements move and which stay still"
+  },
+  
+  "content_formula": {
+    "primary_format": "talking-head|screencast|text-overlays|b-roll-montage|animation|mixed",
+    "format_mix_ratio": "if mixed, approximate percentages",
+    "b_roll_pattern": "never|sparse-for-emphasis|moderate|heavy-illustrative|constant",
+    "b_roll_purpose": "why b-roll is used in this template",
+    "text_visual_balance": "text-heavy|balanced|visual-heavy",
+    "storytelling_structure": "narrative|problem-solution|listicle|comparison|transformation|educational",
+    "information_density": "high|moderate|low - how much info per frame"
+  },
+  
+  "niche_targeting": {
+    "primary_niche": "specific niche (e.g., 'SaaS productivity tools', 'fitness transformation', 'real estate luxury homes')",
+    "secondary_niches": ["adjacent niches this could work for"],
+    "niche_conventions_followed": ["specific patterns standard in this industry"],
+    "audience_psychology": "what viewer expectations/desires this addresses",
+    "trust_signals": ["elements that build credibility for this audience"],
+    "visual_language_fit": "why these colors/fonts/pace work for this niche",
+    "template_niche_fit_reasoning": "why THIS template design is effective for THIS specific niche",
+    "confidence_score": 0.95
+  },
+  
+  "parametric_design": {
+    "fixed_elements": ["what must stay constant"],
+    "variable_elements": ["what can be customized"],
+    "content_slots": ["where unique content gets inserted"],
+    "customization_boundaries": "how much variation is acceptable",
+    "brand_adaptable_elements": ["what can be branded per client"]
+  },
+  
+  "technical_execution": {
+    "lighting_style": "high-key|low-key|natural|dramatic|flat",
+    "color_grading": "warm|cool|neutral|vibrant|desaturated|high-contrast",
+    "depth_of_field": "shallow-bokeh|medium|deep-focus",
+    "camera_quality_feel": "professional-cinema|prosumer|smartphone|webcam",
+    "graphics_execution": "flat-design|gradient|3D|hand-drawn|photo-realistic",
+    "stock_vs_custom_assessment": "which elements appear stock vs custom"
+  },
+  
+  "replication_blueprint": {
+    "software_category": "basic-editor|motion-graphics|animation|screen-recorder|specialized",
+    "required_capabilities": ["key features needed"],
+    "asset_requirements": {
+      "backgrounds": "what type",
+      "fonts": "what style characteristics", 
+      "graphics": "what elements",
+      "music": "what mood"
+    },
+    "workflow_steps": ["step 1", "step 2", "step 3"],
+    "complexity_level": "simple|moderate|complex|very-complex",
+    "automation_potential": "high|medium|low - can this be a reusable template",
+    "key_skills_needed": ["skill 1", "skill 2"]
+  },
+  
+  "template_metadata": {
+    "similar_template_styles": ["recognizable similar templates"],
+    "versatility": "highly-versatile|moderately-versatile|specialized",
+    "scalability": "works for any duration|specific duration range",
+    "distinctive_features": ["what makes this unique"],
+    "search_keywords": ["keyword1", "keyword2", "keyword3"],
+    "best_use_cases": ["when to use this template"]
+  }
+}
+
+CRITICAL INSTRUCTIONS:
+- Focus on OBSERVABLE patterns from the frames and transcript
+- Prioritize PARAMETRIC information - what defines the template vs what varies
+- Be SPECIFIC about niche targeting and why this design fits that niche
+- Avoid guessing at production metrics (time, cost, etc.)
+- Return ONLY the JSON object, no markdown formatting
+- All descriptions should enable someone to recreate the template
+- Emphasize the CONNECTION between template choices and niche effectiveness

@@ -3,10 +3,9 @@ import os
 from pathlib import Path
 from apify_client import ApifyClient
 
-# -------------------------------
-# Configuration
-# -------------------------------
-API_TOKEN = os.getenv("APIFY_API_TOKEN", "")  # Set APIFY_API_TOKEN environment variable
+# Needs env variable api token
+# export APIFY_API_TOKEN="{token}"
+API_TOKEN = os.getenv("APIFY_API_TOKEN", "")
 SCRAPED_VIDEOS_FILE = Path("tiktok/scraped_videos.json")
 
 # Load previously scraped video IDs

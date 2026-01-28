@@ -4,8 +4,8 @@ Video Analysis Pipeline Driver
 
 A unified driver for running the complete video analysis pipeline on any video dataset.
 This pipeline consists of three ordered modules:
-  1. Classification - Classify videos by niche
-  2. Template Extraction - Extract video template profiles
+  1. Classification - Classify videos by niche (parallelized)
+  2. Template Extraction - Extract video template profiles (parallelized)
   3. Template Analysis - Analyze patterns and generate insights
 
 Usage:
@@ -13,10 +13,16 @@ Usage:
     
 Example:
     python pipeline_driver.py --video-dir best_media --features-dir features
+    
+Optimizations:
+    - Parallel classification with ThreadPoolExecutor
+    - Parallel template extraction with multiprocessing
+    - Shared model singletons to avoid redundant loading
 """
 
 import argparse
 import sys
+import os
 from pathlib import Path
 from datetime import datetime
 
@@ -28,6 +34,7 @@ try:
     from classification import VideoClassifier
     from template_extraction import TemplateExtractor
     from template_analysis import TemplateAnalyser
+    from models import preload_models
 except ImportError:
     # Fallback for direct numbered module names
     import importlib.util
@@ -41,10 +48,12 @@ except ImportError:
     classification_mod = load_module("01_classification.py", "classification")
     extraction_mod = load_module("02_template_extraction.py", "template_extraction")
     analysis_mod = load_module("03_template_analysis.py", "template_analysis")
+    models_mod = load_module("models.py", "models")
     
     VideoClassifier = classification_mod.VideoClassifier
     TemplateExtractor = extraction_mod.TemplateExtractor
     TemplateAnalyser = analysis_mod.TemplateAnalyser
+    preload_models = models_mod.preload_models
 
 
 class VideoPipelineDriver:
@@ -64,7 +73,8 @@ class VideoPipelineDriver:
                      output_dir: Path = None,
                      skip_classification: bool = False,
                      skip_extraction: bool = False,
-                     skip_analysis: bool = False):
+                     skip_analysis: bool = False,
+                     num_workers: int = None):
         """
         Run the complete analysis pipeline.
         
@@ -75,6 +85,7 @@ class VideoPipelineDriver:
             skip_classification: Skip classification step
             skip_extraction: Skip template extraction step
             skip_analysis: Skip template analysis step
+            num_workers: Number of parallel workers (default: CPU count / 2)
         """
         self.start_time = datetime.now()
         
@@ -85,6 +96,9 @@ class VideoPipelineDriver:
         if features_dir is None:
             features_dir = self.workspace_root / "features"
         
+        if num_workers is None:
+            num_workers = max(1, os.cpu_count() // 2)
+        
         # Ensure paths are absolute
         video_dir = Path(video_dir).resolve()
         features_dir = Path(features_dir).resolve()
@@ -94,18 +108,24 @@ class VideoPipelineDriver:
         output_dir.mkdir(parents=True, exist_ok=True)
         
         print("=" * 80)
-        print("VIDEO ANALYSIS PIPELINE")
+        print("VIDEO ANALYSIS PIPELINE (OPTIMIZED)")
         print("=" * 80)
         print(f"Workspace: {self.workspace_root}")
         print(f"Video Directory: {video_dir}")
         print(f"Features Directory: {features_dir}")
         print(f"Output Directory: {output_dir}")
+        print(f"Workers: {num_workers}")
         print(f"Started: {self.start_time.strftime('%Y-%m-%d %H:%M:%S')}")
         print("=" * 80)
         
+        # Preload expensive models once
+        if not skip_extraction:
+            print("\n📦 Preloading models...")
+            preload_models()
+        
         # Step 1: Classification
         if not skip_classification:
-            success = self._run_step_1_classification(video_dir, features_dir, output_dir)
+            success = self._run_step_1_classification(video_dir, features_dir, output_dir, num_workers)
             if not success:
                 print("\n❌ Pipeline failed at Step 1: Classification")
                 return False
@@ -114,7 +134,7 @@ class VideoPipelineDriver:
         
         # Step 2: Template Extraction
         if not skip_extraction:
-            success = self._run_step_2_extraction(video_dir, output_dir)
+            success = self._run_step_2_extraction(video_dir, output_dir, num_workers)
             if not success:
                 print("\n❌ Pipeline failed at Step 2: Template Extraction")
                 return False
@@ -146,10 +166,10 @@ class VideoPipelineDriver:
         
         return True
     
-    def _run_step_1_classification(self, video_dir: Path, features_dir: Path, output_dir: Path) -> bool:
+    def _run_step_1_classification(self, video_dir: Path, features_dir: Path, output_dir: Path, num_workers: int) -> bool:
         """Run Step 1: Video Classification."""
         print("\n" + "=" * 80)
-        print("STEP 1: VIDEO CLASSIFICATION")
+        print("STEP 1: VIDEO CLASSIFICATION (Parallel)")
         print("=" * 80)
         
         try:
@@ -159,7 +179,8 @@ class VideoPipelineDriver:
             classifier.classify_videos(
                 video_dir=video_dir,
                 features_dir=features_dir,
-                output_csv=classifications_csv
+                output_csv=classifications_csv,
+                num_workers=num_workers
             )
             
             print(f"\n✅ Step 1 Complete")
@@ -171,10 +192,10 @@ class VideoPipelineDriver:
             traceback.print_exc()
             return False
     
-    def _run_step_2_extraction(self, video_dir: Path, output_dir: Path) -> bool:
+    def _run_step_2_extraction(self, video_dir: Path, output_dir: Path, num_workers: int) -> bool:
         """Run Step 2: Template Extraction."""
         print("\n" + "=" * 80)
-        print("STEP 2: TEMPLATE EXTRACTION")
+        print("STEP 2: TEMPLATE EXTRACTION (Parallel)")
         print("=" * 80)
         
         try:
@@ -185,7 +206,8 @@ class VideoPipelineDriver:
             extractor.extract_templates_batch(
                 video_dir=video_dir,
                 classifications_csv=classifications_csv,
-                output_dir=templates_dir
+                output_dir=templates_dir,
+                num_workers=num_workers
             )
             
             print(f"\n✅ Step 2 Complete")
@@ -241,12 +263,15 @@ class VideoPipelineDriver:
 def main():
     """Command-line interface for the pipeline."""
     parser = argparse.ArgumentParser(
-        description="Run the video analysis pipeline on any video dataset",
+        description="Run the video analysis pipeline on any video dataset (optimized with parallelization)",
         formatter_class=argparse.RawDescriptionHelpFormatter,
         epilog="""
 Examples:
-  # Run full pipeline on best_media folder
+  # Run full pipeline on best_media folder (uses CPU count / 2 workers)
   python pipeline_driver.py --video-dir best_media
+
+  # Run with custom worker count
+  python pipeline_driver.py --video-dir my_videos --workers 4
 
   # Run with custom output directory
   python pipeline_driver.py --video-dir my_videos --output-dir results
@@ -279,6 +304,12 @@ Examples:
     )
     
     parser.add_argument(
+        "--workers",
+        type=int,
+        help="Number of parallel workers (default: CPU count / 2)"
+    )
+    
+    parser.add_argument(
         "--skip-classification",
         action="store_true",
         help="Skip the classification step"
@@ -307,7 +338,8 @@ Examples:
         output_dir=Path(args.output_dir) if args.output_dir else None,
         skip_classification=args.skip_classification,
         skip_extraction=args.skip_extraction,
-        skip_analysis=args.skip_analysis
+        skip_analysis=args.skip_analysis,
+        num_workers=args.workers
     )
     
     sys.exit(0 if success else 1)

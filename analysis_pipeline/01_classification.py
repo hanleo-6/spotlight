@@ -8,6 +8,8 @@ import csv
 import re
 from collections import Counter
 from typing import Dict, List
+import os
+from concurrent.futures import ThreadPoolExecutor, as_completed
 
 from niche_taxonomy import NicheTaxonomy
 
@@ -69,40 +71,60 @@ class VideoClassifier:
 
         return " ".join(text_parts)
 
-    def classify_videos(self, video_dir: Path, features_dir: Path, output_csv: Path):
+    def classify_videos(self, video_dir: Path, features_dir: Path, output_csv: Path, num_workers: int = None):
         """
-        Classify all videos in a directory by niche.
+        Classify all videos in a directory by niche using parallel processing.
         
         Args:
             video_dir: Directory containing video files
             features_dir: Directory containing feature JSON files
             output_csv: Path to output CSV file with classifications
+            num_workers: Number of parallel workers (default: CPU count / 2)
         """
+        # Ensure paths are resolved
+        video_dir = Path(video_dir).resolve()
+        features_dir = Path(features_dir).resolve()
+        output_csv = Path(output_csv).resolve()
+        
         if not video_dir.exists():
             print(f"Video directory not found: {video_dir}")
-            return
+            return []
 
-        results = []
+        # Set default worker count
+        if num_workers is None:
+            num_workers = max(1, os.cpu_count() // 2)
+        
         video_files = sorted(video_dir.glob("**/*.mp4"))
         
-        print(f"Classifying {len(video_files)} videos...")
+        print(f"Classifying {len(video_files)} videos using {num_workers} parallel workers...")
         
-        for video_path in video_files:
-            video_id = self.extract_video_id(video_path.name)
-            features = self.load_feature_data(video_id, features_dir)
-            text_content = self.get_text_from_features(features)
+        results = []
+        
+        # Process videos in parallel
+        with ThreadPoolExecutor(max_workers=num_workers) as executor:
+            # Submit all tasks
+            future_to_video = {
+                executor.submit(
+                    self._classify_single_video, 
+                    video_path, 
+                    features_dir, 
+                    video_dir
+                ): video_path 
+                for video_path in video_files
+            }
             
-            niche = self.taxonomy.classify_text(text_content)
-            
-            results.append({
-                "video_id": video_id,
-                "filename": video_path.name,
-                "niche": niche,
-                "relative_path": str(video_path.relative_to(video_dir)),
-                "text_sample": text_content[:100] if text_content else ""
-            })
-            
-            print(f"  {video_path.name} → {niche}")
+            # Collect results as they complete
+            completed = 0
+            for future in as_completed(future_to_video):
+                try:
+                    result = future.result()
+                    if result:
+                        results.append(result)
+                        completed += 1
+                        print(f"  [{completed}/{len(video_files)}] {result['filename']} → {result['niche']}")
+                except Exception as e:
+                    video_path = future_to_video[future]
+                    print(f"  ❌ Error processing {video_path.name}: {e}")
 
         # Write results to CSV
         output_csv.parent.mkdir(parents=True, exist_ok=True)
@@ -122,6 +144,33 @@ class VideoClassifier:
         print(f"\nResults saved to: {output_csv}")
         
         return results
+
+    def _classify_single_video(self, video_path: Path, features_dir: Path, video_dir: Path) -> Dict:
+        """
+        Classify a single video. Designed to be called from thread pool.
+        
+        Args:
+            video_path: Path to video file
+            features_dir: Directory containing feature JSON files
+            video_dir: Root video directory for relative paths
+            
+        Returns:
+            dict: Classification result for this video
+        """
+        video_id = self.extract_video_id(video_path.name)
+        features = self.load_feature_data(video_id, features_dir)
+        text_content = self.get_text_from_features(features)
+        
+        classification = self.taxonomy.classify_content(text_content)
+        niche = classification.get("category", "unknown")
+        
+        return {
+            "video_id": video_id,
+            "filename": video_path.name,
+            "niche": niche,
+            "relative_path": str(video_path.relative_to(video_dir)),
+            "text_sample": text_content[:100] if text_content else ""
+        }
 
 
 def main():

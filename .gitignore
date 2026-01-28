@@ -1,4 +1,7 @@
 /data/input/
+/data/output/
+/features_ig/
+/features_tiktok/
 
 # Secrets and credentials
 **/credentials.json
