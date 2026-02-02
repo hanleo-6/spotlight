@@ -1,13 +1,9 @@
 /data/input/
 /data/output/
-/features_ig/
-/features_tiktok/
+/old_analysis/manual_analysis/thumbnail_extraction/thumbnails/
 
 # Secrets and credentials
 **/credentials.json
 **/token.pickle
 **/.env
 *.pickle
-
-# API keys and tokens - use environment variables instead
-apify_api_token.txt
