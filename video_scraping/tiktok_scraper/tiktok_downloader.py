@@ -1,10 +1,11 @@
 import json
 from pathlib import Path
 from yt_dlp import YoutubeDL
+from yt_dlp.utils import DownloadError
 
 INPUT_JSON = Path("video_scraping/tiktok_scraper/tiktok_data_2.json")
 OUTPUT_DIR = Path("data/input/tiktok_vids")
-OUTPUT_DIR.mkdir(exist_ok=True)
+OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
 
 def load_urls(path: Path):
     with path.open("r", encoding="utf-8") as f:
@@ -53,13 +54,27 @@ ydl_opts = {
     ),
 }
 
-from yt_dlp.utils import DownloadError
-
 failed = []
+
+def is_already_downloaded(ydl: YoutubeDL, url: str) -> bool:
+    try:
+        info = ydl.extract_info(url, download=False)
+    except DownloadError:
+        return False
+
+    filename = ydl.prepare_filename(info)
+    video_path = Path(filename)
+    merge_ext = ydl_opts.get("merge_output_format")
+    if merge_ext and video_path.suffix != f".{merge_ext}":
+        video_path = video_path.with_suffix(f".{merge_ext}")
+
+    return video_path.exists()
 
 with YoutubeDL(ydl_opts) as ydl:
     for url in urls:
         try:
+            if is_already_downloaded(ydl, url):
+                continue
             ydl.download([url])
         except DownloadError as e:
             msg = str(e)

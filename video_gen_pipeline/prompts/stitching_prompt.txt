@@ -1,0 +1,5 @@
+[WITHIN_SEGMENT]
+Ensure each segment contributes a clear mini-arc (intro → demo → CTA). If a beat (e.g., the demo) needs more time, allow it to continue across adjacent segments, but preserve the mini-arc across the segment group so the viewer experiences a complete arc. Across the full video, maintain a coherent macro-arc made of sections built from these segments. Maintain strict visual continuity within the segment: same people, wardrobe, props, devices, set dressing, camera position, lighting, color tone, and typography. Avoid introducing new objects or changing fonts, on-screen styling, or layout mid-segment.
+
+[BETWEEN_SEGMENTS]
+Create seamless handoffs between segments by preserving the prior clip's visual identity. Keep the same people (faces, hair, wardrobe), the same objects and devices (e.g., laptops, phones), the same environment, camera framing, lighting, color balance, and motion style. Typography must remain identical in font, weight, size, color, and placement. Only advance the action or dialogue; do not introduce new subjects or change the look and feel.

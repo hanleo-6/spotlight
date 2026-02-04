@@ -1,0 +1,791 @@
+import json
+import os
+import random
+import re
+import subprocess
+import time
+from typing import Any, Dict, List, Optional
+
+from dotenv import load_dotenv
+from google import genai
+from google.genai import errors, types
+
+from tts_generator import TTSAudioGenerator, overlay_audio_on_video
+
+load_dotenv()
+gemini_api_key = os.getenv("GEMINI_API_KEY")
+client = genai.Client(api_key=gemini_api_key)
+
+# =============================================================================
+# CONFIGURATION SECTION - MODIFY THESE VALUES FOR YOUR USE CASE
+# =============================================================================
+
+# Input prompts and transcript
+IMAGE_PROMPT_FILE = "video_gen_pipeline/prompts/image_prompt_stitching.txt"
+VIDEO_PROMPT_FILE = "video_gen_pipeline/prompts/video_prompt_stitching.txt"
+TIMESTAMPED_TRANSCRIPT_FILE = "video_gen_pipeline/prompts/timestamped_transcript.txt"
+STITCHING_PROMPT_FILE = "video_gen_pipeline/prompts/stitching_prompt.txt"
+
+# Output
+FINAL_OUTPUT_BASE_DIR = "data/output/generated_videos"
+
+# Step 1
+GENERATE_IMAGE = True
+GENERATE_VIDEO_WITH_SEGMENT_STITCHING = True
+
+# Video settings
+VIDEO_ASPECT_RATIO = "9:16"
+VIDEO_DURATION_SECONDS = 8
+SEGMENT_DURATION_SECONDS = 8
+
+# Testing
+# Set to an integer to limit how many segments are generated (e.g., 2). Use None for no limit.
+MAX_SEGMENTS_TO_GENERATE = 2
+
+# Continuity and segment extension
+EXTEND_SEGMENTS = True
+EXTEND_REMOVE_OVERLAP = True
+LAST_FRAME_IMAGE_NAME = "last_frame.png"
+USE_TRANSCRIPT_TIMESTAMPS = True
+USE_PREVIOUS_VIDEO_CONTEXT = True  # Pass prior segment video into Veo for smoother stitching
+
+# Person reference image
+USE_PERSON_REFERENCE_IMAGE = True
+PERSON_REFERENCE_IMAGE_PATH = "video_gen_pipeline/assets/person_reference.jpg"
+
+# Audio (skipped when USE_PREVIOUS_VIDEO_CONTEXT=True)
+GENERATE_AUDIO = False
+OVERLAY_AUDIO_ON_VIDEOS = True
+TTS_VOICE_NAME = "en-US-Neural2-C"
+TTS_SPEAKING_RATE = 1.0
+TTS_PITCH = 0.0
+
+# Rate limiting
+ENABLE_RATE_LIMITING = True
+MAX_RETRIES = 3
+INITIAL_RETRY_DELAY_SECONDS = 5
+RETRY_BACKOFF_MULTIPLIER = 2
+MAX_RETRY_DELAY_SECONDS = 300
+JITTER_ENABLED = True
+DELAY_BETWEEN_VIDEO_GENERATIONS = 2
+
+# =============================================================================
+# END CONFIGURATION SECTION
+# =============================================================================
+
+# Initialize TTS generator (only if audio generation is enabled)
+tts_generator = (
+    TTSAudioGenerator(
+        voice_name=TTS_VOICE_NAME,
+        speaking_rate=TTS_SPEAKING_RATE,
+        pitch=TTS_PITCH,
+    )
+    if GENERATE_AUDIO
+    else None
+)
+
+
+def call_api_with_retries(
+    api_call_func,
+    *args,
+    max_retries: int = MAX_RETRIES,
+    initial_delay: float = INITIAL_RETRY_DELAY_SECONDS,
+    backoff_multiplier: float = RETRY_BACKOFF_MULTIPLIER,
+    max_delay: float = MAX_RETRY_DELAY_SECONDS,
+    operation_name: str = "API call",
+    **kwargs
+):
+    """
+    Call an API function with exponential backoff retry logic for rate limiting.
+    
+    Args:
+        api_call_func: Function to call
+        *args: Positional arguments for the function
+        max_retries: Maximum number of retries
+        initial_delay: Initial delay before first retry in seconds
+        backoff_multiplier: Multiply delay by this for each retry
+        max_delay: Cap maximum delay at this value
+        operation_name: Name of operation for logging
+        **kwargs: Keyword arguments for the function
+    
+    Returns:
+        The result of the API call
+    
+    Raises:
+        The last exception if all retries are exhausted
+    """
+    if not ENABLE_RATE_LIMITING:
+        return api_call_func(*args, **kwargs)
+    
+    last_exception = None
+    current_delay = initial_delay
+    
+    for attempt in range(max_retries + 1):
+        try:
+            return api_call_func(*args, **kwargs)
+        except errors.ClientError as e:
+            last_exception = e
+            
+            # Check if this is a rate limiting error
+            if e.code == 429 or "RESOURCE_EXHAUSTED" in str(e):
+                if attempt < max_retries:
+                    # Add jitter if enabled
+                    jitter = random.uniform(0, current_delay * 0.1) if JITTER_ENABLED else 0
+                    wait_time = current_delay + jitter
+                    
+                    print(f"\n⚠ Rate limited on {operation_name} (attempt {attempt + 1}/{max_retries + 1})")
+                    print(f"Waiting {wait_time:.1f} seconds before retry...")
+                    time.sleep(wait_time)
+                    
+                    # Exponential backoff for next retry
+                    current_delay = min(current_delay * backoff_multiplier, max_delay)
+                    continue
+                else:
+                    # Out of retries
+                    print(f"\n✗ Rate limiting failed after {max_retries} retries for {operation_name}")
+                    raise
+            else:
+                # Not a rate limiting error, fail immediately
+                raise
+    
+    # Should not reach here, but raise last exception just in case
+    raise last_exception
+
+
+def _get_next_run_index(base_dir: str) -> int:
+    """Get the next index for a new run. Reuses the last folder if incomplete, otherwise creates a new one."""
+    if not os.path.exists(base_dir):
+        return 1
+    
+    max_index = 0
+    try:
+        for item in os.listdir(base_dir):
+            item_path = os.path.join(base_dir, item)
+            if os.path.isdir(item_path) and item.isdigit():
+                max_index = max(max_index, int(item))
+    except (OSError, ValueError):
+        pass
+    
+    if max_index == 0:
+        return 1
+    
+    # Check if the last run is complete by looking for a completion marker
+    last_run_dir = os.path.join(base_dir, str(max_index))
+    completion_marker = os.path.join(last_run_dir, ".complete")
+    
+    # If the last run doesn't have a completion marker, reuse it
+    if not os.path.exists(completion_marker):
+        return max_index
+    
+    # Otherwise, create a new run
+    return max_index + 1
+
+
+def generate_reference_image(prompt: str, output_path: str) -> None:
+    """Generate the initial reference image using Gemini."""
+    # Skip if image already exists
+    if os.path.exists(output_path):
+        file_size_kb = os.path.getsize(output_path) / 1024
+        print(f"⊘ Reference image already exists: {output_path} ({file_size_kb:.1f} KB)")
+        return
+    
+    print(f"Generating reference image from prompt...")
+    try:
+        response = client.models.generate_content(
+            model="gemini-3-pro-image-preview",
+            contents=[prompt],
+            config=types.GenerateContentConfig(
+                image_config=types.ImageConfig(
+                    aspect_ratio="9:16",
+                ),
+            ),
+        )
+        
+        # Check if response is valid
+        if not response:
+            raise RuntimeError("Received empty response from Gemini API")
+        
+        if not hasattr(response, 'parts') or response.parts is None:
+            raise RuntimeError(f"Response missing 'parts' attribute. Response: {response}")
+        
+        # Look for image data in response
+        image_saved = False
+        for part in response.parts:
+            if part.inline_data is not None:
+                image = part.as_image()
+                image.save(output_path)
+                print(f"Reference image saved to {output_path}")
+                image_saved = True
+                break
+        
+        if not image_saved:
+            raise RuntimeError("No image data found in response parts")
+            
+    except errors.ClientError as e:
+        print("=== ClientError from Gemini ===")
+        print("Error:", e)
+        if hasattr(e, 'response_json'):
+            print("Response JSON:", e.response_json)
+        raise
+    except Exception as e:
+        print(f"Error generating image: {e}")
+        raise
+
+
+def generate_video_from_image(
+    video_prompt: str,
+    image_path: str,
+    output_path: str,
+    aspect_ratio: str = "9:16",
+    duration_seconds: int = 4,
+    previous_video_path: Optional[str] = None,
+    person_reference_image_path: Optional[str] = None,
+) -> None:
+    """Generate video from reference image using Veo-3.1."""
+    # Skip if video already exists
+    if os.path.exists(output_path):
+        file_size_mb = os.path.getsize(output_path) / (1024 * 1024)
+        print(f"⊘ Video already exists: {output_path} ({file_size_mb:.1f} MB)")
+        return
+    
+    reference_image_path = image_path
+    if person_reference_image_path and os.path.exists(person_reference_image_path):
+        reference_image_path = person_reference_image_path
+
+    print(f"Loading reference image from {reference_image_path}...")
+    image = types.Image.from_file(location=reference_image_path)
+
+    # Optional previous video context for continuity
+    video_context = None
+    if previous_video_path and os.path.exists(previous_video_path):
+        print(f"Loading previous video context from {previous_video_path}...")
+        video_context = types.Video.from_file(location=previous_video_path)
+
+    # Enhance prompt with person reference if available
+    enhanced_prompt = video_prompt
+    if person_reference_image_path and os.path.exists(person_reference_image_path):
+        enhanced_prompt = (
+            "Use the person in the reference image as the subject. Preserve identity, "
+            "facial features, hair, and wardrobe across all frames. "
+            f"{enhanced_prompt}"
+        )
+
+    print(f"Starting video generation...")
+    
+    def _generate_video():
+        return client.models.generate_videos(
+            model="veo-3.1-generate-preview",
+            prompt=enhanced_prompt,
+            image=image,
+            video=video_context,
+            config=types.GenerateVideosConfig(
+                aspect_ratio=aspect_ratio,
+                duration_seconds=duration_seconds,
+            ),
+        )
+    
+    try:
+        operation = call_api_with_retries(
+            _generate_video,
+            operation_name="video generation"
+        )
+    except errors.ClientError as e:
+        print("=== ClientError from Veo ===")
+        print("Status code:", e.code)
+        if hasattr(e, 'response_json') and e.response_json:
+            print("Response JSON:", e.response_json)
+        raise
+
+    print(f"Operation started: {operation.name}")
+
+    # Poll until video generation completes
+    while not operation.done:
+        print("Waiting for video generation to complete...")
+        time.sleep(10)
+        operation = client.operations.get(operation)
+
+    # Check for errors
+    if operation.error:
+        print("Video generation FAILED:")
+        print(operation.error)
+        raise SystemExit(1)
+
+    if not operation.response:
+        raise RuntimeError(
+            f"Video generation completed but response is None. "
+            f"Operation metadata: {operation.metadata}"
+        )
+
+    if not getattr(operation.response, "generated_videos", None):
+        raise RuntimeError(
+            f"Video generation completed but no generated_videos found. "
+            f"Operation response: {operation.response}"
+        )
+
+    # Save the generated video
+    video = operation.response.generated_videos[0]
+    client.files.download(file=video.video)
+    video.video.save(output_path)
+    
+    # Add delay between video generations to avoid hitting rate limits
+    if ENABLE_RATE_LIMITING and DELAY_BETWEEN_VIDEO_GENERATIONS > 0:
+        print(f"Waiting {DELAY_BETWEEN_VIDEO_GENERATIONS}s before next video generation...")
+        time.sleep(DELAY_BETWEEN_VIDEO_GENERATIONS)
+    print(f"Generated video saved to {output_path}")
+
+
+def _split_segment_prompts(raw_prompt: str) -> List[str]:
+    """Split prompt file content into per-segment prompts."""
+    # Try new delimiter first, fallback to old one
+    if "\n---SEGMENT_BREAK---\n" in raw_prompt:
+        prompts = [p.strip() for p in raw_prompt.split("\n---SEGMENT_BREAK---\n") if p.strip()]
+    else:
+        prompts = [p.strip() for p in raw_prompt.split("\n---\n") if p.strip()]
+    return prompts
+
+
+def _load_timestamped_transcript(path: str) -> Dict[str, Any]:
+    """Load timestamped transcript file and parse segment boundaries."""
+    if not os.path.exists(path):
+        return {"segments": []}
+    
+    with open(path, "r") as f:
+        content = f.read()
+    
+    segments = {}
+    current_segment = None
+    current_text = []
+    
+    for line in content.split("\n"):
+        if line.startswith("[Segment"):
+            if current_segment is not None and current_text:
+                # Store previous segment
+                segments[current_segment]["text"] = "\n".join(current_text).strip()
+            # Extract segment number from "[Segment N: label]"
+            match = re.search(r'\[Segment (\d+):', line)
+            if match:
+                current_segment = int(match.group(1))
+                segments[current_segment] = {"start_time": 0.0, "end_time": 0.0, "text": ""}
+            current_text = []
+        elif line.startswith("Time:") and current_segment is not None:
+            # Parse time: "Time: 0.0s - 8.0s"
+            time_match = re.search(r'Time: ([\d.]+)s - ([\d.]+)s', line)
+            if time_match and current_segment in segments:
+                segments[current_segment]["start_time"] = float(time_match.group(1))
+                segments[current_segment]["end_time"] = float(time_match.group(2))
+        elif line.startswith("Transcript:") and current_segment is not None:
+            continue
+        elif current_segment is not None and line and not line.startswith("-") and not line.startswith("["):
+            current_text.append(line)
+    
+    # Store final segment
+    if current_segment is not None and current_text:
+        segments[current_segment]["text"] = "\n".join(current_text).strip()
+    
+    return {"segments": segments}
+
+
+def _extract_last_frame(video_path: str, output_path: str) -> bool:
+    """Extract the last frame of a video using ffmpeg. Returns True on success."""
+    if not os.path.exists(video_path):
+        return False
+    cmd = [
+        "ffmpeg",
+        "-y",
+        "-sseof", "-0.1",
+        "-i", video_path,
+        "-vframes", "1",
+        output_path,
+    ]
+    try:
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return os.path.exists(output_path)
+    except Exception:
+        return False
+
+
+def _sentence_split(text: str) -> List[str]:
+    parts = re.split(r"(?<=[.!?])\s+", text.strip())
+    return [p.strip() for p in parts if p.strip()]
+
+
+def _remove_overlap(prev_prompt: str, next_prompt: str) -> str:
+    """Remove sentences in next_prompt that appear in prev_prompt (simple heuristic)."""
+    prev_sentences = set(_sentence_split(prev_prompt))
+    next_sentences = _sentence_split(next_prompt)
+    kept = [s for s in next_sentences if s not in prev_sentences]
+    return " ".join(kept).strip()
+
+
+def _compose_extension_prompt(action_delta: str, invariants: str, transcript_context: str = None) -> str:
+    """Compose a strict continuation prompt with transcript context."""
+    base = (
+        "Continue seamlessly from the last frame. Maintain the same camera position, framing, "
+        "lighting, subject appearance, environment, and tone."
+    )
+    if invariants:
+        base = f"{base} {invariants}"
+    
+    parts = [base]
+    if transcript_context:
+        parts.append(f"Transcript for this segment: {transcript_context}")
+    if action_delta:
+        parts.append(action_delta)
+    
+    return " ".join(parts)
+
+
+def _load_stitching_prompts(path: str) -> Dict[str, str]:
+    """Load stitching prompts for within-segment and between-segment modes."""
+    with open(path, "r") as f:
+        raw = f.read()
+
+    def _extract_block(label: str) -> str:
+        start = raw.find(f"[{label}]")
+        if start == -1:
+            return ""
+        start += len(f"[{label}]")
+        end = raw.find("\n[", start)
+        return raw[start:end].strip() if end != -1 else raw[start:].strip()
+
+    return {
+        "within_segment": _extract_block("WITHIN_SEGMENT"),
+        "between_segments": _extract_block("BETWEEN_SEGMENTS"),
+    }
+
+
+def _compose_segment_prompt(segment_prompt: str, within_stitching: str) -> str:
+    if within_stitching:
+        return f"{segment_prompt}\n\nStitching guidance (within segment): {within_stitching}"
+    return segment_prompt
+
+
+def _compose_between_segments_prompt(prev_prompt: str, next_prompt: str, between_stitching: str) -> str:
+    if between_stitching:
+        return (
+            f"Create a seamless transition from the previous segment to the next. "
+            f"Previous segment summary: {prev_prompt}\n"
+            f"Next segment summary: {next_prompt}\n"
+            f"Stitching guidance (between segments): {between_stitching}"
+        )
+    return f"Transition from: {prev_prompt} -> {next_prompt}"
+
+
+def _stitch_videos(segment_paths: List[str], output_path: str) -> bool:
+    """Stitch multiple video segments into one final video using ffmpeg concat demuxer.
+    
+    Args:
+        segment_paths: List of paths to video segments in order
+        output_path: Path where the final stitched video will be saved
+    
+    Returns:
+        True if stitching succeeded, False otherwise
+    """
+    if not segment_paths:
+        print("No segments to stitch.")
+        return False
+    
+    if len(segment_paths) == 1:
+        # If only one segment, just copy it
+        print(f"Only one segment, copying to output...")
+        import shutil
+        shutil.copy(segment_paths[0], output_path)
+        print(f"Single segment copied to {output_path}")
+        return True
+    
+    # Create a concat demuxer file
+    concat_file_path = os.path.join(os.path.dirname(output_path), "concat_list.txt")
+    try:
+        with open(concat_file_path, "w") as f:
+            for segment_path in segment_paths:
+                # Use absolute path to avoid issues
+                abs_path = os.path.abspath(segment_path)
+                f.write(f"file '{abs_path}'\n")
+        
+        print(f"Stitching {len(segment_paths)} segments into final video...")
+        cmd = [
+            "ffmpeg",
+            "-y",  # Overwrite output file if it exists
+            "-f", "concat",
+            "-safe", "0",
+            "-i", concat_file_path,
+            "-c", "copy",  # Copy codec without re-encoding for speed
+            "-loglevel", "info",
+            output_path,
+        ]
+        
+        subprocess.run(cmd, check=True)
+        
+        if os.path.exists(output_path):
+            file_size_mb = os.path.getsize(output_path) / (1024 * 1024)
+            print(f"✓ Video stitching completed successfully!")
+            print(f"  Output: {output_path}")
+            print(f"  Size: {file_size_mb:.1f} MB")
+            return True
+        else:
+            print(f"✗ Stitching failed: Output file not created")
+            return False
+            
+    except subprocess.CalledProcessError as e:
+        print(f"✗ ffmpeg command failed with error code {e.returncode}")
+        return False
+    except Exception as e:
+        print(f"✗ Stitching failed with error: {e}")
+        return False
+    finally:
+        # Clean up concat file
+        if os.path.exists(concat_file_path):
+            os.remove(concat_file_path)
+
+
+def main():
+    """Main pipeline to generate videos from templates."""
+    # Get the next run index
+    run_index = _get_next_run_index(FINAL_OUTPUT_BASE_DIR)
+    run_dir = os.path.join(FINAL_OUTPUT_BASE_DIR, str(run_index))
+    os.makedirs(run_dir, exist_ok=True)
+    
+    # Define output paths within the run directory
+    image_output_path = os.path.join(run_dir, f"generated_image.png")
+    segment_output_dir = os.path.join(run_dir, "segments")
+    audio_output_dir = os.path.join(run_dir, "audio")
+    final_stitched_output_path = os.path.join(run_dir, "stitched_video.mp4")
+    final_audio_path = os.path.join(run_dir, "stitched_audio.mp3")
+    final_video_with_audio_path = os.path.join(run_dir, "final_video_with_audio.mp4")
+    
+    print(f"Run index: {run_index}")
+    print(f"Output directory: {run_dir}\n")
+    
+    # Read prompts from files
+    with open(IMAGE_PROMPT_FILE, "r") as f:
+        image_prompt = f.read().strip()
+    
+    with open(VIDEO_PROMPT_FILE, "r") as f:
+        video_prompt = f.read().strip()
+
+    stitching_prompts = _load_stitching_prompts(STITCHING_PROMPT_FILE)
+    
+    # Load timestamped transcript if available
+    timestamped_data = _load_timestamped_transcript(TIMESTAMPED_TRANSCRIPT_FILE)
+
+    if MAX_SEGMENTS_TO_GENERATE is not None:
+        limit = max(0, int(MAX_SEGMENTS_TO_GENERATE))
+        print(f"⚙ Limiting segments to first {limit} for testing")
+        if timestamped_data.get("segments"):
+            limited_keys = sorted(timestamped_data["segments"].keys())[:limit]
+            timestamped_data["segments"] = {
+                k: timestamped_data["segments"][k] for k in limited_keys
+            }
+    
+    # Validate person reference image
+    person_reference_path = None
+    if USE_PERSON_REFERENCE_IMAGE:
+        if not os.path.exists(PERSON_REFERENCE_IMAGE_PATH):
+            raise FileNotFoundError(
+                f"Person reference image not found: {PERSON_REFERENCE_IMAGE_PATH}"
+            )
+        person_reference_path = PERSON_REFERENCE_IMAGE_PATH
+
+    # If using previous video context, skip separate TTS audio generation
+    generate_audio = GENERATE_AUDIO and not USE_PREVIOUS_VIDEO_CONTEXT
+    overlay_audio = OVERLAY_AUDIO_ON_VIDEOS and generate_audio
+
+    # Generate audio from transcript segments if enabled
+    segment_audio_paths = {}
+    if generate_audio and tts_generator and timestamped_data.get("segments"):
+        print(f"\n{'='*60}")
+        print("Generating audio from transcript segments")
+        print(f"{'='*60}")
+        segment_audio_paths = tts_generator.generate_segment_audio(
+            timestamped_data["segments"],
+            audio_output_dir,
+        )
+        print(f"✓ Generated audio for {len(segment_audio_paths)} segments")
+    elif GENERATE_AUDIO and USE_PREVIOUS_VIDEO_CONTEXT:
+        print("⚠ Skipping TTS audio generation because USE_PREVIOUS_VIDEO_CONTEXT=True.")
+    elif GENERATE_AUDIO:
+        print("⚠ Audio generation enabled but no transcript segments found. Skipping audio generation.")
+    
+    if GENERATE_IMAGE:
+        generate_reference_image(image_prompt, image_output_path)
+
+    if GENERATE_VIDEO_WITH_SEGMENT_STITCHING:
+        os.makedirs(segment_output_dir, exist_ok=True)
+
+        segment_prompts = _split_segment_prompts(video_prompt)
+        if not segment_prompts:
+            raise ValueError("No segment prompts found in video prompt file.")
+
+        if MAX_SEGMENTS_TO_GENERATE is not None:
+            limit = max(0, int(MAX_SEGMENTS_TO_GENERATE))
+            segment_prompts = segment_prompts[:limit]
+            if not segment_prompts:
+                raise ValueError("Segment limit resulted in zero prompts. Increase MAX_SEGMENTS_TO_GENERATE.")
+
+        # Use all segments from the prompt file (dynamic based on transcript length)
+        # Don't artificially limit to TARGET_TOTAL_SECONDS
+        target_segments = len(segment_prompts)
+        total_expected_seconds = target_segments * SEGMENT_DURATION_SECONDS
+        print(f"\n{'='*60}")
+        print(f"Generating {target_segments} segments ({total_expected_seconds}s total)")
+        print(f"{'='*60}")
+
+        # Find the last completed segment (resume from there if incomplete run)
+        start_segment = 1
+        for check_i in range(target_segments, 0, -1):
+            seg_check_path = os.path.join(segment_output_dir, f"segment_{check_i:02d}.mp4")
+            if os.path.exists(seg_check_path):
+                start_segment = check_i + 1
+                print(f"Found existing segment {check_i}, resuming from segment {start_segment}")
+                break
+
+        generated_segments = []
+        # Load previously generated segments if resuming
+        for i in range(1, start_segment):
+            seg_path = os.path.join(segment_output_dir, f"segment_{i:02d}.mp4")
+            if os.path.exists(seg_path):
+                generated_segments.append(seg_path)
+        
+        # Separate list for segments with audio overlaid (if audio generation enabled)
+        segments_with_audio = []
+        if overlay_audio and segment_audio_paths:
+            for idx, seg_path in enumerate(generated_segments, start=1):
+                seg_with_audio = os.path.join(segment_output_dir, f"segment_{idx:02d}_with_audio.mp4")
+                if os.path.exists(seg_with_audio):
+                    segments_with_audio.append(seg_with_audio)
+                else:
+                    segments_with_audio.append(None)
+        
+        for i, seg_prompt in enumerate(segment_prompts, start=1):
+            # Skip if segment already exists
+            seg_output = os.path.join(segment_output_dir, f"segment_{i:02d}.mp4")
+            if os.path.exists(seg_output):
+                print(f"\nSegment {i}/{target_segments} already exists, skipping...")
+                generated_segments.append(seg_output)
+                continue
+            
+            if i < start_segment:
+                continue
+            
+            # Get transcript context for this segment if available
+            transcript_context = None
+            if USE_TRANSCRIPT_TIMESTAMPS and i in timestamped_data.get("segments", {}):
+                transcript_context = timestamped_data["segments"][i].get("text", "")
+
+            if i == 1 or not EXTEND_SEGMENTS:
+                seg_prompt_full = _compose_segment_prompt(
+                    seg_prompt,
+                    stitching_prompts.get("within_segment", ""),
+                )
+                ref_image = image_output_path
+                prev_video = None
+            else:
+                prev_prompt = segment_prompts[i - 2]
+                delta = seg_prompt
+                if EXTEND_REMOVE_OVERLAP:
+                    delta = _remove_overlap(prev_prompt, seg_prompt)
+                invariants = stitching_prompts.get("between_segments", "")
+                seg_prompt_full = _compose_extension_prompt(delta, invariants, transcript_context)
+
+                last_frame_path = os.path.join(
+                    segment_output_dir,
+                    f"segment_{i-1:02d}_{LAST_FRAME_IMAGE_NAME}",
+                )
+                if _extract_last_frame(generated_segments[-1], last_frame_path):
+                    ref_image = last_frame_path
+                else:
+                    ref_image = image_output_path
+                prev_video = generated_segments[-1] if USE_PREVIOUS_VIDEO_CONTEXT else None
+
+            print(f"\nGenerating segment {i}/{target_segments}...")
+            generate_video_from_image(
+                video_prompt=seg_prompt_full,
+                image_path=ref_image,
+                output_path=seg_output,
+                aspect_ratio=VIDEO_ASPECT_RATIO,
+                duration_seconds=SEGMENT_DURATION_SECONDS,
+                previous_video_path=prev_video,
+                person_reference_image_path=(
+                    person_reference_path if not prev_video else None
+                ),
+            )
+            generated_segments.append(seg_output)
+            
+            # Overlay audio on video if audio generation is enabled
+            if overlay_audio and i in segment_audio_paths:
+                seg_with_audio = os.path.join(segment_output_dir, f"segment_{i:02d}_with_audio.mp4")
+                audio_path = segment_audio_paths[i]
+                print(f"Overlaying audio on segment {i}...")
+                if overlay_audio_on_video(seg_output, audio_path, seg_with_audio):
+                    segments_with_audio.append(seg_with_audio)
+                else:
+                    print(f"⚠ Failed to overlay audio on segment {i}, using video without audio")
+                    segments_with_audio.append(seg_output)
+            else:
+                segments_with_audio.append(seg_output)
+
+        # Generate transition prompts (between segments) to guide stitching
+        transitions = []
+        for i in range(len(segment_prompts) - 1):
+            transitions.append(
+                _compose_between_segments_prompt(
+                    segment_prompts[i],
+                    segment_prompts[i + 1],
+                    stitching_prompts.get("between_segments", ""),
+                )
+            )
+
+        # Stitch all segments into final video
+        print(f"\n{'='*60}")
+        print(f"Stitching {len(segments_with_audio)} segments into final video")
+        print(f"{'='*60}")
+        
+        # Use segments with audio if available, otherwise use plain video segments
+        segments_to_stitch = [s for s in segments_with_audio if s] if segments_with_audio else generated_segments
+        success = _stitch_videos(segments_to_stitch, final_stitched_output_path)
+        
+        if success:
+            # Save manifest with completion info
+            manifest_path = os.path.join(segment_output_dir, "stitch_manifest.json")
+            with open(manifest_path, "w") as f:
+                json.dump(
+                    {
+                        "segment_outputs": generated_segments,
+                        "segment_outputs_with_audio": segments_with_audio,
+                        "audio_outputs": list(segment_audio_paths.values()),
+                        "transition_prompts": transitions,
+                        "final_output": final_stitched_output_path,
+                        "stitching_status": "completed",
+                    },
+                    f,
+                    indent=2,
+                )
+            print(f"Stitch manifest saved to {manifest_path}")
+        else:
+            # Save manifest with failure info
+            manifest_path = os.path.join(segment_output_dir, "stitch_manifest.json")
+            with open(manifest_path, "w") as f:
+                json.dump(
+                    {
+                        "segment_outputs": generated_segments,
+                        "segment_outputs_with_audio": segments_with_audio,
+                        "audio_outputs": list(segment_audio_paths.values()),
+                        "transition_prompts": transitions,
+                        "final_output": final_stitched_output_path,
+                        "stitching_status": "failed",
+                    },
+                    f,
+                    indent=2,
+                )
+            print(f"Stitch manifest saved to {manifest_path} (stitching failed)")
+
+    # Create completion marker to indicate this run finished successfully
+    completion_marker = os.path.join(run_dir, ".complete")
+    with open(completion_marker, "w") as f:
+        f.write(f"Run {run_index} completed successfully at {time.strftime('%Y-%m-%d %H:%M:%S')}\n")
+    
+    print("\nPipeline completed successfully!")
+
+
+if __name__ == "__main__":
+    main()

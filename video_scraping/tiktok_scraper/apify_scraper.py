@@ -23,8 +23,8 @@ else:
 
 # Actor input
 run_input = {
-    "hashtags": ["techstartups", "techfounder"],
-    "resultsPerPage": 100,
+    "hashtags": ["indiedev", "aitools"],
+    "resultsPerPage": 200,
     "profileScrapeSections": ["videos"],
     "profileSorting": "latest",
     "excludePinnedPosts": False,
