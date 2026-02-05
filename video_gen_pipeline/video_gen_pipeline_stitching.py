@@ -1,4 +1,5 @@
 import json
+import mimetypes
 import os
 import random
 import re
@@ -26,10 +27,14 @@ VIDEO_PROMPT_FILE = "video_gen_pipeline/prompts/video_prompt_stitching.txt"
 TIMESTAMPED_TRANSCRIPT_FILE = "video_gen_pipeline/prompts/timestamped_transcript.txt"
 STITCHING_PROMPT_FILE = "video_gen_pipeline/prompts/stitching_prompt.txt"
 
+# Template source (used to pull the first frame from the original video)
+TEMPLATE_JSON_PATH = "data/output/template_database/tiktok_vids/tiktok_vids/7124337427774311722_template.json"
+SOURCE_VIDEO_BASE_DIR = "data/input/tiktok_vids"
+
 # Output
 FINAL_OUTPUT_BASE_DIR = "data/output/generated_videos"
 
-# Step 1
+# TOGGLE HERE!
 GENERATE_IMAGE = True
 GENERATE_VIDEO_WITH_SEGMENT_STITCHING = True
 
@@ -52,6 +57,8 @@ USE_PREVIOUS_VIDEO_CONTEXT = True  # Pass prior segment video into Veo for smoot
 # Person reference image
 USE_PERSON_REFERENCE_IMAGE = True
 PERSON_REFERENCE_IMAGE_PATH = "video_gen_pipeline/assets/person_reference.jpg"
+# UK region requires allow_adult when using reference images / people
+PERSON_GENERATION = "allow_adult"
 
 # Audio (skipped when USE_PREVIOUS_VIDEO_CONTEXT=True)
 GENERATE_AUDIO = False
@@ -180,8 +187,75 @@ def _get_next_run_index(base_dir: str) -> int:
     # Otherwise, create a new run
     return max_index + 1
 
+def _extract_first_frame(video_path: str, output_path: str) -> bool:
+    """Extract the first frame of a video using ffmpeg. Returns True on success."""
+    if not os.path.exists(video_path):
+        return False
+    cmd = [
+        "ffmpeg",
+        "-y",
+        "-i", video_path,
+        "-frames:v", "1",
+        output_path,
+    ]
+    try:
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return os.path.exists(output_path)
+    except Exception:
+        return False
 
-def generate_reference_image(prompt: str, output_path: str) -> None:
+
+def _prepare_video_context(video_path: str) -> Optional[str]:
+    """Re-encode prior segment to a Veo-friendly MP4 (H.264, yuv420p, 720x1280)."""
+    if not os.path.exists(video_path):
+        return None
+
+    base, _ = os.path.splitext(video_path)
+    prepared_path = f"{base}_veo_ctx.mp4"
+
+    if os.path.exists(prepared_path) and os.path.getsize(prepared_path) > 0:
+        return prepared_path
+
+    cmd = [
+        "ffmpeg",
+        "-y",
+        "-i", video_path,
+        "-vf", "scale=720:1280:force_original_aspect_ratio=decrease,pad=720:1280:(ow-iw)/2:(oh-ih)/2",
+        "-c:v", "libx264",
+        "-pix_fmt", "yuv420p",
+        "-profile:v", "high",
+        "-level", "4.1",
+        "-r", "30",
+        "-an",
+        prepared_path,
+    ]
+    try:
+        subprocess.run(cmd, check=True, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        return prepared_path if os.path.exists(prepared_path) else None
+    except Exception:
+        return None
+
+
+def _build_person_replacement_prompt(base_prompt: str) -> str:
+    """Enhance the prompt with strict person-replacement guidance."""
+    return (
+        "Edit the first image (the source frame). Replace the original person with the person in the reference image. "
+        "Match the original person's exact pose, body orientation, gaze direction, and facial expression from the source frame. "
+        "Keep the background, camera angle, lens, framing, lighting, shadows, color grade, and scene details identical to the source frame. "
+        "Preserve all non-person elements and text overlays exactly. "
+        "Match realistic skin texture, pores, hair strands, clothing fabric, and natural edge blending. "
+        "Ensure consistent perspective, scale, and contact shadows; avoid AI artifacts, distortions, extra limbs, or warped hands. "
+        "Result should look like a real photograph or video frame, not AI-generated. "
+        f"{base_prompt}"
+    )
+
+
+def generate_reference_image(
+    prompt: str,
+    output_path: str,
+    base_frame_path: Optional[str] = None,
+    person_reference_image_path: Optional[str] = None,
+) -> None:
     """Generate the initial reference image using Gemini."""
     # Skip if image already exists
     if os.path.exists(output_path):
@@ -189,11 +263,45 @@ def generate_reference_image(prompt: str, output_path: str) -> None:
         print(f"⊘ Reference image already exists: {output_path} ({file_size_kb:.1f} KB)")
         return
     
-    print(f"Generating reference image from prompt...")
+    print("Generating reference image from prompt...")
     try:
+        contents = []
+        base_prompt = prompt
+
+        if base_frame_path and os.path.exists(base_frame_path):
+            base_prompt = _build_person_replacement_prompt(base_prompt)
+            mime_type, _ = mimetypes.guess_type(base_frame_path)
+            if not mime_type:
+                raise ValueError(
+                    f"Could not determine mime type for {base_frame_path}"
+                )
+            with open(base_frame_path, "rb") as f:
+                base_bytes = f.read()
+            base_part = types.Part.from_bytes(data=base_bytes, mime_type=mime_type)
+            contents.append(base_part)
+            print(f"Using base frame for replacement: {base_frame_path}")
+
+        if (USE_PERSON_REFERENCE_IMAGE and person_reference_image_path and os.path.exists(person_reference_image_path)):
+            ref_size_kb = os.path.getsize(person_reference_image_path) / 1024
+            print(
+                "Using person reference image for replacement: "
+                f"{person_reference_image_path} ({ref_size_kb:.1f} KB)"
+            )
+            mime_type, _ = mimetypes.guess_type(person_reference_image_path)
+            if not mime_type:
+                raise ValueError(
+                    f"Could not determine mime type for {person_reference_image_path}"
+                )
+            with open(person_reference_image_path, "rb") as f:
+                person_bytes = f.read()
+            person_part = types.Part.from_bytes(data=person_bytes, mime_type=mime_type)
+            contents.append(person_part)
+
+        contents.append(base_prompt)
+
         response = client.models.generate_content(
             model="gemini-3-pro-image-preview",
-            contents=[prompt],
+            contents=contents,
             config=types.GenerateContentConfig(
                 image_config=types.ImageConfig(
                     aspect_ratio="9:16",
@@ -238,55 +346,65 @@ def generate_video_from_image(
     output_path: str,
     aspect_ratio: str = "9:16",
     duration_seconds: int = 4,
+    previous_video: Optional[Any] = None,
     previous_video_path: Optional[str] = None,
-    person_reference_image_path: Optional[str] = None,
-) -> None:
+) -> Optional[Any]:
     """Generate video from reference image using Veo-3.1."""
     # Skip if video already exists
     if os.path.exists(output_path):
         file_size_mb = os.path.getsize(output_path) / (1024 * 1024)
         print(f"⊘ Video already exists: {output_path} ({file_size_mb:.1f} MB)")
-        return
+        return None
     
-    reference_image_path = image_path
-    if person_reference_image_path and os.path.exists(person_reference_image_path):
-        reference_image_path = person_reference_image_path
-
-    print(f"Loading reference image from {reference_image_path}...")
-    image = types.Image.from_file(location=reference_image_path)
-
-    # Optional previous video context for continuity
+    image = None
     video_context = None
-    if previous_video_path and os.path.exists(previous_video_path):
-        print(f"Loading previous video context from {previous_video_path}...")
-        video_context = types.Video.from_file(location=previous_video_path)
+    if previous_video is not None:
+        print("Using previous Veo-generated video context from in-memory reference...")
+        video_context = previous_video
+    elif previous_video_path:
+        print("⚠ Previous video path provided, but Veo extension requires a Veo-generated video object. Falling back to image input...")
 
-    # Enhance prompt with person reference if available
+    if video_context is None:
+        print(f"Loading reference image from {image_path}...")
+        image = types.Image.from_file(location=image_path)
+
+    # Use only the generated reference image for video generation
     enhanced_prompt = video_prompt
-    if person_reference_image_path and os.path.exists(person_reference_image_path):
-        enhanced_prompt = (
-            "Use the person in the reference image as the subject. Preserve identity, "
-            "facial features, hair, and wardrobe across all frames. "
-            f"{enhanced_prompt}"
-        )
+    reference_images = []
 
     print(f"Starting video generation...")
-    
-    def _generate_video():
-        return client.models.generate_videos(
-            model="veo-3.1-generate-preview",
-            prompt=enhanced_prompt,
-            image=image,
-            video=video_context,
-            config=types.GenerateVideosConfig(
-                aspect_ratio=aspect_ratio,
-                duration_seconds=duration_seconds,
-            ),
-        )
-    
+
+    def _generate_video(use_video_context: bool, fallback_image: Optional[types.Image] = None):
+        config_kwargs = {
+            "aspect_ratio": aspect_ratio,
+            "duration_seconds": duration_seconds,
+        }
+        if use_video_context and video_context:
+            config_kwargs["resolution"] = "720p"
+        if reference_images:
+            config_kwargs["reference_images"] = reference_images
+            if PERSON_GENERATION:
+                config_kwargs["person_generation"] = PERSON_GENERATION
+
+        call_kwargs = {
+            "model": "veo-3.1-generate-preview",
+            "prompt": enhanced_prompt,
+            "config": types.GenerateVideosConfig(**config_kwargs),
+        }
+        if use_video_context and video_context is not None:
+            call_kwargs["video"] = video_context
+        else:
+            if image is not None:
+                call_kwargs["image"] = image
+            elif fallback_image is not None:
+                call_kwargs["image"] = fallback_image
+
+        return client.models.generate_videos(**call_kwargs)
+
     try:
         operation = call_api_with_retries(
             _generate_video,
+            True,
             operation_name="video generation"
         )
     except errors.ClientError as e:
@@ -294,7 +412,33 @@ def generate_video_from_image(
         print("Status code:", e.code)
         if hasattr(e, 'response_json') and e.response_json:
             print("Response JSON:", e.response_json)
-        raise
+
+        error_text = str(e)
+        response_text = ""
+        if hasattr(e, "response_json") and e.response_json:
+            response_text = json.dumps(e.response_json)
+
+        context_rejected = any(
+            token in error_text or token in response_text
+            for token in [
+                "encoding",
+                "INVALID_ARGUMENT",
+                "video context rejected",
+                "video_context_rejected",
+            ]
+        )
+
+        if video_context and context_rejected:
+            print("⚠ Video context rejected by model; retrying with image input...")
+            fallback_image = types.Image.from_file(location=image_path)
+            operation = call_api_with_retries(
+                _generate_video,
+                False,
+                fallback_image,
+                operation_name="video generation (fallback)"
+            )
+        else:
+            raise
 
     print(f"Operation started: {operation.name}")
 
@@ -332,6 +476,7 @@ def generate_video_from_image(
         print(f"Waiting {DELAY_BETWEEN_VIDEO_GENERATIONS}s before next video generation...")
         time.sleep(DELAY_BETWEEN_VIDEO_GENERATIONS)
     print(f"Generated video saved to {output_path}")
+    return video.video
 
 
 def _split_segment_prompts(raw_prompt: str) -> List[str]:
@@ -503,7 +648,7 @@ def _stitch_videos(segment_paths: List[str], output_path: str) -> bool:
                 f.write(f"file '{abs_path}'\n")
         
         print(f"Stitching {len(segment_paths)} segments into final video...")
-        cmd = [
+        cmd_copy = [
             "ffmpeg",
             "-y",  # Overwrite output file if it exists
             "-f", "concat",
@@ -513,8 +658,50 @@ def _stitch_videos(segment_paths: List[str], output_path: str) -> bool:
             "-loglevel", "info",
             output_path,
         ]
-        
-        subprocess.run(cmd, check=True)
+
+        try:
+            subprocess.run(cmd_copy, check=True)
+        except subprocess.CalledProcessError as e:
+            print("⚠ Fast concat failed, retrying with re-encode to normalize streams...")
+            cmd_reencode = [
+                "ffmpeg",
+                "-y",
+                "-f", "concat",
+                "-safe", "0",
+                "-i", concat_file_path,
+                "-c:v", "libx264",
+                "-pix_fmt", "yuv420p",
+                "-profile:v", "high",
+                "-level", "4.1",
+                "-r", "30",
+                "-c:a", "aac",
+                "-ar", "48000",
+                "-ac", "2",
+                "-movflags", "+faststart",
+                "-loglevel", "info",
+                output_path,
+            ]
+            try:
+                subprocess.run(cmd_reencode, check=True)
+            except subprocess.CalledProcessError:
+                print("⚠ Re-encode concat failed, retrying without audio...")
+                cmd_video_only = [
+                    "ffmpeg",
+                    "-y",
+                    "-f", "concat",
+                    "-safe", "0",
+                    "-i", concat_file_path,
+                    "-c:v", "libx264",
+                    "-pix_fmt", "yuv420p",
+                    "-profile:v", "high",
+                    "-level", "4.1",
+                    "-r", "30",
+                    "-an",
+                    "-movflags", "+faststart",
+                    "-loglevel", "info",
+                    output_path,
+                ]
+                subprocess.run(cmd_video_only, check=True)
         
         if os.path.exists(output_path):
             file_size_mb = os.path.getsize(output_path) / (1024 * 1024)
@@ -586,6 +773,37 @@ def main():
             )
         person_reference_path = PERSON_REFERENCE_IMAGE_PATH
 
+    # Load template JSON to locate source video for first-frame extraction
+    source_video_path = None
+    if TEMPLATE_JSON_PATH and os.path.exists(TEMPLATE_JSON_PATH):
+        with open(TEMPLATE_JSON_PATH, "r") as f:
+            template = json.load(f)
+        source_video_id = template.get("source_video_id") or template.get("video_id")
+        source_username = template.get("source_username") or template.get("username")
+        if source_video_id and source_username:
+            candidate = os.path.join(SOURCE_VIDEO_BASE_DIR, source_username, f"{source_video_id}.mp4")
+            if os.path.exists(candidate):
+                source_video_path = candidate
+                print(f"Source video found for template: {source_video_path}")
+            else:
+                print(f"⚠ Source video not found at {candidate}")
+                # Fallback: search for the video ID anywhere under SOURCE_VIDEO_BASE_DIR
+                try:
+                    import glob
+                    matches = glob.glob(
+                        os.path.join(SOURCE_VIDEO_BASE_DIR, "**", f"{source_video_id}.mp4"),
+                        recursive=True,
+                    )
+                    if matches:
+                        source_video_path = matches[0]
+                        print(f"✓ Source video found via fallback search: {source_video_path}")
+                except Exception as e:
+                    print(f"⚠ Fallback search failed: {e}")
+        else:
+            print("⚠ Template missing source_video_id or source_username; cannot locate source video.")
+    else:
+        print(f"⚠ Template JSON not found at {TEMPLATE_JSON_PATH}; skipping source frame extraction.")
+
     # If using previous video context, skip separate TTS audio generation
     generate_audio = GENERATE_AUDIO and not USE_PREVIOUS_VIDEO_CONTEXT
     overlay_audio = OVERLAY_AUDIO_ON_VIDEOS and generate_audio
@@ -607,7 +825,22 @@ def main():
         print("⚠ Audio generation enabled but no transcript segments found. Skipping audio generation.")
     
     if GENERATE_IMAGE:
-        generate_reference_image(image_prompt, image_output_path)
+        base_frame_path = None
+        if source_video_path:
+            base_frame_path = os.path.join(run_dir, "source_first_frame.png")
+            if not os.path.exists(base_frame_path):
+                if _extract_first_frame(source_video_path, base_frame_path):
+                    print(f"✓ Extracted first frame to {base_frame_path}")
+                else:
+                    print("⚠ Failed to extract first frame; falling back to prompt-only image generation.")
+                    base_frame_path = None
+
+        generate_reference_image(
+            image_prompt,
+            image_output_path,
+            base_frame_path=base_frame_path,
+            person_reference_image_path=person_reference_path,
+        )
 
     if GENERATE_VIDEO_WITH_SEGMENT_STITCHING:
         os.makedirs(segment_output_dir, exist_ok=True)
@@ -640,11 +873,13 @@ def main():
                 break
 
         generated_segments = []
+        generated_segment_video_objs = []
         # Load previously generated segments if resuming
         for i in range(1, start_segment):
             seg_path = os.path.join(segment_output_dir, f"segment_{i:02d}.mp4")
             if os.path.exists(seg_path):
                 generated_segments.append(seg_path)
+            generated_segment_video_objs.append(None)
         
         # Separate list for segments with audio overlaid (if audio generation enabled)
         segments_with_audio = []
@@ -662,6 +897,7 @@ def main():
             if os.path.exists(seg_output):
                 print(f"\nSegment {i}/{target_segments} already exists, skipping...")
                 generated_segments.append(seg_output)
+                generated_segment_video_objs.append(None)
                 continue
             
             if i < start_segment:
@@ -687,29 +923,30 @@ def main():
                 invariants = stitching_prompts.get("between_segments", "")
                 seg_prompt_full = _compose_extension_prompt(delta, invariants, transcript_context)
 
-                last_frame_path = os.path.join(
-                    segment_output_dir,
-                    f"segment_{i-1:02d}_{LAST_FRAME_IMAGE_NAME}",
-                )
-                if _extract_last_frame(generated_segments[-1], last_frame_path):
-                    ref_image = last_frame_path
-                else:
+                prev_video_obj = generated_segment_video_objs[-1] if USE_PREVIOUS_VIDEO_CONTEXT else None
+                if prev_video_obj:
                     ref_image = image_output_path
-                prev_video = generated_segments[-1] if USE_PREVIOUS_VIDEO_CONTEXT else None
+                else:
+                    last_frame_path = os.path.join(
+                        segment_output_dir,
+                        f"segment_{i-1:02d}_{LAST_FRAME_IMAGE_NAME}",
+                    )
+                    if _extract_last_frame(generated_segments[-1], last_frame_path):
+                        ref_image = last_frame_path
+                    else:
+                        ref_image = image_output_path
 
             print(f"\nGenerating segment {i}/{target_segments}...")
-            generate_video_from_image(
+            video_obj = generate_video_from_image(
                 video_prompt=seg_prompt_full,
                 image_path=ref_image,
                 output_path=seg_output,
                 aspect_ratio=VIDEO_ASPECT_RATIO,
                 duration_seconds=SEGMENT_DURATION_SECONDS,
-                previous_video_path=prev_video,
-                person_reference_image_path=(
-                    person_reference_path if not prev_video else None
-                ),
+                previous_video=prev_video_obj if i > 1 else None,
             )
             generated_segments.append(seg_output)
+            generated_segment_video_objs.append(video_obj)
             
             # Overlay audio on video if audio generation is enabled
             if overlay_audio and i in segment_audio_paths:

@@ -55,6 +55,13 @@ class TemplatePromptCompiler:
             "stylized color grading, exaggerated facial expressions, floating UI elements, "
             "overly smooth motion, animated transitions, kinetic typography, or artificial polish."
         )
+        self.reference_image_guidance = (
+            "A reference first-frame image will be provided separately. "
+            "Use it as the primary visual anchor for environment, framing, and overall feel. "
+            "Match the background and layout closely but not identically; introduce only subtle, plausible variations. "
+            "Keep template-specified background objects and scene elements, but treat them as enhancing details, "
+            "never overriding what is visible in the reference image."
+        )
 
     def compile(self, template: Dict[str, Any]) -> str:
         sections = [
@@ -67,6 +74,7 @@ class TemplatePromptCompiler:
             self._compile_typography(template),
             self._compile_color_and_lighting(template),
             self._compile_format_mix(template),
+            self.reference_image_guidance,
             self.negation_block,
             self._compile_outro(template),
         ]
@@ -149,15 +157,15 @@ class TemplatePromptCompiler:
         colors = visual.get("color_system", {}) if isinstance(visual, dict) else {}
         typo = visual.get("typography", {}) if isinstance(visual, dict) else {}
 
-        camera_quality = tech.get('camera_quality', 'smartphone')
         lighting_style = tech.get('lighting_style', 'natural')
         subject_positioning = layout.get('subject_positioning', 'center frame')
         primary_appearance = colors.get('primary', {}).get('appearance', 'vibrant') if isinstance(colors.get('primary'), dict) else 'vibrant'
         headline_style = typo.get('headline_style', 'bold sans-serif')
 
         return (
-            f"Shot on {camera_quality} with {lighting_style} lighting. Subject positioned {subject_positioning}. "
-            f"Primary color: {primary_appearance}. Typography: {headline_style}. {self.negation_block}"
+            f"Lighting is {lighting_style}. Subject positioned {subject_positioning}. "
+            f"Primary color: {primary_appearance}. Typography: {headline_style}. "
+            f"{self.reference_image_guidance} {self.negation_block}"
         )
 
     def _compile_intent(self, t: Dict[str, Any]) -> str:
@@ -179,17 +187,16 @@ class TemplatePromptCompiler:
         tech = t.get("technical_execution", {}) or t.get("technical_settings", {})
         motion = t.get("motion_language", {}) or t.get("motion_design", {})
 
-        camera_quality = tech.get('camera_quality', 'smartphone')
         camera_behavior = motion.get('camera_behavior', 'static')
         lighting_style = tech.get('lighting_style', 'natural')
         depth_of_field = tech.get('depth_of_field', 'normal')
         color_grading = tech.get('color_grading', 'neutral')
 
         return (
-            f"The video is shot on a {camera_quality} camera mounted on a tripod. "
             f"The camera remains {camera_behavior}. "
             f"Lighting is {lighting_style}, with a {depth_of_field} depth of field "
-            f"and a slightly {color_grading} tone caused by ambient lighting."
+            f"and a slightly {color_grading} tone caused by ambient lighting. "
+            f"{self.reference_image_guidance}"
         )
 
     def _compile_human_behavior(self, t: Dict[str, Any]) -> str:
