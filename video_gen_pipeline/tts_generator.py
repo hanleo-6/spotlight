@@ -64,6 +64,36 @@ class TTSAudioGenerator:
         if not text or not text.strip():
             print(f"Warning: Empty text for {output_path}, skipping.")
             return False
+
+    def synthesize_text(self, text: str, output_path: str) -> bool:
+        """Synthesize a single text string to audio file."""
+        try:
+            synthesis_input = texttospeech.SynthesisInput(text=text)
+
+            voice = texttospeech.VoiceSelectionParams(
+                language_code=self.language_code,
+                name=self.voice_name,
+            )
+
+            audio_config = texttospeech.AudioConfig(
+                audio_encoding=texttospeech.AudioEncoding.MP3,
+                speaking_rate=self.speaking_rate,
+                pitch=self.pitch,
+            )
+
+            response = self.client.synthesize_speech(
+                input=synthesis_input,
+                voice=voice,
+                audio_config=audio_config
+            )
+
+            with open(output_path, "wb") as out:
+                out.write(response.audio_content)
+
+            return True
+        except Exception as e:
+            print(f"Error synthesizing text: {e}")
+            return False
         
         try:
             # Configure voice

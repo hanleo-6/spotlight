@@ -5,13 +5,14 @@ import random
 import re
 import subprocess
 import time
-from typing import Any, Dict, List, Optional
+from typing import Any, Dict, List, Optional, Tuple
 
 from dotenv import load_dotenv
 from google import genai
 from google.genai import errors, types
+from pydub import AudioSegment
 
-from tts_generator import TTSAudioGenerator, overlay_audio_on_video
+from tts_generator import TTSAudioGenerator
 
 load_dotenv()
 gemini_api_key = os.getenv("GEMINI_API_KEY")
@@ -60,12 +61,19 @@ PERSON_REFERENCE_IMAGE_PATH = "video_gen_pipeline/assets/person_reference.jpg"
 # UK region requires allow_adult when using reference images / people
 PERSON_GENERATION = "allow_adult"
 
-# Audio (skipped when USE_PREVIOUS_VIDEO_CONTEXT=True)
-GENERATE_AUDIO = False
-OVERLAY_AUDIO_ON_VIDEOS = True
-TTS_VOICE_NAME = "en-US-Neural2-C"
+# Audio + lip sync
+GENERATE_SILENT_VIDEOS = True  # Tell Veo to skip audio generation
+GENERATE_FULL_AUDIO_TRACK = True  # Generate one complete audio file
+APPLY_LIPSYNC = True  # Apply Wav2Lip to sync audio with video
+TTS_VOICE_NAME = "en-US-Studio-0"
 TTS_SPEAKING_RATE = 1.0
 TTS_PITCH = 0.0
+
+# Wav2Lip settings
+WAV2LIP_CHECKPOINT_PATH = "Wav2Lip/checkpoints/wav2lip_gan.pth"
+WAV2LIP_RESIZE_FACTOR = 1
+WAV2LIP_FACE_DETECT_BATCH_SIZE = 16
+WAV2LIP_WAV2LIP_BATCH_SIZE = 128
 
 # Rate limiting
 ENABLE_RATE_LIMITING = True
@@ -80,16 +88,8 @@ DELAY_BETWEEN_VIDEO_GENERATIONS = 2
 # END CONFIGURATION SECTION
 # =============================================================================
 
-# Initialize TTS generator (only if audio generation is enabled)
-tts_generator = (
-    TTSAudioGenerator(
-        voice_name=TTS_VOICE_NAME,
-        speaking_rate=TTS_SPEAKING_RATE,
-        pitch=TTS_PITCH,
-    )
-    if GENERATE_AUDIO
-    else None
-)
+# Initialize TTS generator (created lazily if needed)
+tts_generator = None
 
 
 def call_api_with_retries(
@@ -236,6 +236,147 @@ def _prepare_video_context(video_path: str) -> Optional[str]:
         return None
 
 
+def _sorted_segments(timestamped_data: Dict[str, Any]) -> List[Tuple[int, Dict[str, Any]]]:
+    """Return transcript segments sorted by segment number."""
+    segments = timestamped_data.get("segments", {})
+    return sorted(segments.items())
+
+
+def generate_full_audio_from_transcript(
+    timestamped_data: Dict[str, Any],
+    output_path: str,
+    tts_generator: TTSAudioGenerator
+) -> bool:
+    """Generate a single full audio track by concatenating all segment text."""
+    if os.path.exists(output_path):
+        file_size_mb = os.path.getsize(output_path) / (1024 * 1024)
+        print(f"⊘ Full audio already exists: {output_path} ({file_size_mb:.1f} MB)")
+        return True
+
+    ordered_segments = _sorted_segments(timestamped_data)
+    if not ordered_segments:
+        print("⚠ No transcript segments found for full audio generation")
+        return False
+
+    texts = [seg_data.get("text", "").strip() for _, seg_data in ordered_segments if seg_data.get("text")]
+    full_text = " ".join(texts).strip()
+
+    if not full_text:
+        print("⚠ Full transcript text is empty, skipping audio generation")
+        return False
+
+    print(f"Generating full audio: {len(full_text)} characters across {len(ordered_segments)} segments")
+    success = tts_generator.synthesize_text(full_text, output_path)
+    return success and os.path.exists(output_path)
+
+
+def _get_audio_duration(audio_path: str) -> float:
+    """Get audio duration in seconds using ffprobe."""
+    if not os.path.exists(audio_path):
+        return 0.0
+
+    cmd = [
+        "ffprobe",
+        "-v", "error",
+        "-show_entries", "format=duration",
+        "-of", "default=noprint_wrappers=1:nokey=1",
+        audio_path,
+    ]
+    try:
+        result = subprocess.run(cmd, check=True, capture_output=True, text=True)
+        return float(result.stdout.strip())
+    except Exception:
+        return 0.0
+
+
+def slice_audio_by_timestamps(
+    full_audio_path: str,
+    timestamped_data: Dict[str, Any],
+    output_dir: str
+) -> Dict[int, str]:
+    """Slice a full audio file into timestamped segments."""
+    if not os.path.exists(full_audio_path):
+        print(f"✗ Full audio file not found: {full_audio_path}")
+        return {}
+
+    os.makedirs(output_dir, exist_ok=True)
+    full_audio = AudioSegment.from_file(full_audio_path)
+
+    segment_audio_paths: Dict[int, str] = {}
+
+    for seg_num, seg_data in _sorted_segments(timestamped_data):
+        start_ms = int(seg_data.get("start_time", 0.0) * 1000)
+        end_ms = int(seg_data.get("end_time", 0.0) * 1000)
+        segment_audio_path = os.path.join(output_dir, f"segment_{seg_num:02d}_audio.mp3")
+
+        if os.path.exists(segment_audio_path):
+            file_size_kb = os.path.getsize(segment_audio_path) / 1024
+            print(f"⊘ Audio segment already exists: {segment_audio_path} ({file_size_kb:.1f} KB)")
+            segment_audio_paths[seg_num] = segment_audio_path
+            continue
+
+        segment_audio = full_audio[start_ms:end_ms]
+        segment_audio.export(segment_audio_path, format="mp3")
+        print(f"✓ Exported audio segment {seg_num} to {segment_audio_path}")
+        segment_audio_paths[seg_num] = segment_audio_path
+
+    return segment_audio_paths
+
+
+def apply_wav2lip_to_video(
+    video_path: str,
+    audio_path: str,
+    output_path: str,
+    checkpoint_path: str = WAV2LIP_CHECKPOINT_PATH,
+    resize_factor: int = WAV2LIP_RESIZE_FACTOR,
+    face_det_batch_size: int = WAV2LIP_FACE_DETECT_BATCH_SIZE,
+    wav2lip_batch_size: int = WAV2LIP_WAV2LIP_BATCH_SIZE,
+) -> bool:
+    """Apply Wav2Lip lip sync to a video using the provided audio."""
+    if not os.path.exists(video_path):
+        print(f"✗ Video file not found: {video_path}")
+        return False
+    if not os.path.exists(audio_path):
+        print(f"✗ Audio file not found: {audio_path}")
+        return False
+    if not os.path.exists(checkpoint_path):
+        print(f"✗ Wav2Lip checkpoint not found: {checkpoint_path}")
+        return False
+
+    if os.path.exists(output_path):
+        file_size_mb = os.path.getsize(output_path) / (1024 * 1024)
+        print(f"⊘ Lip-synced video already exists: {output_path} ({file_size_mb:.1f} MB)")
+        return True
+
+    cmd = [
+        "python",
+        "Wav2Lip/inference.py",
+        "--checkpoint_path", checkpoint_path,
+        "--face", video_path,
+        "--audio", audio_path,
+        "--outfile", output_path,
+        "--resize_factor", str(resize_factor),
+        "--face_det_batch_size", str(face_det_batch_size),
+        "--wav2lip_batch_size", str(wav2lip_batch_size),
+        "--nosmooth",
+    ]
+
+    try:
+        subprocess.run(cmd, check=True, capture_output=True, text=True)
+        if os.path.exists(output_path):
+            return True
+        print("✗ Wav2Lip completed but output file was not created")
+        return False
+    except subprocess.CalledProcessError as e:
+        print("✗ Wav2Lip failed")
+        if e.stderr:
+            print(e.stderr)
+        return False
+    except Exception as e:
+        print(f"✗ Wav2Lip error: {e}")
+        return False
+
+
 def _build_person_replacement_prompt(base_prompt: str) -> str:
     """Enhance the prompt with strict person-replacement guidance."""
     return (
@@ -348,6 +489,7 @@ def generate_video_from_image(
     duration_seconds: int = 4,
     previous_video: Optional[Any] = None,
     previous_video_path: Optional[str] = None,
+    generate_audio: bool = False,
 ) -> Optional[Any]:
     """Generate video from reference image using Veo-3.1."""
     # Skip if video already exists
@@ -370,9 +512,11 @@ def generate_video_from_image(
 
     # Use only the generated reference image for video generation
     enhanced_prompt = video_prompt
+    if not generate_audio:
+        enhanced_prompt = f"{video_prompt} [Generate without audio/soundtrack]"
     reference_images = []
 
-    print(f"Starting video generation...")
+    print(f"Starting video generation (audio={'enabled' if generate_audio else 'disabled'})...")
 
     def _generate_video(use_video_context: bool, fallback_image: Optional[types.Image] = None):
         config_kwargs = {
@@ -736,9 +880,9 @@ def main():
     image_output_path = os.path.join(run_dir, f"generated_image.png")
     segment_output_dir = os.path.join(run_dir, "segments")
     audio_output_dir = os.path.join(run_dir, "audio")
-    final_stitched_output_path = os.path.join(run_dir, "stitched_video.mp4")
-    final_audio_path = os.path.join(run_dir, "stitched_audio.mp3")
-    final_video_with_audio_path = os.path.join(run_dir, "final_video_with_audio.mp4")
+    final_stitched_output_path = os.path.join(run_dir, "stitched_video_silent.mp4")
+    full_audio_path = os.path.join(run_dir, "full_audio.mp3")
+    final_video_with_audio_path = os.path.join(run_dir, "final_video_with_lipsync.mp4")
     
     print(f"Run index: {run_index}")
     print(f"Output directory: {run_dir}\n")
@@ -804,25 +948,34 @@ def main():
     else:
         print(f"⚠ Template JSON not found at {TEMPLATE_JSON_PATH}; skipping source frame extraction.")
 
-    # If using previous video context, skip separate TTS audio generation
-    generate_audio = GENERATE_AUDIO and not USE_PREVIOUS_VIDEO_CONTEXT
-    overlay_audio = OVERLAY_AUDIO_ON_VIDEOS and generate_audio
-
-    # Generate audio from transcript segments if enabled
+    # Generate full audio track and slice into segments if enabled
     segment_audio_paths = {}
-    if generate_audio and tts_generator and timestamped_data.get("segments"):
+    if GENERATE_FULL_AUDIO_TRACK and timestamped_data.get("segments"):
         print(f"\n{'='*60}")
-        print("Generating audio from transcript segments")
+        print("Generating full audio track from transcript")
         print(f"{'='*60}")
-        segment_audio_paths = tts_generator.generate_segment_audio(
-            timestamped_data["segments"],
-            audio_output_dir,
+
+        if not tts_generator:
+            tts_generator = TTSAudioGenerator(
+                voice_name=TTS_VOICE_NAME,
+                speaking_rate=TTS_SPEAKING_RATE,
+                pitch=TTS_PITCH,
+            )
+
+        generate_full_audio_from_transcript(
+            timestamped_data,
+            full_audio_path,
+            tts_generator
         )
-        print(f"✓ Generated audio for {len(segment_audio_paths)} segments")
-    elif GENERATE_AUDIO and USE_PREVIOUS_VIDEO_CONTEXT:
-        print("⚠ Skipping TTS audio generation because USE_PREVIOUS_VIDEO_CONTEXT=True.")
-    elif GENERATE_AUDIO:
-        print("⚠ Audio generation enabled but no transcript segments found. Skipping audio generation.")
+
+        os.makedirs(audio_output_dir, exist_ok=True)
+        segment_audio_paths = slice_audio_by_timestamps(
+            full_audio_path,
+            timestamped_data,
+            audio_output_dir
+        )
+    else:
+        print("⚠ Skipping audio generation")
     
     if GENERATE_IMAGE:
         base_frame_path = None
@@ -860,43 +1013,33 @@ def main():
         target_segments = len(segment_prompts)
         total_expected_seconds = target_segments * SEGMENT_DURATION_SECONDS
         print(f"\n{'='*60}")
-        print(f"Generating {target_segments} segments ({total_expected_seconds}s total)")
+        print(f"Generating {target_segments} SILENT video segments ({total_expected_seconds}s total)")
         print(f"{'='*60}")
 
         # Find the last completed segment (resume from there if incomplete run)
         start_segment = 1
         for check_i in range(target_segments, 0, -1):
-            seg_check_path = os.path.join(segment_output_dir, f"segment_{check_i:02d}.mp4")
+            seg_check_path = os.path.join(segment_output_dir, f"segment_{check_i:02d}_silent.mp4")
             if os.path.exists(seg_check_path):
                 start_segment = check_i + 1
                 print(f"Found existing segment {check_i}, resuming from segment {start_segment}")
                 break
 
-        generated_segments = []
+        generated_silent_segments = []
         generated_segment_video_objs = []
         # Load previously generated segments if resuming
         for i in range(1, start_segment):
-            seg_path = os.path.join(segment_output_dir, f"segment_{i:02d}.mp4")
+            seg_path = os.path.join(segment_output_dir, f"segment_{i:02d}_silent.mp4")
             if os.path.exists(seg_path):
-                generated_segments.append(seg_path)
+                generated_silent_segments.append(seg_path)
             generated_segment_video_objs.append(None)
-        
-        # Separate list for segments with audio overlaid (if audio generation enabled)
-        segments_with_audio = []
-        if overlay_audio and segment_audio_paths:
-            for idx, seg_path in enumerate(generated_segments, start=1):
-                seg_with_audio = os.path.join(segment_output_dir, f"segment_{idx:02d}_with_audio.mp4")
-                if os.path.exists(seg_with_audio):
-                    segments_with_audio.append(seg_with_audio)
-                else:
-                    segments_with_audio.append(None)
         
         for i, seg_prompt in enumerate(segment_prompts, start=1):
             # Skip if segment already exists
-            seg_output = os.path.join(segment_output_dir, f"segment_{i:02d}.mp4")
+            seg_output = os.path.join(segment_output_dir, f"segment_{i:02d}_silent.mp4")
             if os.path.exists(seg_output):
                 print(f"\nSegment {i}/{target_segments} already exists, skipping...")
-                generated_segments.append(seg_output)
+                generated_silent_segments.append(seg_output)
                 generated_segment_video_objs.append(None)
                 continue
             
@@ -931,7 +1074,7 @@ def main():
                         segment_output_dir,
                         f"segment_{i-1:02d}_{LAST_FRAME_IMAGE_NAME}",
                     )
-                    if _extract_last_frame(generated_segments[-1], last_frame_path):
+                    if _extract_last_frame(generated_silent_segments[-1], last_frame_path):
                         ref_image = last_frame_path
                     else:
                         ref_image = image_output_path
@@ -944,22 +1087,42 @@ def main():
                 aspect_ratio=VIDEO_ASPECT_RATIO,
                 duration_seconds=SEGMENT_DURATION_SECONDS,
                 previous_video=prev_video_obj if i > 1 else None,
+                generate_audio=False,
             )
-            generated_segments.append(seg_output)
+            generated_silent_segments.append(seg_output)
             generated_segment_video_objs.append(video_obj)
-            
-            # Overlay audio on video if audio generation is enabled
-            if overlay_audio and i in segment_audio_paths:
-                seg_with_audio = os.path.join(segment_output_dir, f"segment_{i:02d}_with_audio.mp4")
-                audio_path = segment_audio_paths[i]
-                print(f"Overlaying audio on segment {i}...")
-                if overlay_audio_on_video(seg_output, audio_path, seg_with_audio):
-                    segments_with_audio.append(seg_with_audio)
+
+        if APPLY_LIPSYNC and segment_audio_paths:
+            print(f"\n{'='*60}")
+            print(f"Applying Wav2Lip lip sync to {len(generated_silent_segments)} segments")
+            print(f"{'='*60}")
+
+            segments_with_lipsync = []
+            for seg_num, silent_seg_path in enumerate(generated_silent_segments, start=1):
+                if seg_num in segment_audio_paths:
+                    synced_output = os.path.join(
+                        segment_output_dir,
+                        f"segment_{seg_num:02d}_lipsynced.mp4"
+                    )
+
+                    print(f"\n[{seg_num}/{len(generated_silent_segments)}] Lip syncing segment {seg_num}...")
+                    success = apply_wav2lip_to_video(
+                        silent_seg_path,
+                        segment_audio_paths[seg_num],
+                        synced_output
+                    )
+
+                    if success:
+                        segments_with_lipsync.append(synced_output)
+                    else:
+                        print(f"⚠ Lip sync failed for segment {seg_num}, using silent video")
+                        segments_with_lipsync.append(silent_seg_path)
                 else:
-                    print(f"⚠ Failed to overlay audio on segment {i}, using video without audio")
-                    segments_with_audio.append(seg_output)
-            else:
-                segments_with_audio.append(seg_output)
+                    print(f"\n[{seg_num}/{len(generated_silent_segments)}] No audio for segment {seg_num}")
+                    segments_with_lipsync.append(silent_seg_path)
+        else:
+            print("⚠ Skipping lip sync")
+            segments_with_lipsync = generated_silent_segments
 
         # Generate transition prompts (between segments) to guide stitching
         transitions = []
@@ -974,12 +1137,10 @@ def main():
 
         # Stitch all segments into final video
         print(f"\n{'='*60}")
-        print(f"Stitching {len(segments_with_audio)} segments into final video")
+        print(f"Stitching {len(segments_with_lipsync)} segments into final video")
         print(f"{'='*60}")
-        
-        # Use segments with audio if available, otherwise use plain video segments
-        segments_to_stitch = [s for s in segments_with_audio if s] if segments_with_audio else generated_segments
-        success = _stitch_videos(segments_to_stitch, final_stitched_output_path)
+
+        success = _stitch_videos(segments_with_lipsync, final_video_with_audio_path)
         
         if success:
             # Save manifest with completion info
@@ -987,11 +1148,12 @@ def main():
             with open(manifest_path, "w") as f:
                 json.dump(
                     {
-                        "segment_outputs": generated_segments,
-                        "segment_outputs_with_audio": segments_with_audio,
-                        "audio_outputs": list(segment_audio_paths.values()),
+                        "silent_segment_outputs": generated_silent_segments,
+                        "lipsynced_segment_outputs": segments_with_lipsync,
+                        "audio_segments": list(segment_audio_paths.values()),
+                        "full_audio": full_audio_path if os.path.exists(full_audio_path) else None,
                         "transition_prompts": transitions,
-                        "final_output": final_stitched_output_path,
+                        "final_output": final_video_with_audio_path,
                         "stitching_status": "completed",
                     },
                     f,
@@ -1004,11 +1166,12 @@ def main():
             with open(manifest_path, "w") as f:
                 json.dump(
                     {
-                        "segment_outputs": generated_segments,
-                        "segment_outputs_with_audio": segments_with_audio,
-                        "audio_outputs": list(segment_audio_paths.values()),
+                        "silent_segment_outputs": generated_silent_segments,
+                        "lipsynced_segment_outputs": segments_with_lipsync,
+                        "audio_segments": list(segment_audio_paths.values()),
+                        "full_audio": full_audio_path if os.path.exists(full_audio_path) else None,
                         "transition_prompts": transitions,
-                        "final_output": final_stitched_output_path,
+                        "final_output": final_video_with_audio_path,
                         "stitching_status": "failed",
                     },
                     f,

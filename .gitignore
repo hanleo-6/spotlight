@@ -1,6 +1,6 @@
 /data/input/
 /data/output/
-/old_analysis/manual_analysis/thumbnail_extraction/thumbnails/
+/_old_analysis/manual_analysis/thumbnail_extraction/thumbnails/
 
 # Secrets and credentials
 **/credentials.json
